@@ -46,7 +46,7 @@ const PublicLayout = () => {
       <header className={`sticky top-0 z-50 transition-all duration-300 ${scrolled || !isHome ? 'bg-white shadow-[0_2px_15px_rgba(0,0,0,0.08)] border-b border-gray-100' : 'bg-transparent border-transparent'}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center min-h-[90px] py-2">
-            <Link to="/" className="flex items-center">
+            <Link to="/" className="flex items-center flex-shrink-0 mr-2">
               <Logo />
             </Link>
             
@@ -71,7 +71,7 @@ const PublicLayout = () => {
               </Link>
             </nav>
 
-            <div className="flex items-center gap-5">
+            <div className="flex items-center gap-3 sm:gap-5 flex-shrink-0">
               <Link 
                 to="/login" 
                 className="hidden sm:flex items-center gap-2 text-gray-700 font-bold hover:text-[var(--color-primary)] transition-colors"
@@ -81,7 +81,7 @@ const PublicLayout = () => {
               </Link>
               <Link 
                 to="/register" 
-                className="bg-[var(--color-primary)] text-white px-8 py-2.5 rounded text-[15px] font-bold hover:bg-[#72112e] transition-colors shadow-[0_4px_14px_0_rgba(138,21,56,0.39)]"
+                className="bg-[var(--color-primary)] text-white px-4 sm:px-8 py-2 sm:py-2.5 rounded text-[13px] sm:text-[15px] font-bold hover:bg-[#72112e] transition-colors shadow-[0_4px_14px_0_rgba(138,21,56,0.39)] whitespace-nowrap"
               >
                 Register Free
               </Link>

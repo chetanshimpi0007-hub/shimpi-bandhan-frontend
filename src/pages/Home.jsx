@@ -148,91 +148,48 @@ const Home = () => {
           </div>
         </div>
         
-        {/* Floating SEARCH CARD overlapping bottom of Hero */}
-        <div className="absolute -bottom-16 left-0 w-full z-30 px-4 sm:px-6">
-          <div className="max-w-6xl mx-auto">
-            <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.9 }} className="bg-white/80 backdrop-blur-2xl border border-white/60 p-6 rounded-[24px] shadow-[0_20px_50px_rgba(0,0,0,0.1)]">
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 items-end">
-                <div className="space-y-1">
-                  <label className="text-[11px] font-bold text-gray-500 uppercase tracking-wider">Looking For</label>
-                  <select className="w-full bg-white/50 border border-gray-200 text-gray-800 text-sm rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-[#800020]/20 transition-all">
-                    <option>Bride</option>
-                    <option>Groom</option>
-                  </select>
-                </div>
-                <div className="space-y-1">
-                  <label className="text-[11px] font-bold text-gray-500 uppercase tracking-wider">Age</label>
-                  <div className="flex items-center gap-2">
-                    <select className="w-full bg-white/50 border border-gray-200 text-gray-800 text-sm rounded-xl px-2 py-3 outline-none focus:ring-2 focus:ring-[#800020]/20 transition-all"><option>20</option><option>21</option><option>25</option></select>
-                    <span className="text-gray-400">to</span>
-                    <select className="w-full bg-white/50 border border-gray-200 text-gray-800 text-sm rounded-xl px-2 py-3 outline-none focus:ring-2 focus:ring-[#800020]/20 transition-all"><option>30</option><option>35</option><option>40</option></select>
-                  </div>
-                </div>
-                <div className="space-y-1">
-                  <label className="text-[11px] font-bold text-gray-500 uppercase tracking-wider">Community</label>
-                  <select className="w-full bg-white/50 border border-gray-200 text-gray-800 text-sm rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-[#800020]/20 transition-all">
-                    <option>Aher Shimpi</option>
-                    <option>Namdev Shimpi</option>
-                  </select>
-                </div>
-                <div className="space-y-1">
-                  <label className="text-[11px] font-bold text-gray-500 uppercase tracking-wider">Location</label>
-                  <select className="w-full bg-white/50 border border-gray-200 text-gray-800 text-sm rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-[#800020]/20 transition-all">
-                    <option>Nashik</option>
-                    <option>Pune</option>
-                    <option>Mumbai</option>
-                  </select>
-                </div>
-                <div>
-                  <Link to="/search" className="w-full bg-[#800020] hover:bg-[#600018] text-white font-bold text-sm px-6 py-3.5 rounded-xl shadow-lg hover:shadow-xl transition-all flex items-center justify-center gap-2">
-                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
-                    Search Matches
-                  </Link>
-                </div>
-              </div>
-            </motion.div>
-          </div>
-        </div>
+        {/* Removed redundant absolute search card that was causing mobile overlap */}
       </section>
 
-      {/* Floating Premium Search Card (Glassmorphism) */}
-      <section className="relative z-30 px-6 -mt-12 lg:-mt-20 mb-24 max-w-6xl mx-auto">
+      {/* Floating Premium Search Card */}
+      <section className="relative z-30 px-4 sm:px-6 -mt-16 sm:-mt-24 lg:-mt-20 mb-24 max-w-6xl mx-auto">
         <motion.div 
           initial={{ opacity: 0, y: 30 }} 
           animate={{ opacity: 1, y: 0 }} 
-          transition={{ duration: 0.8, delay: 1 }}
-          className="bg-white/85 backdrop-blur-xl border border-white/60 rounded-[24px] shadow-[0_20px_50px_rgba(0,0,0,0.1)] p-6 lg:p-8 overflow-hidden"
+          transition={{ duration: 0.8, delay: 0.3 }}
+          className="bg-white/90 backdrop-blur-xl border border-white/60 rounded-[24px] shadow-[0_20px_50px_rgba(0,0,0,0.15)] p-5 sm:p-6 lg:p-8 overflow-hidden h-auto"
         >
-          <form onSubmit={handleQuickSearch} className="grid grid-cols-1 md:grid-cols-5 gap-4 lg:gap-6 items-end">
-            <div>
+          <form onSubmit={handleQuickSearch} className="flex flex-col md:grid md:grid-cols-5 gap-5 lg:gap-6 items-start md:items-end">
+            <div className="w-full">
               <label className="block text-[11px] font-bold text-gray-500 uppercase tracking-wider mb-2">Looking For</label>
-              <select className="w-full bg-white/60 border border-gray-200/80 rounded-xl text-gray-800 py-3.5 px-4 focus:ring-2 focus:ring-[#800020] focus:bg-white outline-none transition-all text-sm font-semibold shadow-sm">
+              <select className="w-full bg-white/70 border border-gray-300 rounded-xl text-gray-800 py-3.5 px-4 focus:ring-2 focus:ring-[#800020] focus:bg-white outline-none transition-all text-sm font-semibold shadow-sm">
                 <option>Bride</option>
                 <option>Groom</option>
               </select>
             </div>
-            <div>
+            <div className="w-full">
               <label className="block text-[11px] font-bold text-gray-500 uppercase tracking-wider mb-2">Age</label>
-              <select className="w-full bg-white/60 border border-gray-200/80 rounded-xl text-gray-800 py-3.5 px-4 focus:ring-2 focus:ring-[#800020] focus:bg-white outline-none transition-all text-sm font-semibold shadow-sm">
+              <select className="w-full bg-white/70 border border-gray-300 rounded-xl text-gray-800 py-3.5 px-4 focus:ring-2 focus:ring-[#800020] focus:bg-white outline-none transition-all text-sm font-semibold shadow-sm">
                 <option>21 to 25</option>
                 <option>26 to 30</option>
                 <option>31 to 35</option>
                 <option>36 and above</option>
               </select>
             </div>
-            <div>
+            <div className="w-full">
               <label className="block text-[11px] font-bold text-gray-500 uppercase tracking-wider mb-2">Community</label>
-              <select className="w-full bg-white/60 border border-gray-200/80 rounded-xl text-gray-800 py-3.5 px-4 focus:ring-2 focus:ring-[#800020] focus:bg-white outline-none transition-all text-sm font-semibold shadow-sm">
+              <select className="w-full bg-white/70 border border-gray-300 rounded-xl text-gray-800 py-3.5 px-4 focus:ring-2 focus:ring-[#800020] focus:bg-white outline-none transition-all text-sm font-semibold shadow-sm">
                 <option>Aher Shimpi</option>
                 <option>Namdev Shimpi</option>
               </select>
             </div>
-            <div>
+            <div className="w-full">
               <label className="block text-[11px] font-bold text-gray-500 uppercase tracking-wider mb-2">Location</label>
-              <input type="text" placeholder="e.g. Pune, Mumbai" className="w-full bg-white/60 border border-gray-200/80 rounded-xl text-gray-800 py-3.5 px-4 focus:ring-2 focus:ring-[#800020] focus:bg-white outline-none transition-all text-sm font-semibold shadow-sm" />
+              <input type="text" placeholder="e.g. Pune, Mumbai" className="w-full bg-white/70 border border-gray-300 rounded-xl text-gray-800 py-3.5 px-4 focus:ring-2 focus:ring-[#800020] focus:bg-white outline-none transition-all text-sm font-semibold shadow-sm" />
             </div>
-            <div>
-              <button type="submit" className="w-full bg-gradient-to-r from-[#800020] to-red-800 text-white rounded-xl py-3.5 px-6 font-bold shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all text-sm cursor-pointer border border-red-900/30">
+            <div className="w-full pt-2 md:pt-0">
+              <button type="submit" className="w-full bg-gradient-to-r from-[#800020] to-[#b3002d] text-white rounded-xl py-3.5 px-6 font-bold shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all text-sm cursor-pointer border border-[#800020]/20 flex items-center justify-center gap-2">
+                <FaSearch className="w-4 h-4" />
                 Search Matches
               </button>
             </div>
@@ -292,8 +249,8 @@ const Home = () => {
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger} className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {localTestimonials.map((story, idx) => (
               <motion.div key={story.id || idx} variants={fadeUp} className="bg-white rounded-[32px] border border-slate-200/80 p-8 flex flex-col md:flex-row gap-6 hover:border-pink-500/20 transition-all duration-300 shadow-sm">
-                <div className="w-full md:w-40 h-40 rounded-2xl overflow-hidden flex-shrink-0 relative">
-                  <img src={story.photoUrl} alt={`${story.brideName} & ${story.groomName}`} className="w-full h-full object-cover" />
+                <div className="w-full md:w-40 h-64 md:h-40 rounded-2xl overflow-hidden flex-shrink-0 relative">
+                  <img src={story.photoUrl} alt={`${story.brideName} & ${story.groomName}`} className="w-full h-full object-cover object-top md:object-center" />
                 </div>
                 <div className="space-y-4 flex-1">
                   <FaQuoteLeft className="text-pink-500 text-2xl opacity-60" />
