@@ -242,7 +242,7 @@ const Register = () => {
                 <input
                   id="terms"
                   type="checkbox"
-                  required
+                  {...register("terms", { required: "You must agree to the terms and privacy policy" })}
                   className="focus:ring-[var(--color-primary)] h-4 w-4 text-[var(--color-primary)] border-gray-300 rounded"
                 />
               </div>
@@ -252,6 +252,7 @@ const Register = () => {
                 </label>
               </div>
             </div>
+            {errors.terms && <p className="text-red-500 text-xs mt-1">{errors.terms.message}</p>}
           </div>
 
           <div>
