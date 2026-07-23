@@ -67,54 +67,45 @@ const Home = () => {
         <meta name="description" content="Join Shimpi Bandhan today to find your perfect life partner within the Aher and Namdev Shimpi communities. Thousands of verified profiles." />
       </Helmet>
 
-      {/* Premium Hero Section */}
-      <section className="relative w-full py-10 sm:py-14 lg:py-20 flex items-center z-10 overflow-hidden bg-gradient-to-b from-[#FFFDF9] via-[#FAF6F0] to-[#FCFBF9]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-20">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-            
-            {/* Left Column: Text & CTAs */}
-            <div className="lg:col-span-6 space-y-6 flex flex-col justify-center text-left">
-              <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease: "easeOut" }}>
-                <span className="px-4 py-1.5 bg-white/80 backdrop-blur-md border border-[#800020]/20 text-[#800020] rounded-full text-xs font-bold uppercase tracking-wider inline-flex items-center gap-2 shadow-sm">
-                  ❤️ Connecting Hearts, Building Relationships
-                </span>
-              </motion.div>
+      {/* Full-Width Background Hero Section */}
+      <section className="relative w-full min-h-[75vh] md:min-h-[85vh] flex items-center z-10 overflow-hidden bg-slate-900">
+        
+        {/* Full Width Wedding Couple Image */}
+        <img 
+          src="/wedding-couple.jpg" 
+          alt="Shimpi Bandhan Wedding Hero" 
+          className="absolute inset-0 w-full h-full object-cover object-top md:object-center z-0 pointer-events-none" 
+        />
+        
+        {/* Soft Dark Overlay for Text Legibility */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/45 to-transparent z-10"></div>
 
-              <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }} className="text-4xl sm:text-5xl lg:text-6xl font-serif font-bold text-gray-900 leading-[1.15] tracking-tight">
-                Find Your Perfect <br />
-                <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#800020] to-[#b3002d]">Life Partner</span>
-              </motion.h1>
+        {/* Hero Content */}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-20 py-16 sm:py-20 lg:py-28">
+          <div className="max-w-2xl space-y-6 text-left">
+            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease: "easeOut" }}>
+              <span className="px-4 py-1.5 bg-white/20 backdrop-blur-md border border-white/30 text-white rounded-full text-xs font-bold uppercase tracking-wider inline-flex items-center gap-2 shadow-sm">
+                ❤️ Connecting Hearts, Building Relationships
+              </span>
+            </motion.div>
 
-              <motion.h2 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }} className="text-lg sm:text-xl font-medium text-gray-700 leading-relaxed max-w-xl">
-                Connecting Aher Shimpi & Namdev Shimpi Families through a secure, verified and trusted matrimonial platform where meaningful relationships begin.
-              </motion.h2>
+            <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }} className="text-4xl sm:text-5xl lg:text-6xl font-serif font-bold text-white leading-[1.15] tracking-tight drop-shadow-md">
+              Find Your Perfect <br />
+              <span className="text-amber-400">Life Partner</span>
+            </motion.h1>
 
-              <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.5, ease: "easeOut" }} className="flex flex-col sm:flex-row gap-4 pt-2">
-                <Link to="/register" className="group bg-gradient-to-r from-[#800020] to-[#a00028] text-white px-8 py-4 rounded-full text-base font-black transition-all shadow-lg shadow-[#800020]/30 hover:shadow-[#800020]/50 hover:-translate-y-1 w-full sm:w-auto text-center border border-[#800020]/30">
-                  Register Now
-                </Link>
-                <Link to="/search" className="group bg-white border border-[#800020]/20 text-[#800020] hover:bg-gray-50 px-8 py-4 rounded-full text-base font-black transition-all shadow-sm hover:shadow-md w-full sm:w-auto text-center">
-                  Browse Profiles
-                </Link>
-              </motion.div>
-            </div>
+            <motion.h2 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }} className="text-lg sm:text-xl font-medium text-gray-100 leading-relaxed drop-shadow">
+              Connecting Aher Shimpi & Namdev Shimpi Families through a secure, verified and trusted matrimonial platform where meaningful relationships begin.
+            </motion.h2>
 
-            {/* Right Column: Full Original Uploaded Wedding Image */}
-            <div className="lg:col-span-6 flex justify-center items-center">
-              <motion.div 
-                initial={{ opacity: 0, scale: 0.95 }} 
-                animate={{ opacity: 1, scale: 1 }} 
-                transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
-                className="relative w-full max-w-lg lg:max-w-none rounded-3xl overflow-hidden shadow-2xl border-4 border-white bg-white"
-              >
-                <img 
-                  src="/wedding-couple.jpg" 
-                  alt="Wedding Couple" 
-                  className="w-full h-auto max-h-[580px] object-cover object-center transition-transform duration-700 hover:scale-[1.02]" 
-                />
-              </motion.div>
-            </div>
-
+            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.5, ease: "easeOut" }} className="flex flex-col sm:flex-row gap-4 pt-4">
+              <Link to="/register" className="group bg-gradient-to-r from-[#800020] to-[#a00028] text-white px-8 py-4 rounded-full text-base font-black transition-all shadow-lg shadow-[#800020]/40 hover:shadow-[#800020]/60 hover:-translate-y-1 w-full sm:w-auto text-center border border-white/20">
+                Register Now
+              </Link>
+              <Link to="/search" className="group bg-white/95 backdrop-blur-md border border-white/40 text-gray-900 hover:bg-white px-8 py-4 rounded-full text-base font-black transition-all shadow-md hover:shadow-lg w-full sm:w-auto text-center">
+                Browse Profiles
+              </Link>
+            </motion.div>
           </div>
         </div>
       </section>
