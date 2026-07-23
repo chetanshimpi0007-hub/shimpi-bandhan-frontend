@@ -53,7 +53,14 @@ const Register = () => {
           setApiError('Registration failed. Please try again.');
         }
       } else {
-        setApiError('Network Error. Could not reach the server.');
+        setApiError(`Network Error. Message: ${error.message || 'No message'}. Code: ${error.code || 'No code'}. Target URL: ${error.config?.url || 'Unknown'}`);
+        console.error('Detailed Registration Error:', {
+          message: error.message,
+          code: error.code,
+          config: error.config,
+          request: error.request,
+          response: error.response
+        });
       }
     } finally {
       setLoading(false);
