@@ -1,6 +1,6 @@
 {
-  "name": "Shimpi Milan",
-  "short_name": "Shimpi Milan",
+  "name": "Shimpi Bandhan",
+  "short_name": "Shimpi Bandhan",
   "description": "Exclusive Matrimonial Platform for the Shimpi Community",
   "id": "/",
   "start_url": "/",
@@ -77,14 +77,14 @@
       "sizes": "750x1334",
       "type": "image/png",
       "form_factor": "narrow",
-      "label": "Shimpi Milan Mobile App"
+      "label": "Shimpi Bandhan Mobile App"
     },
     {
       "src": "/screenshots/desktop-home.png",
       "sizes": "1920x1080",
       "type": "image/png",
       "form_factor": "wide",
-      "label": "Shimpi Milan Web App"
+      "label": "Shimpi Bandhan Web App"
     }
   ]
 }

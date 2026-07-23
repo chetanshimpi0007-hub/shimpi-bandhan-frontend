@@ -69,9 +69,9 @@ const Register = () => {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8 bg-[url('/auth-bg.png')] bg-cover bg-center relative">
-      <div className="absolute inset-0 bg-blue-900/40 backdrop-blur-sm"></div>
-      <div className="max-w-md w-full space-y-8 bg-white/95 backdrop-blur-md p-10 rounded-2xl shadow-2xl border border-white/20 relative z-10 overflow-hidden">
+    <div className="min-h-screen flex items-center justify-center bg-gray-50 py-8 sm:py-12 px-4 sm:px-6 lg:px-8 bg-[url('/auth-bg.png')] bg-cover bg-center relative overflow-y-auto">
+      <div className="absolute inset-0 bg-blue-900/40 backdrop-blur-sm fixed"></div>
+      <div className="max-w-md w-full space-y-6 sm:space-y-8 bg-white/95 backdrop-blur-md p-6 sm:p-10 rounded-2xl shadow-2xl border border-white/20 relative z-10 my-8">
         <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-[var(--color-secondary)] to-[var(--color-primary)]"></div>
         <div>
           <h2 className="mt-2 text-center text-3xl font-serif font-bold text-gray-900">
