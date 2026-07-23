@@ -54,6 +54,8 @@ const Register = () => {
         }
       } else {
         setApiError(`Network Error. Message: ${error.message || 'No message'}. Code: ${error.code || 'No code'}. Target URL: ${error.config?.url || 'Unknown'}`);
+        // Debugging log added to trigger fresh Vercel deployment
+        console.error("Detailed Registration Error:", error.message, error.code, error.config?.url);
         console.error('Detailed Registration Error:', {
           message: error.message,
           code: error.code,
