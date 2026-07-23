@@ -85,7 +85,8 @@ const ExportQueue = () => {
         </div>
       ) : (
         <div className="overflow-x-auto">
-          <table className="w-full text-left border-collapse">
+          <div className="w-full overflow-x-auto">
+<table className="w-full text-left border-collapse">
             <thead>
               <tr className="border-b bg-gray-50 text-sm text-gray-600">
                 <th className="p-3">Report Name</th>

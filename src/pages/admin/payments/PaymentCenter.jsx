@@ -116,7 +116,8 @@ const PaymentCenter = () => {
         </div>
 
         <div className="overflow-x-auto">
-          <table className="w-full text-left border-collapse" style={{ minWidth: '800px' }}>
+          <div className="w-full overflow-x-auto">
+<table className="w-full text-left border-collapse" style={{ minWidth: '800px' }}>
             <thead>
               <tr>
                 <th className="px-4 py-3 text-[11px] font-bold text-slate-500 uppercase tracking-widest border-b border-slate-800/60">Transaction ID</th>

@@ -251,7 +251,8 @@ const BusinessDashboard = () => {
             ) : (
               <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
                 <div className="overflow-x-auto">
-                  <table className="w-full text-left border-collapse">
+                  <div className="w-full overflow-x-auto">
+<table className="w-full text-left border-collapse">
                     <thead>
                       <tr className="bg-gray-50 border-b border-gray-100 text-sm">
                         <th className="p-4 font-bold text-gray-600">Client</th>
@@ -312,7 +313,8 @@ const BusinessDashboard = () => {
               </button>
             </div>
             <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
-              <table className="w-full text-left border-collapse">
+              <div className="w-full overflow-x-auto">
+<table className="w-full text-left border-collapse">
                 <thead>
                   <tr className="bg-gray-50 border-b border-gray-100">
                     <th className="p-4 text-sm font-bold text-gray-600">Offer Title</th>
@@ -389,7 +391,8 @@ const BusinessDashboard = () => {
           <div>
             <h2 className="text-xl font-bold text-gray-900 mb-6">Payment History</h2>
             <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
-              <table className="w-full text-left border-collapse">
+              <div className="w-full overflow-x-auto">
+<table className="w-full text-left border-collapse">
                 <thead>
                   <tr className="bg-gray-50 border-b border-gray-100">
                     <th className="p-4 text-sm font-bold text-gray-600">Date</th>

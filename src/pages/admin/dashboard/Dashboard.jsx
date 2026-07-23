@@ -220,7 +220,8 @@ const Dashboard = () => {
             <span className="px-2.5 py-0.5 rounded-full bg-amber-500/10 text-amber-600 text-[9px] font-black uppercase">12 Pending</span>
           </div>
           <div className="overflow-x-auto">
-            <table className="w-full text-left text-xs">
+            <div className="w-full overflow-x-auto">
+<table className="w-full text-left text-xs">
               <thead>
                 <tr className="text-slate-400 font-bold uppercase tracking-wider text-[10px] border-b border-slate-50">
                   <th className="pb-3">User</th>

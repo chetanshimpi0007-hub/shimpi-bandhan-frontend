@@ -70,8 +70,16 @@ const MainLayout = () => {
 
   return (
     <div className="flex h-screen bg-gray-50 overflow-hidden font-sans">
+      {/* Mobile Sidebar Overlay */}
+      {sidebarOpen && (
+        <div 
+          className="fixed inset-0 bg-gray-900/50 z-40 md:hidden"
+          onClick={() => setSidebarOpen(false)}
+        />
+      )}
+
       {/* Sidebar */}
-      <aside className={`bg-white border-r border-gray-200 flex flex-col transition-all duration-300 z-50 shadow-sm ${sidebarOpen ? 'w-64' : 'w-20'}`}>
+      <aside className={`fixed md:relative inset-y-0 left-0 bg-white border-r border-gray-200 flex flex-col transition-transform duration-300 z-50 shadow-sm w-64 md:w-auto md:translate-x-0 ${sidebarOpen ? 'translate-x-0' : '-translate-x-full md:w-20'}`}>
         
         {/* Brand */}
         <div className="h-16 flex items-center justify-center border-b border-gray-100 px-4">
@@ -79,12 +87,11 @@ const MainLayout = () => {
             <div className="w-10 h-10 shrink-0 bg-gradient-to-tr from-blue-600 to-indigo-600 rounded-xl flex items-center justify-center shadow-md shadow-blue-500/20">
               <HiOutlineSparkles className="text-white w-6 h-6" />
             </div>
-            {sidebarOpen && (
-              <div className="flex flex-col">
-                <span className="text-lg font-bold bg-gradient-to-r from-blue-700 to-indigo-700 bg-clip-text text-transparent tracking-tight">Shimpi Bandhan</span>
-                <span className="text-[10px] uppercase font-bold tracking-wider text-gray-400">Admin Portal</span>
-              </div>
-            )}
+            {/* Always show brand name on mobile when sidebar is open, or on desktop when open */}
+            <div className={`flex flex-col ${!sidebarOpen ? 'md:hidden' : ''}`}>
+              <span className="text-lg font-bold bg-gradient-to-r from-blue-700 to-indigo-700 bg-clip-text text-transparent tracking-tight">Shimpi Bandhan</span>
+              <span className="text-[10px] uppercase font-bold tracking-wider text-gray-400">Admin Portal</span>
+            </div>
           </div>
         </div>
 
@@ -92,11 +99,9 @@ const MainLayout = () => {
         <nav className="flex-1 overflow-y-auto py-4 px-3 space-y-6 scrollbar-hide">
           {navGroups.map((group, idx) => (
             <div key={idx}>
-              {sidebarOpen && (
-                <h3 className="px-3 mb-2 text-xs font-bold uppercase tracking-widest text-gray-400">
-                  {group.group}
-                </h3>
-              )}
+              <h3 className={`px-3 mb-2 text-xs font-bold uppercase tracking-widest text-gray-400 ${!sidebarOpen ? 'md:hidden' : ''}`}>
+                {group.group}
+              </h3>
               <ul className="space-y-1">
                 {group.items.map((item) => {
                   const isActive = location.pathname.startsWith(item.path);
@@ -104,18 +109,19 @@ const MainLayout = () => {
                     <li key={item.path}>
                       <Link
                         to={item.path}
+                        onClick={() => { if (window.innerWidth < 768) setSidebarOpen(false); }}
                         className={`flex items-center gap-3 px-3 py-2.5 rounded-lg transition-all duration-200 group relative ${
                           isActive 
                             ? 'bg-blue-50 text-blue-700 font-semibold' 
                             : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
-                        } ${!sidebarOpen && 'justify-center'}`}
+                        } ${!sidebarOpen ? 'md:justify-center' : ''}`}
                         title={!sidebarOpen ? item.name : undefined}
                       >
                         {isActive && (
                           <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-6 bg-blue-600 rounded-r-md"></div>
                         )}
                         <item.icon className={`shrink-0 w-5 h-5 ${isActive ? 'text-blue-600' : 'text-gray-400 group-hover:text-gray-600'}`} />
-                        {sidebarOpen && <span className="text-sm">{item.name}</span>}
+                        <span className={`text-sm ${!sidebarOpen ? 'md:hidden' : ''}`}>{item.name}</span>
                       </Link>
                     </li>
                   );
@@ -127,32 +133,30 @@ const MainLayout = () => {
 
         {/* Footer Profile */}
         <div className="p-4 border-t border-gray-100">
-          <div className={`flex items-center gap-3 mb-3 ${!sidebarOpen && 'justify-center'}`}>
+          <div className={`flex items-center gap-3 mb-3 ${!sidebarOpen ? 'md:justify-center' : ''}`}>
             <div className="w-10 h-10 rounded-full bg-blue-100 border border-blue-200 flex items-center justify-center shrink-0">
               <span className="text-blue-700 font-bold text-sm">SA</span>
             </div>
-            {sidebarOpen && (
-              <div className="overflow-hidden">
-                <p className="text-sm font-bold text-gray-900 truncate">Super Admin</p>
-                <p className="text-xs text-gray-500 truncate">{user?.phone}</p>
-              </div>
-            )}
+            <div className={`overflow-hidden ${!sidebarOpen ? 'md:hidden' : ''}`}>
+              <p className="text-sm font-bold text-gray-900 truncate">Super Admin</p>
+              <p className="text-xs text-gray-500 truncate">{user?.phone}</p>
+            </div>
           </div>
           <button 
             onClick={handleLogout}
-            className={`w-full flex items-center gap-2 text-red-600 hover:bg-red-50 p-2 rounded-lg transition-colors ${!sidebarOpen && 'justify-center'}`}
+            className={`w-full flex items-center gap-2 text-red-600 hover:bg-red-50 p-2 rounded-lg transition-colors ${!sidebarOpen ? 'md:justify-center' : ''}`}
             title={!sidebarOpen ? "Logout" : undefined}
           >
             <FiLogOut className="w-5 h-5 shrink-0" />
-            {sidebarOpen && <span className="text-sm font-medium">Log out</span>}
+            <span className={`text-sm font-medium ${!sidebarOpen ? 'md:hidden' : ''}`}>Log out</span>
           </button>
         </div>
       </aside>
 
       {/* Main Content Area */}
-      <div className="flex-1 flex flex-col min-w-0 overflow-hidden">
+      <div className="flex-1 flex flex-col min-w-0 overflow-hidden md:ml-0">
         {/* Header */}
-        <header className="h-16 bg-white/80 backdrop-blur-md border-b border-gray-200 flex items-center justify-between px-6 z-40">
+        <header className="h-16 bg-white/80 backdrop-blur-md border-b border-gray-200 flex items-center justify-between px-4 md:px-6 z-30">
           <div className="flex items-center gap-4">
             <button 
               onClick={() => setSidebarOpen(!sidebarOpen)}

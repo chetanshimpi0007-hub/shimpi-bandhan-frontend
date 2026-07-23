@@ -120,7 +120,8 @@ const RegistrationManage = () => {
           <div className="p-8 text-center text-gray-500">Loading registrations...</div>
         ) : (
           <div className="overflow-x-auto">
-            <table className="w-full text-left border-collapse">
+            <div className="w-full overflow-x-auto">
+<table className="w-full text-left border-collapse">
               <thead>
                 <tr className="bg-gray-50 border-b border-gray-200">
                   <th className="p-4 font-semibold text-gray-700">Reg ID</th>

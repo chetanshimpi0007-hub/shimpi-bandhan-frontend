@@ -199,7 +199,8 @@ const BusinessManagement = () => {
           <div className="p-16 text-center text-slate-500"><FaSpinner className="animate-spin mx-auto text-3xl text-blue-500" /></div>
         ) : (
           <div className="overflow-x-auto">
-            <table className="w-full text-left border-collapse whitespace-nowrap" style={{ minWidth: '800px' }}>
+            <div className="w-full overflow-x-auto">
+<table className="w-full text-left border-collapse whitespace-nowrap" style={{ minWidth: '800px' }}>
               <thead>
                 <tr className="bg-slate-50/70 border-b border-slate-200">
                   <th className="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider">Business Details</th>

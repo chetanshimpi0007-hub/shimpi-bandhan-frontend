@@ -79,7 +79,8 @@ const FamilyAccountDashboard = () => {
             <p className="text-xs text-slate-500 mt-1">Review accounts managed by family members</p>
           </div>
           <div className="overflow-x-auto flex-1">
-            <table className="w-full text-sm text-left text-slate-300">
+            <div className="w-full overflow-x-auto">
+<table className="w-full text-sm text-left text-slate-300">
               <thead className="bg-slate-900/50 border-b border-slate-800">
                 <tr>
                   <th className="px-6 py-4 text-xs font-semibold text-slate-400 uppercase tracking-wider">Profile ID</th>

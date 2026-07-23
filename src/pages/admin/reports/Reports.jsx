@@ -10,7 +10,8 @@ const Reports = () => {
         <p className="text-sm text-gray-500">Note: Admins cannot read private chat messages. Only metadata and report reason is available.</p>
       </div>
       <div className="overflow-x-auto">
-        <table className="w-full text-left border-collapse">
+        <div className="w-full overflow-x-auto">
+<table className="w-full text-left border-collapse">
           <thead>
             <tr className="bg-gray-50 text-gray-700 text-sm">
               <th className="p-4 border-b">Reporter</th>

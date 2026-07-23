@@ -20,7 +20,8 @@ const ReportDataTable = ({ columns, data, pagination, onPageChange, loading }) =
   return (
     <div className="bg-white rounded-lg shadow-sm overflow-hidden">
       <div className="overflow-x-auto">
-        <table className="w-full text-left border-collapse">
+        <div className="w-full overflow-x-auto">
+<table className="w-full text-left border-collapse">
           <thead>
             <tr className="border-b bg-gray-50 text-sm font-semibold text-gray-700">
               {columns.map((col, idx) => (

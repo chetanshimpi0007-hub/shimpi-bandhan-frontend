@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Outlet, Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
+import { FaCrown } from 'react-icons/fa';
 import Logo from '../components/Logo';
 
 const navLinks = [
@@ -14,6 +15,7 @@ const navLinks = [
 const PublicLayout = () => {
   const location = useLocation();
   const [scrolled, setScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -45,7 +47,7 @@ const PublicLayout = () => {
 
       <header className={`sticky top-0 z-50 transition-all duration-300 ${scrolled || !isHome ? 'bg-white shadow-[0_2px_15px_rgba(0,0,0,0.08)] border-b border-gray-100' : 'bg-transparent border-transparent'}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center min-h-[90px] py-2">
+          <div className="flex justify-between items-center min-h-[70px] md:min-h-[90px] py-2">
             <Link to="/" className="flex items-center flex-shrink-0 mr-2">
               <Logo />
             </Link>
@@ -77,17 +79,71 @@ const PublicLayout = () => {
                 className="hidden sm:flex items-center gap-2 text-gray-700 font-bold hover:text-[var(--color-primary)] transition-colors"
               >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"></path></svg>
-                Login
+                <span className="hidden sm:inline">Login</span>
               </Link>
               <Link 
                 to="/register" 
-                className="bg-[var(--color-primary)] text-white px-4 sm:px-8 py-2 sm:py-2.5 rounded text-[13px] sm:text-[15px] font-bold hover:bg-[#72112e] transition-colors shadow-[0_4px_14px_0_rgba(138,21,56,0.39)] whitespace-nowrap"
+                className="bg-[var(--color-primary)] text-white px-3 sm:px-8 py-2 sm:py-2.5 rounded text-[12px] sm:text-[15px] font-bold hover:bg-[#72112e] transition-colors shadow-[0_4px_14px_0_rgba(138,21,56,0.39)] whitespace-nowrap"
               >
-                Register Free
+                Register
               </Link>
+              
+              {/* Mobile Menu Toggle Button */}
+              <button 
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                className="md:hidden p-2 text-gray-700 hover:text-[var(--color-primary)] focus:outline-none"
+              >
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  {mobileMenuOpen ? (
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  ) : (
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                  )}
+                </svg>
+              </button>
             </div>
           </div>
         </div>
+        
+        {/* Mobile Dropdown Menu */}
+        <AnimatePresence>
+          {mobileMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+              className="md:hidden bg-white border-t border-gray-100 shadow-lg overflow-hidden"
+            >
+              <nav className="flex flex-col py-2">
+                {navLinks.map((link) => (
+                  <Link 
+                    key={link.name}
+                    to={link.path} 
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="px-6 py-3 text-gray-700 hover:bg-gray-50 hover:text-[var(--color-primary)] font-semibold border-b border-gray-50 last:border-0"
+                  >
+                    {link.name}
+                  </Link>
+                ))}
+                <Link 
+                  to="/premium" 
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="px-6 py-3 text-[var(--color-secondary)] hover:bg-yellow-50 font-bold border-b border-gray-50 flex items-center gap-2"
+                >
+                  <FaCrown /> Premium
+                </Link>
+                <Link 
+                  to="/login" 
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="px-6 py-3 text-gray-700 hover:bg-gray-50 font-bold flex items-center gap-2"
+                >
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"></path></svg>
+                  Login
+                </Link>
+              </nav>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </header>
       
       <main className="flex-grow">

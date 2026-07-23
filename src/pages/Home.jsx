@@ -88,7 +88,7 @@ const Home = () => {
           <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-8 h-full">
             
             {/* Left Side Text Area */}
-            <div className="w-full lg:max-w-[500px] space-y-6 flex flex-col justify-center">
+            <div className="w-full lg:max-w-full max-w-[500px] space-y-6 flex flex-col justify-center">
               <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease: "easeOut" }}>
                 <span className="px-4 py-1.5 bg-white/60 backdrop-blur-md border border-[#800020]/20 text-[#800020] rounded-full text-xs font-bold uppercase tracking-wider inline-flex items-center gap-2 shadow-sm">
                   ❤️ Connecting Hearts, Building Relationships
@@ -152,14 +152,14 @@ const Home = () => {
       </section>
 
       {/* Floating Premium Search Card */}
-      <section className="relative z-30 px-4 sm:px-6 -mt-16 sm:-mt-24 lg:-mt-20 mb-24 max-w-6xl mx-auto">
+      <section className="relative z-30 px-4 sm:px-6 mt-8 md:-mt-24 lg:-mt-20 mb-24 max-w-6xl mx-auto">
         <motion.div 
           initial={{ opacity: 0, y: 30 }} 
           animate={{ opacity: 1, y: 0 }} 
           transition={{ duration: 0.8, delay: 0.3 }}
-          className="bg-white/90 backdrop-blur-xl border border-white/60 rounded-[24px] shadow-[0_20px_50px_rgba(0,0,0,0.15)] p-5 sm:p-6 lg:p-8 overflow-hidden h-auto"
+          className="bg-white/95 backdrop-blur-xl border border-white/60 rounded-[24px] shadow-[0_20px_50px_rgba(0,0,0,0.15)] p-5 sm:p-6 lg:p-8 h-auto"
         >
-          <form onSubmit={handleQuickSearch} className="flex flex-col md:grid md:grid-cols-5 gap-5 lg:gap-6 items-start md:items-end">
+          <form onSubmit={handleQuickSearch} className="flex flex-col gap-6 md:grid md:grid-cols-5 md:gap-5 lg:gap-6 items-start md:items-end w-full">
             <div className="w-full">
               <label className="block text-[11px] font-bold text-gray-500 uppercase tracking-wider mb-2">Looking For</label>
               <select className="w-full bg-white/70 border border-gray-300 rounded-xl text-gray-800 py-3.5 px-4 focus:ring-2 focus:ring-[#800020] focus:bg-white outline-none transition-all text-sm font-semibold shadow-sm">

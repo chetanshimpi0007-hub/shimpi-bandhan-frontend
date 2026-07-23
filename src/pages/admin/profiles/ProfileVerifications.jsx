@@ -279,7 +279,8 @@ const ProfileVerifications = () => {
               </div>
             </div>
             <div className="overflow-x-auto">
-              <table className="w-full text-sm text-left border-collapse" style={{ minWidth: '800px' }}>
+              <div className="w-full overflow-x-auto">
+<table className="w-full text-sm text-left border-collapse" style={{ minWidth: '800px' }}>
                 <thead>
                   <tr className="bg-slate-50/70 border-b border-slate-200">
                     <th className="px-6 py-3.5 text-xs font-bold text-slate-500 uppercase tracking-wider">User</th>
@@ -455,7 +456,8 @@ const ProfileVerifications = () => {
               </div>
             </div>
             <div className="overflow-x-auto">
-              <table className="w-full text-sm text-left border-collapse" style={{ minWidth: '800px' }}>
+              <div className="w-full overflow-x-auto">
+<table className="w-full text-sm text-left border-collapse" style={{ minWidth: '800px' }}>
                 <thead>
                   <tr className="bg-slate-50/70 border-b border-slate-200">
                     <th className="px-6 py-3.5 text-xs font-bold text-slate-500 uppercase tracking-wider">Profile Details</th>
