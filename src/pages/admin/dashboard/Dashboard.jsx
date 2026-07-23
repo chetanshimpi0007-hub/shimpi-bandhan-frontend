@@ -8,7 +8,7 @@ import {
   FiMessageSquare, FiClock, FiCheckCircle, FiXCircle, FiImage, FiSettings,
   FiRefreshCw, FiTrendingUp, FiAlertCircle, FiCalendar, FiMail, FiMapPin, FiDatabase, FiHardDrive, FiCpu
 } from 'react-icons/fi';
-import api from '../services/api';
+import api from '../../../services/api';
 
 // ── Mock Chart Data ──────────────────────────────────────────────────────────
 const userGrowthData = [
@@ -221,21 +221,21 @@ const Dashboard = () => {
           </div>
           <div className="overflow-x-auto">
             <div className="w-full overflow-x-auto">
-<table className="w-full text-left text-xs">
-              <thead>
-                <tr className="text-slate-400 font-bold uppercase tracking-wider text-[10px] border-b border-slate-50">
-                  <th className="pb-3">User</th>
-                  <th className="pb-3">Type</th>
-                  <th className="pb-3">Submitted</th>
-                  <th className="pb-3">Status</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-slate-50">
-                {[
-                  { name: 'Priyanka Jadhav', type: 'Profile', time: '2 min ago' },
-                  { name: 'Rohan Patil', type: 'Documents', time: '15 min ago' },
-                  { name: 'Sneha More', type: 'Profile', time: '1 hour ago' }
-                ].map((row, idx) => (
+              <table className="w-full text-left text-xs">
+                <thead>
+                  <tr className="text-slate-400 font-bold uppercase tracking-wider text-[10px] border-b border-slate-50">
+                    <th className="pb-3">User</th>
+                    <th className="pb-3">Type</th>
+                    <th className="pb-3">Submitted</th>
+                    <th className="pb-3">Status</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-slate-50">
+                  {[
+                    { name: 'Priyanka Jadhav', type: 'Profile', time: '2 min ago' },
+                    { name: 'Rohan Patil', type: 'Documents', time: '15 min ago' },
+                    { name: 'Sneha More', type: 'Profile', time: '1 hour ago' }
+                  ].map((row, idx) => (
                   <tr key={idx} className="hover:bg-slate-50/50">
                     <td className="py-3 font-bold text-slate-800">{row.name}</td>
                     <td className="py-3 text-slate-550">{row.type}</td>
@@ -245,8 +245,9 @@ const Dashboard = () => {
                     </td>
                   </tr>
                 ))}
-              </tbody>
-            </table>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
 

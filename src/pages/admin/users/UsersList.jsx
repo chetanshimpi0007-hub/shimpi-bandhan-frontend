@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { FaSearch, FaUserCheck, FaUserTimes, FaBan, FaTrash, FaKey, FaFilter, FaSpinner, FaDownload, FaMask } from 'react-icons/fa';
-import api from '../services/api';
+import api from '../../../services/api';
 
 const STATUS_COLORS = {
   APPROVED: 'bg-emerald-50 text-emerald-700 border border-emerald-200 font-bold px-3 py-1 rounded-full text-[10px] shadow-sm',
@@ -198,7 +198,7 @@ const UsersList = () => {
       {/* Seamless Modern List (No Outer Box, No Vertical Borders) */}
       <div className="w-full overflow-x-auto pb-4 bg-white rounded-2xl border border-slate-200/80 shadow-sm">
         <div className="w-full overflow-x-auto">
-<table className="w-full text-left border-collapse" style={{ minWidth: '800px' }}>
+          <table className="w-full text-left border-collapse" style={{ minWidth: '800px' }}>
           <thead>
             <tr className="bg-slate-50/70 border-b border-slate-200">
               <th className="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider">User Details</th>
@@ -316,7 +316,8 @@ const UsersList = () => {
               </tr>
             ))}
           </tbody>
-        </table>
+          </table>
+        </div>
       </div>
 
       {/* Pagination (Seamless) */}

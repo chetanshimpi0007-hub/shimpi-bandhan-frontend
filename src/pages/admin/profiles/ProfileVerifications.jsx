@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { FaCheckCircle, FaTimesCircle, FaSearch, FaSpinner, FaDownload, FaUserEdit, FaUserClock, FaClipboardList, FaBan } from 'react-icons/fa';
-import api from '../services/api';
+import api from '../../../services/api';
 
 const ProfileVerifications = () => {
   const [activeTab, setActiveTab] = useState('users'); // 'users' | 'profiles' | 'approved' | 'rejected'
@@ -280,7 +280,7 @@ const ProfileVerifications = () => {
             </div>
             <div className="overflow-x-auto">
               <div className="w-full overflow-x-auto">
-<table className="w-full text-sm text-left border-collapse" style={{ minWidth: '800px' }}>
+                <table className="w-full text-sm text-left border-collapse" style={{ minWidth: '800px' }}>
                 <thead>
                   <tr className="bg-slate-50/70 border-b border-slate-200">
                     <th className="px-6 py-3.5 text-xs font-bold text-slate-500 uppercase tracking-wider">User</th>
@@ -356,7 +356,8 @@ const ProfileVerifications = () => {
                     </tr>
                   ))}
                 </tbody>
-              </table>
+                </table>
+              </div>
             </div>
           </div>
 
@@ -457,7 +458,7 @@ const ProfileVerifications = () => {
             </div>
             <div className="overflow-x-auto">
               <div className="w-full overflow-x-auto">
-<table className="w-full text-sm text-left border-collapse" style={{ minWidth: '800px' }}>
+                <table className="w-full text-sm text-left border-collapse" style={{ minWidth: '800px' }}>
                 <thead>
                   <tr className="bg-slate-50/70 border-b border-slate-200">
                     <th className="px-6 py-3.5 text-xs font-bold text-slate-500 uppercase tracking-wider">Profile Details</th>
@@ -527,6 +528,7 @@ const ProfileVerifications = () => {
                   ))}
                 </tbody>
               </table>
+              </div>
             </div>
           </div>
 

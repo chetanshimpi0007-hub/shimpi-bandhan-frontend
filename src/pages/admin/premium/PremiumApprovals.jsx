@@ -39,7 +39,7 @@ const PremiumApprovals = () => {
       <div className="bg-[#111827] rounded-2xl shadow-xl border border-slate-800 overflow-hidden">
         <div className="overflow-x-auto">
           <div className="w-full overflow-x-auto">
-<table className="w-full text-left border-collapse text-sm">
+            <table className="w-full text-left border-collapse text-sm">
             <thead>
               <tr className="bg-slate-900/50 text-slate-400 border-b border-slate-800">
                 <th className="px-6 py-4 font-semibold uppercase tracking-wider text-xs">User</th>
@@ -109,7 +109,8 @@ const PremiumApprovals = () => {
                 </tr>
               )}
             </tbody>
-          </table>
+            </table>
+          </div>
         </div>
       </div>
     </div>

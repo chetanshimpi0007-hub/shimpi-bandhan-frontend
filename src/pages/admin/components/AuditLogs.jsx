@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { FaSearch, FaSpinner, FaFilter, FaDownload, FaShieldAlt } from 'react-icons/fa';
-import api from '../services/api';
+import api from '../../../services/api';
 
 const MODULES = [
   '', 'USER_MANAGEMENT', 'CHAT_MODERATION', 'PAYMENT_MANAGEMENT',
@@ -127,7 +127,7 @@ const AuditLogs = () => {
       {/* Table */}
       <div className="bg-white rounded-xl border border-gray-100 shadow-sm overflow-x-auto">
         <div className="w-full overflow-x-auto">
-<table className="w-full text-sm">
+          <table className="w-full text-sm">
           <thead className="bg-gray-50 border-b border-gray-100">
             <tr>
               <th className="px-4 py-3 text-left text-xs font-semibold text-gray-500 uppercase">ID</th>
@@ -164,7 +164,8 @@ const AuditLogs = () => {
               </tr>
             ))}
           </tbody>
-        </table>
+          </table>
+        </div>
       </div>
 
       {/* Pagination */}

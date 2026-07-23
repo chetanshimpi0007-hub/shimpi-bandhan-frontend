@@ -252,7 +252,7 @@ const BusinessDashboard = () => {
               <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
                 <div className="overflow-x-auto">
                   <div className="w-full overflow-x-auto">
-<table className="w-full text-left border-collapse">
+                    <table className="w-full text-left border-collapse">
                     <thead>
                       <tr className="bg-gray-50 border-b border-gray-100 text-sm">
                         <th className="p-4 font-bold text-gray-600">Client</th>
@@ -297,7 +297,8 @@ const BusinessDashboard = () => {
                         </tr>
                       ))}
                     </tbody>
-                  </table>
+                    </table>
+                  </div>
                 </div>
               </div>
             )}
@@ -314,7 +315,7 @@ const BusinessDashboard = () => {
             </div>
             <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
               <div className="w-full overflow-x-auto">
-<table className="w-full text-left border-collapse">
+                <table className="w-full text-left border-collapse">
                 <thead>
                   <tr className="bg-gray-50 border-b border-gray-100">
                     <th className="p-4 text-sm font-bold text-gray-600">Offer Title</th>
@@ -349,7 +350,8 @@ const BusinessDashboard = () => {
               </table>
             </div>
           </div>
-        )}
+        </div>
+      )}
 
         {activeTab === 'gallery' && (
           <div>
@@ -412,7 +414,8 @@ const BusinessDashboard = () => {
               </table>
             </div>
           </div>
-        )}
+        </div>
+      )}
       </div>
 
       {/* Meeting Modal */}

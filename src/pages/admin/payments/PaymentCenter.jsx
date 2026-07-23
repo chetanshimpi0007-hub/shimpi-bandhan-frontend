@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import api from '../services/api';
+import api from '../../../services/api';
 import { toast } from 'react-toastify';
 
 const PaymentCenter = () => {
@@ -117,7 +117,7 @@ const PaymentCenter = () => {
 
         <div className="overflow-x-auto">
           <div className="w-full overflow-x-auto">
-<table className="w-full text-left border-collapse" style={{ minWidth: '800px' }}>
+            <table className="w-full text-left border-collapse" style={{ minWidth: '800px' }}>
             <thead>
               <tr>
                 <th className="px-4 py-3 text-[11px] font-bold text-slate-500 uppercase tracking-widest border-b border-slate-800/60">Transaction ID</th>
@@ -172,7 +172,8 @@ const PaymentCenter = () => {
                 ))
               )}
             </tbody>
-          </table>
+            </table>
+          </div>
         </div>
 
         {/* Pagination */}

@@ -150,7 +150,8 @@ const MelavaManage = () => {
               </tbody>
             </table>
           </div>
-        )}
+        </div>
+      )}
       </div>
 
       {/* Modal */}

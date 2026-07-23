@@ -41,6 +41,7 @@ const ReportDataTable = ({ columns, data, pagination, onPageChange, loading }) =
             ))}
           </tbody>
         </table>
+        </div>
       </div>
       
       {pagination && (

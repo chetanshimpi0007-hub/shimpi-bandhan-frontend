@@ -204,7 +204,7 @@ const ChatModeration = () => {
         {/* Table */}
         <div className="overflow-x-auto flex-1">
           <div className="w-full overflow-x-auto">
-<table className="w-full text-sm text-left text-slate-300">
+            <table className="w-full text-sm text-left text-slate-300">
             <thead className="bg-slate-900/30 border-b border-slate-800">
               <tr>
                 <th className="px-6 py-4 text-xs font-semibold text-slate-400 uppercase tracking-wider">ID</th>
@@ -268,6 +268,7 @@ const ChatModeration = () => {
               )}
             </tbody>
           </table>
+          </div>
         </div>
         
         {/* Pagination */}
