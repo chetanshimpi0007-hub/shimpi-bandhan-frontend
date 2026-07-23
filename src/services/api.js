@@ -33,11 +33,11 @@ api.interceptors.response.use(
   (error) => {
     // Standardize human-readable user message
     if (error.code === 'ECONNABORTED' || error.message?.includes('timeout')) {
-      error.userMessage = 'The server is waking up. Please try again in a moment.';
+      error.userMessage = 'The server response timed out. Render backend may be waking up, please try again in a moment.';
     } else if (error.response) {
       const status = error.response.status;
       if ([502, 503, 504].includes(status)) {
-        error.userMessage = 'The server is temporarily unavailable. Please try again shortly.';
+        error.userMessage = 'The server is temporarily unavailable (HTTP ' + status + '). Please try again shortly.';
       } else if (status === 401 && !error.config?.url?.includes('/auth/login')) {
         // Auto logout on expired token for non-login endpoints
         localStorage.removeItem('token');
@@ -46,9 +46,12 @@ api.interceptors.response.use(
         error.userMessage = error.response.data.message;
       } else if (error.response.data?.error) {
         error.userMessage = error.response.data.error;
+      } else if (typeof error.response.data === 'string' && error.response.data.length < 200 && !error.response.data.trim().startsWith('<')) {
+        error.userMessage = error.response.data;
       }
     } else {
-      error.userMessage = 'Could not reach the server. Please check your connection and try again.';
+      // Network Error / CORS rejection during Render cold start
+      error.userMessage = 'Could not reach the server. Render backend may be starting up or offline. Please try again in a few seconds.';
     }
     return Promise.reject(error);
   }
