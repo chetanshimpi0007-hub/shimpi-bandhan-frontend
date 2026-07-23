@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 import { useNavigate, Link } from 'react-router-dom';
 import { FaPhone, FaLock, FaSpinner, FaEye, FaEyeSlash } from 'react-icons/fa';
-import api from '../services/api';
+import api, { getErrorMessage } from '../services/api';
 import { loginSuccess } from '../redux/authSlice';
 
 const Login = () => {
@@ -15,6 +15,7 @@ const Login = () => {
   const navigate = useNavigate();
 
   const onSubmit = async (data) => {
+    if (loading) return; // Prevent duplicate requests on double click
     setLoading(true);
     setApiError('');
     try {
@@ -23,17 +24,25 @@ const Login = () => {
         password: data.password
       });
       
-      const { token, user } = response.data;
-      if (user.role === 'ADMIN') {
-        dispatch(loginSuccess({ token, user }));
-        navigate('/admin/dashboard');
+      const token = response.data?.token;
+      const user = response.data?.user || {};
+      
+      if (!token) {
+        setApiError('Login failed: Token missing from server response.');
         return;
       }
 
+      // 1. Dispatch synchronously to update Redux + localStorage
       dispatch(loginSuccess({ token, user }));
-      navigate('/dashboard');
+
+      // 2. Navigate only after auth state is initialized
+      if (user.role === 'ADMIN') {
+        navigate('/admin/dashboard');
+      } else {
+        navigate('/dashboard');
+      }
     } catch (error) {
-      setApiError(error.response?.data?.message || 'Login failed. Please check your credentials.');
+      setApiError(getErrorMessage(error, 'Login failed. Please check your credentials.'));
     } finally {
       setLoading(false);
     }

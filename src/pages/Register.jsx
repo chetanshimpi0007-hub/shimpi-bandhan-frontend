@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate, Link } from 'react-router-dom';
 import { FaPhone, FaLock, FaUsers, FaSpinner, FaCheckCircle, FaEye, FaEyeSlash } from 'react-icons/fa';
-import api from '../services/api';
+import api, { getErrorMessage } from '../services/api';
 
 const Register = () => {
   const { register, handleSubmit, watch, formState: { errors } } = useForm({
@@ -16,6 +16,7 @@ const Register = () => {
   const navigate = useNavigate();
 
   const onSubmit = async (data) => {
+    if (loading) return; // Prevent duplicate requests on double click
     setLoading(true);
     setApiError('');
     try {
@@ -41,28 +42,12 @@ const Register = () => {
       
       setSuccess(true);
     } catch (error) {
-      if (error.response?.data) {
-        const data = error.response.data;
-        if (data.error) {
-          setApiError(data.error);
-        } else if (typeof data === 'object') {
-          // Validation error map
-          const firstError = Object.values(data)[0];
-          setApiError(firstError || 'Registration failed. Please check your inputs.');
-        } else {
-          setApiError('Registration failed. Please try again.');
-        }
+      if (error.response?.data && typeof error.response.data === 'object' && !error.response.data.message && !error.response.data.error) {
+        // Validation error map
+        const firstError = Object.values(error.response.data)[0];
+        setApiError(firstError || 'Registration failed. Please check your inputs.');
       } else {
-        setApiError(`Network Error. Message: ${error.message || 'No message'}. Code: ${error.code || 'No code'}. Target URL: ${error.config?.url || 'Unknown'}`);
-        // Debugging log added to trigger fresh Vercel deployment
-        console.error("Detailed Registration Error:", error.message, error.code, error.config?.url);
-        console.error('Detailed Registration Error:', {
-          message: error.message,
-          code: error.code,
-          config: error.config,
-          request: error.request,
-          response: error.response
-        });
+        setApiError(getErrorMessage(error, 'Registration failed. Please try again.'));
       }
     } finally {
       setLoading(false);
