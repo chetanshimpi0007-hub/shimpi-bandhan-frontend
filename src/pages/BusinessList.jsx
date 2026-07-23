@@ -115,8 +115,19 @@ const BusinessList = () => {
         }));
       }
       
-      // Always show real data + sample data
-      setBusinesses([...realData, ...sampleData]);
+      // Deduplicate combined dataset by business name
+      const allCombined = [...realData, ...sampleData];
+      const uniqueBusinesses = [];
+      const seenNames = new Set();
+      for (const item of allCombined) {
+        const nameKey = (item.name || '').toLowerCase().trim();
+        if (nameKey && !seenNames.has(nameKey)) {
+          seenNames.add(nameKey);
+          uniqueBusinesses.push(item);
+        }
+      }
+
+      setBusinesses(uniqueBusinesses);
       
     } catch (err) {
       console.error('Error fetching businesses:', err);
@@ -127,7 +138,16 @@ const BusinessList = () => {
       if (hasActiveOffers) sampleData = sampleData.filter(b => b.hasOffer);
       if (sortBy === 'highestRated') sampleData.sort((a, b) => b.rating - a.rating);
       
-      setBusinesses(sampleData);
+      const uniqueSample = [];
+      const seenNames = new Set();
+      for (const item of sampleData) {
+        const nameKey = (item.name || '').toLowerCase().trim();
+        if (nameKey && !seenNames.has(nameKey)) {
+          seenNames.add(nameKey);
+          uniqueSample.push(item);
+        }
+      }
+      setBusinesses(uniqueSample);
       setError('Could not fetch real data from backend. Showing offline directory.');
     } finally {
       setLoading(false);
@@ -139,7 +159,18 @@ const BusinessList = () => {
     fetchBusinesses();
   };
 
-  const featuredBusinesses = businesses.filter(b => b.plan === 'Platinum' || b.plan === 'Gold' || b.plan === 'PLATINUM' || b.plan === 'GOLD');
+  // Get top unique featured businesses (max 3)
+  const featuredBusinesses = businesses
+    .filter(b => b.plan === 'Platinum' || b.plan === 'Gold' || b.plan === 'PLATINUM' || b.plan === 'GOLD')
+    .slice(0, 3);
+
+  const isShowingFeatured = featuredBusinesses.length > 0 && category === 'All' && !searchTerm;
+  const featuredIds = isShowingFeatured ? featuredBusinesses.map(b => b._id) : [];
+
+  // Exclude featured businesses from main grid so each business appears ONCE total on the page
+  const gridBusinesses = isShowingFeatured
+    ? businesses.filter(b => !featuredIds.includes(b._id))
+    : businesses;
 
   return (
     <div className="min-h-screen bg-gray-50 py-12">
@@ -269,7 +300,7 @@ const BusinessList = () => {
               </div>
             ) : (
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {businesses.map((business) => (
+                {gridBusinesses.map((business) => (
                   <div key={business._id} className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-lg transition-all duration-300">
                     <div className="h-48 overflow-hidden relative">
                       <div className="absolute top-3 right-3 z-10 bg-[var(--color-secondary)] text-white text-xs font-bold px-3 py-1 rounded-full shadow-md flex items-center gap-1">

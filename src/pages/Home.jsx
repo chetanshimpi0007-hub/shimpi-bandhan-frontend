@@ -112,38 +112,6 @@ const Home = () => {
                   Browse Profiles
                 </Link>
               </motion.div>
-              
-              {/* Statistics below buttons */}
-              <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1, delay: 0.7 }} className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-8">
-                <div className="bg-white/40 backdrop-blur-md p-4 rounded-xl border border-white/60 shadow-sm flex flex-col items-center text-center hover:-translate-y-1 transition-transform">
-                  <div className="w-10 h-10 rounded-full bg-[#800020]/10 flex items-center justify-center mb-2">
-                    <svg className="w-5 h-5 text-[#800020]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
-                  </div>
-                  <p className="text-xl font-black text-[#800020]">{stats?.totalMembers || '10k+'}</p>
-                  <p className="text-[10px] text-gray-700 font-bold uppercase tracking-wider mt-1">Registered Members</p>
-                </div>
-                <div className="bg-white/40 backdrop-blur-md p-4 rounded-xl border border-white/60 shadow-sm flex flex-col items-center text-center hover:-translate-y-1 transition-transform">
-                  <div className="w-10 h-10 rounded-full bg-emerald-500/10 flex items-center justify-center mb-2">
-                    <svg className="w-5 h-5 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg>
-                  </div>
-                  <p className="text-xl font-black text-emerald-600">{stats?.successStories || '5k+'}</p>
-                  <p className="text-[10px] text-gray-700 font-bold uppercase tracking-wider mt-1">Successful Matches</p>
-                </div>
-                <div className="bg-white/40 backdrop-blur-md p-4 rounded-xl border border-white/60 shadow-sm flex flex-col items-center text-center hover:-translate-y-1 transition-transform">
-                  <div className="w-10 h-10 rounded-full bg-blue-500/10 flex items-center justify-center mb-2">
-                    <svg className="w-5 h-5 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-                  </div>
-                  <p className="text-xl font-black text-blue-600">{stats?.verifiedProfiles || '8k+'}</p>
-                  <p className="text-[10px] text-gray-700 font-bold uppercase tracking-wider mt-1">Verified Profiles</p>
-                </div>
-                <div className="bg-white/40 backdrop-blur-md p-4 rounded-xl border border-white/60 shadow-sm flex flex-col items-center text-center hover:-translate-y-1 transition-transform">
-                  <div className="w-10 h-10 rounded-full bg-yellow-500/10 flex items-center justify-center mb-2">
-                    <svg className="w-5 h-5 text-yellow-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" /></svg>
-                  </div>
-                  <p className="text-xl font-black text-yellow-600">2+</p>
-                  <p className="text-[10px] text-gray-700 font-bold uppercase tracking-wider mt-1">Trusted Communities</p>
-                </div>
-              </motion.div>
             </div>
           </div>
         </div>
