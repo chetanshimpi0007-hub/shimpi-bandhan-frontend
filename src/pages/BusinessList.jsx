@@ -65,6 +65,14 @@ const normalizeBusinessName = (str) => {
     .replace(/[^a-z0-9]/gi, '');
 };
 
+const getPhotoQualityScore = (item) => {
+  if (!item || !item.bannerUrl) return 0;
+  if (item.bannerUrl === '/arnav-banner.jpg') return 100; // Custom banner image
+  if (item.bannerUrl.startsWith('/') || item.bannerUrl.startsWith('blob:')) return 80;
+  if (item.bannerUrl.includes('unsplash.com')) return 10; // Generic placeholder
+  return 50;
+};
+
 const BusinessList = () => {
   const [businesses, setBusinesses] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -123,19 +131,24 @@ const BusinessList = () => {
         }));
       }
       
-      // Deduplicate combined dataset by normalized business name
-      const allCombined = [...realData, ...sampleData];
-      const uniqueBusinesses = [];
-      const seenNames = new Set();
+      // Prefer listings with custom photo (like /arnav-banner.jpg) over listings without photo
+      const allCombined = [...sampleData, ...realData];
+      const businessMap = new Map();
       for (const item of allCombined) {
         const normKey = normalizeBusinessName(item.name);
-        if (normKey && !seenNames.has(normKey)) {
-          seenNames.add(normKey);
-          uniqueBusinesses.push(item);
+        if (!normKey) continue;
+
+        if (!businessMap.has(normKey)) {
+          businessMap.set(normKey, item);
+        } else {
+          const existing = businessMap.get(normKey);
+          if (getPhotoQualityScore(item) > getPhotoQualityScore(existing)) {
+            businessMap.set(normKey, item);
+          }
         }
       }
 
-      setBusinesses(uniqueBusinesses);
+      setBusinesses(Array.from(businessMap.values()));
       
     } catch (err) {
       console.error('Error fetching businesses:', err);
