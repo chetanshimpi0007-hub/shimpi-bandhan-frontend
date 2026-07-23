@@ -56,7 +56,7 @@ const Home = () => {
       groomName: 'Ramesh Shimpi',
       weddingDate: '2026-05-18',
       story: 'The compatibility scoring on this platform is amazingly accurate. It matched us based on our exact sub-caste and lifestyle choices.',
-      photoUrl: '/wedding-couple.jpg'
+      photoUrl: '/priya-ramesh.jpg'
     }
   ];
 
