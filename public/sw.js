@@ -1,4 +1,4 @@
-const CACHE_NAME = 'shimpi-milan-cache-v2';
+const CACHE_NAME = 'shimpi-milan-cache-v3';
 const urlsToCache = [
   '/site.webmanifest',
   '/icon-192.png',
@@ -38,6 +38,15 @@ self.addEventListener('activate', (event) => {
 });
 
 self.addEventListener('fetch', (event) => {
+  // Do not interfere with API requests, non-GET requests (POST, PUT, DELETE), or chrome-extension requests
+  if (
+    event.request.method !== 'GET' || 
+    event.request.url.includes('/api/') || 
+    event.request.url.startsWith('chrome-extension')
+  ) {
+    return; // Let the browser handle it natively
+  }
+
   event.respondWith(
     caches.match(event.request).then((response) => {
       return response || fetch(event.request);
