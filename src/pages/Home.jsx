@@ -119,8 +119,8 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Floating Premium Search Card */}
-      <section className="relative z-30 px-4 sm:px-6 mt-8 md:-mt-24 lg:-mt-20 mb-24 max-w-6xl mx-auto">
+      {/* Premium Search Card positioned normally below hero section */}
+      <section className="relative z-30 px-4 sm:px-6 my-10 md:my-14 mb-20 max-w-6xl mx-auto">
         <motion.div 
           initial={{ opacity: 0, y: 30 }} 
           animate={{ opacity: 1, y: 0 }} 
