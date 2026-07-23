@@ -67,44 +67,29 @@ const Home = () => {
         <meta name="description" content="Join Shimpi Bandhan today to find your perfect life partner within the Aher and Namdev Shimpi communities. Thousands of verified profiles." />
       </Helmet>
 
-      {/* Premium Full-Width Cream Overlay Hero Section */}
-      <section className="relative w-full h-[75vh] md:h-[95vh] lg:h-[100vh] flex items-center z-10 overflow-hidden">
-        
-        {/* HERO IMAGE (Real IMG tag) */}
-        <img 
-          src="/wedding-couple.jpg" 
-          alt="Premium Wedding Hero" 
-          className="absolute inset-0 w-full h-full object-cover object-center md:object-[90%_center] lg:object-[88%_center] xl:object-[85%_center] z-0 pointer-events-none" 
-        />
-        
-        {/* LEFT SIDE OVERLAY: Premium cream/white gradient */}
-        <div 
-          className="absolute inset-0 w-full lg:w-[55%] z-10"
-          style={{ background: 'linear-gradient(90deg, rgba(255,250,245,0.98) 0%, rgba(255,250,245,0.90) 35%, rgba(255,250,245,0.55) 55%, rgba(255,250,245,0.00) 75%)' }}
-        ></div>
-
-        {/* CONTENT */}
-        <div className="max-w-7xl mx-auto px-6 w-full relative z-20 h-full flex flex-col justify-center pt-24 pb-32 lg:py-0">
-          <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-8 h-full">
+      {/* Premium Hero Section */}
+      <section className="relative w-full py-10 sm:py-14 lg:py-20 flex items-center z-10 overflow-hidden bg-gradient-to-b from-[#FFFDF9] via-[#FAF6F0] to-[#FCFBF9]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-20">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
             
-            {/* Left Side Text Area */}
-            <div className="w-full lg:max-w-full max-w-[500px] space-y-6 flex flex-col justify-center">
+            {/* Left Column: Text & CTAs */}
+            <div className="lg:col-span-6 space-y-6 flex flex-col justify-center text-left">
               <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease: "easeOut" }}>
-                <span className="px-4 py-1.5 bg-white/60 backdrop-blur-md border border-[#800020]/20 text-[#800020] rounded-full text-xs font-bold uppercase tracking-wider inline-flex items-center gap-2 shadow-sm">
+                <span className="px-4 py-1.5 bg-white/80 backdrop-blur-md border border-[#800020]/20 text-[#800020] rounded-full text-xs font-bold uppercase tracking-wider inline-flex items-center gap-2 shadow-sm">
                   ❤️ Connecting Hearts, Building Relationships
                 </span>
               </motion.div>
 
-              <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }} className="text-4xl sm:text-5xl lg:text-[64px] font-[900] text-gray-900 leading-[1.1] tracking-tight">
+              <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }} className="text-4xl sm:text-5xl lg:text-6xl font-serif font-bold text-gray-900 leading-[1.15] tracking-tight">
                 Find Your Perfect <br />
                 <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#800020] to-[#b3002d]">Life Partner</span>
               </motion.h1>
 
-              <motion.h2 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }} className="text-xl lg:text-2xl font-bold text-gray-800 leading-snug max-w-xl">
+              <motion.h2 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }} className="text-lg sm:text-xl font-medium text-gray-700 leading-relaxed max-w-xl">
                 Connecting Aher Shimpi & Namdev Shimpi Families through a secure, verified and trusted matrimonial platform where meaningful relationships begin.
               </motion.h2>
 
-              <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.5, ease: "easeOut" }} className="flex flex-col sm:flex-row gap-4 pt-4">
+              <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.5, ease: "easeOut" }} className="flex flex-col sm:flex-row gap-4 pt-2">
                 <Link to="/register" className="group bg-gradient-to-r from-[#800020] to-[#a00028] text-white px-8 py-4 rounded-full text-base font-black transition-all shadow-lg shadow-[#800020]/30 hover:shadow-[#800020]/50 hover:-translate-y-1 w-full sm:w-auto text-center border border-[#800020]/30">
                   Register Now
                 </Link>
@@ -113,10 +98,25 @@ const Home = () => {
                 </Link>
               </motion.div>
             </div>
+
+            {/* Right Column: Full Original Uploaded Wedding Image */}
+            <div className="lg:col-span-6 flex justify-center items-center">
+              <motion.div 
+                initial={{ opacity: 0, scale: 0.95 }} 
+                animate={{ opacity: 1, scale: 1 }} 
+                transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
+                className="relative w-full max-w-lg lg:max-w-none rounded-3xl overflow-hidden shadow-2xl border-4 border-white bg-white"
+              >
+                <img 
+                  src="/wedding-couple.jpg" 
+                  alt="Wedding Couple" 
+                  className="w-full h-auto max-h-[580px] object-cover object-center transition-transform duration-700 hover:scale-[1.02]" 
+                />
+              </motion.div>
+            </div>
+
           </div>
         </div>
-        
-        {/* Removed redundant absolute search card that was causing mobile overlap */}
       </section>
 
       {/* Floating Premium Search Card */}
