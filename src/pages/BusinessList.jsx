@@ -56,6 +56,15 @@ const initialSampleData = [
   }
 ];
 
+const normalizeBusinessName = (str) => {
+  if (!str) return '';
+  return str
+    .toLowerCase()
+    .replace(/\(it company\)/gi, '')
+    .replace(/it company/gi, '')
+    .replace(/[^a-z0-9]/gi, '');
+};
+
 const BusinessList = () => {
   const [businesses, setBusinesses] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -94,7 +103,6 @@ const BusinessList = () => {
       if (hasActiveOffers) sampleData = sampleData.filter(b => b.hasOffer);
       if (sortBy === 'highestRated') sampleData.sort((a, b) => b.rating - a.rating);
 
-
       let realData = [];
       if (Array.isArray(data) && data.length > 0) {
         realData = data.map(b => ({
@@ -115,14 +123,14 @@ const BusinessList = () => {
         }));
       }
       
-      // Deduplicate combined dataset by business name
+      // Deduplicate combined dataset by normalized business name
       const allCombined = [...realData, ...sampleData];
       const uniqueBusinesses = [];
       const seenNames = new Set();
       for (const item of allCombined) {
-        const nameKey = (item.name || '').toLowerCase().trim();
-        if (nameKey && !seenNames.has(nameKey)) {
-          seenNames.add(nameKey);
+        const normKey = normalizeBusinessName(item.name);
+        if (normKey && !seenNames.has(normKey)) {
+          seenNames.add(normKey);
           uniqueBusinesses.push(item);
         }
       }
@@ -141,9 +149,9 @@ const BusinessList = () => {
       const uniqueSample = [];
       const seenNames = new Set();
       for (const item of sampleData) {
-        const nameKey = (item.name || '').toLowerCase().trim();
-        if (nameKey && !seenNames.has(nameKey)) {
-          seenNames.add(nameKey);
+        const normKey = normalizeBusinessName(item.name);
+        if (normKey && !seenNames.has(normKey)) {
+          seenNames.add(normKey);
           uniqueSample.push(item);
         }
       }
@@ -159,17 +167,26 @@ const BusinessList = () => {
     fetchBusinesses();
   };
 
-  // Get top unique featured businesses (max 3)
-  const featuredBusinesses = businesses
-    .filter(b => b.plan === 'Platinum' || b.plan === 'Gold' || b.plan === 'PLATINUM' || b.plan === 'GOLD')
-    .slice(0, 3);
+  // Get top unique featured businesses (max 3, deduplicated by name)
+  const uniqueFeatured = [];
+  const seenFeaturedKeys = new Set();
+  for (const b of businesses) {
+    if (b.plan === 'Platinum' || b.plan === 'Gold' || b.plan === 'PLATINUM' || b.plan === 'GOLD') {
+      const normKey = normalizeBusinessName(b.name);
+      if (normKey && !seenFeaturedKeys.has(normKey)) {
+        seenFeaturedKeys.add(normKey);
+        uniqueFeatured.push(b);
+      }
+    }
+  }
+  const featuredBusinesses = uniqueFeatured.slice(0, 3);
 
   const isShowingFeatured = featuredBusinesses.length > 0 && category === 'All' && !searchTerm;
-  const featuredIds = isShowingFeatured ? featuredBusinesses.map(b => b._id) : [];
+  const featuredNormKeys = new Set(featuredBusinesses.map(b => normalizeBusinessName(b.name)));
 
   // Exclude featured businesses from main grid so each business appears ONCE total on the page
   const gridBusinesses = isShowingFeatured
-    ? businesses.filter(b => !featuredIds.includes(b._id))
+    ? businesses.filter(b => !featuredNormKeys.has(normalizeBusinessName(b.name)))
     : businesses;
 
   return (
