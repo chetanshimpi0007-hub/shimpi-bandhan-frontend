@@ -41,7 +41,20 @@ const Register = () => {
       
       setSuccess(true);
     } catch (error) {
-      setApiError(error.response?.data?.message || 'Registration failed. Please try again.');
+      if (error.response?.data) {
+        const data = error.response.data;
+        if (data.error) {
+          setApiError(data.error);
+        } else if (typeof data === 'object') {
+          // Validation error map
+          const firstError = Object.values(data)[0];
+          setApiError(firstError || 'Registration failed. Please check your inputs.');
+        } else {
+          setApiError('Registration failed. Please try again.');
+        }
+      } else {
+        setApiError('Network Error. Could not reach the server.');
+      }
     } finally {
       setLoading(false);
     }
