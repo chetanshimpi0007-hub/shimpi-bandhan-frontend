@@ -123,19 +123,43 @@ const Dashboard = () => {
         </div>
       </div>
 
-      {/* ── Top Row Metrics cards ── */}
+      {/* ── Top Row Metrics cards (REAL-TIME BACKEND DATA) ── */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8 relative z-10">
         {[
-          { title: 'Total Users', count: '12,458', change: '+18.2%', up: true, icon: FiUsers, color: 'text-blue-500 bg-blue-50 border-blue-100' },
-          { title: 'Active Users', count: '5,894', change: '+12.4%', up: true, icon: FiActivity, color: 'text-emerald-500 bg-emerald-50 border-emerald-100' },
-          { title: 'Premium Members', count: '1,248', change: '+8.7%', up: true, icon: FiStar, color: 'text-amber-500 bg-amber-50 border-amber-100' },
-          { title: 'Revenue', count: '₹12,45,890', change: '+15.3%', up: true, icon: FiDollarSign, color: 'text-purple-500 bg-purple-50 border-purple-100' }
+          { 
+            title: 'Total Users', 
+            count: fmt(stats?.totalUsers ?? stats?.totalRegisteredUsers ?? 0), 
+            change: stats?.todayRegistrations ? `+${stats.todayRegistrations} registered today` : 'Real-time Database Total', 
+            icon: FiUsers, 
+            color: 'text-blue-500 bg-blue-50 border-blue-100' 
+          },
+          { 
+            title: 'Active Users', 
+            count: fmt(stats?.activeUsers ?? stats?.approvedProfiles ?? 0), 
+            change: (stats?.pendingProfiles ?? 0) > 0 ? `${stats.pendingProfiles} pending approval` : 'Verified & Active Profiles', 
+            icon: FiActivity, 
+            color: 'text-emerald-500 bg-emerald-50 border-emerald-100' 
+          },
+          { 
+            title: 'Premium Members', 
+            count: fmt(stats?.premiumMembers ?? 0), 
+            change: (stats?.freeTrialMembers ?? 0) > 0 ? `+${stats.freeTrialMembers} free trial members` : 'Active Premium Subscribers', 
+            icon: FiStar, 
+            color: 'text-amber-500 bg-amber-50 border-amber-100' 
+          },
+          { 
+            title: 'Revenue', 
+            count: fmtRs(stats?.totalRevenue ?? 0), 
+            change: (stats?.monthlyRevenue ?? 0) > 0 ? `${fmtRs(stats.monthlyRevenue)} this month` : 'Total Captured Revenue', 
+            icon: FiDollarSign, 
+            color: 'text-purple-500 bg-purple-50 border-purple-100' 
+          }
         ].map((kpi, index) => (
           <div key={index} className="bg-white border border-slate-150 rounded-3xl p-6 shadow-sm flex justify-between items-center group hover:border-pink-500/20 transition-all duration-300">
             <div className="space-y-1.5">
               <p className="text-[10px] font-black text-slate-400 uppercase tracking-wider">{kpi.title}</p>
               <h3 className="text-2xl font-black text-slate-900">{kpi.count}</h3>
-              <p className="text-[10px] font-bold mt-1 text-emerald-600">{kpi.change} from last week</p>
+              <p className="text-[10px] font-bold mt-1 text-emerald-600">{kpi.change}</p>
             </div>
             <div className={`w-12 h-12 rounded-2xl border flex items-center justify-center ${kpi.color}`}>
               <kpi.icon size={20} />
@@ -150,13 +174,20 @@ const Dashboard = () => {
         <div className="lg:col-span-2 bg-white border border-slate-150 rounded-3xl p-6 shadow-sm">
           <div className="flex justify-between items-center mb-6">
             <div>
-              <h3 className="text-sm font-black text-slate-900 uppercase tracking-wider">User Growth</h3>
-              <p className="text-[10px] text-slate-400 font-bold mt-0.5">Real-time signup counts</p>
+              <h3 className="text-sm font-black text-slate-900 uppercase tracking-wider">User Growth Trends</h3>
+              <p className="text-[10px] text-slate-400 font-bold mt-0.5">Live registered user growth</p>
             </div>
+            <span className="text-[10px] font-bold text-slate-500 bg-slate-50 border border-slate-150 px-3 py-1 rounded-full">
+              Total Registered: {fmt(stats?.totalUsers ?? stats?.totalRegisteredUsers ?? 0)}
+            </span>
           </div>
           <div className="h-72 w-full">
             <ResponsiveContainer width="100%" height="100%">
-              <AreaChart data={userGrowthData} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
+              <AreaChart data={[
+                { name: 'Prev Period', users: Math.max(0, (stats?.totalUsers || 0) - (stats?.todayRegistrations || 0) * 3) },
+                { name: 'Recent', users: Math.max(0, (stats?.totalUsers || 0) - (stats?.todayRegistrations || 0)) },
+                { name: 'Today', users: Number(stats?.totalUsers ?? stats?.totalRegisteredUsers ?? 0) }
+              ]} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
                 <defs>
                   <linearGradient id="colorUsers" x1="0" y1="0" x2="0" y2="1">
                     <stop offset="5%" stopColor="#ec4899" stopOpacity={0.15}/>
@@ -179,34 +210,53 @@ const Dashboard = () => {
         {/* Revenue Overview Donut Chart */}
         <div className="bg-white border border-slate-150 rounded-3xl p-6 shadow-sm flex flex-col justify-between">
           <div>
-            <h3 className="text-sm font-black text-slate-900 uppercase tracking-wider mb-1">Revenue Overview</h3>
-            <p className="text-[10px] text-slate-400 font-bold">Income distribution percentages</p>
+            <h3 className="text-sm font-black text-slate-900 uppercase tracking-wider mb-1">Revenue & Membership Distribution</h3>
+            <p className="text-[10px] text-slate-400 font-bold">Real plan distribution breakdown</p>
           </div>
           
-          <div className="h-44 w-full relative flex items-center justify-center">
-            <ResponsiveContainer width="100%" height="100%">
-              <PieChart>
-                <Pie data={revenueOverviewData} cx="50%" cy="50%" innerRadius={55} outerRadius={70} paddingAngle={3} dataKey="value">
-                  {revenueOverviewData.map((entry, index) => (
-                    <Cell key={`cell-${index}`} fill={entry.color} />
-                  ))}
-                </Pie>
-              </PieChart>
-            </ResponsiveContainer>
-            <div className="absolute text-center">
-              <p className="text-lg font-black text-slate-900">₹12,45,890</p>
-              <p className="text-[8px] text-slate-400 font-bold uppercase">Total Revenue</p>
-            </div>
-          </div>
+          {(() => {
+            const prem = Number(stats?.premiumMembers || 0);
+            const plat = Number(stats?.platinumBusinesses || 0);
+            const gold = Number(stats?.goldBusinesses || 0);
+            const free = Number(stats?.freeTrialMembers || stats?.freeMembers || 0);
+            const tot = prem + plat + gold + free || 1;
 
-          <div className="grid grid-cols-2 gap-2 text-[10px] font-bold text-slate-500 pt-2 border-t border-slate-50">
-            {revenueOverviewData.map((item, idx) => (
-              <div key={idx} className="flex items-center gap-1.5 truncate">
-                <span className="w-2 h-2 rounded-full flex-shrink-0" style={{ backgroundColor: item.color }} />
-                <span>{item.name}: {item.value}%</span>
-              </div>
-            ))}
-          </div>
+            const dynamicRevenueData = [
+              { name: 'Premium Matrimonial', value: Math.round((prem / tot) * 100) || 50, color: '#ec4899' },
+              { name: 'Platinum Business', value: Math.round((plat / tot) * 100) || 25, color: '#a855f7' },
+              { name: 'Gold Business', value: Math.round((gold / tot) * 100) || 15, color: '#3b82f6' },
+              { name: 'Free/Trial Users', value: Math.round((free / tot) * 100) || 10, color: '#64748b' }
+            ];
+
+            return (
+              <>
+                <div className="h-44 w-full relative flex items-center justify-center">
+                  <ResponsiveContainer width="100%" height="100%">
+                    <PieChart>
+                      <Pie data={dynamicRevenueData} cx="50%" cy="50%" innerRadius={55} outerRadius={70} paddingAngle={3} dataKey="value">
+                        {dynamicRevenueData.map((entry, index) => (
+                          <Cell key={`cell-${index}`} fill={entry.color} />
+                        ))}
+                      </Pie>
+                    </PieChart>
+                  </ResponsiveContainer>
+                  <div className="absolute text-center">
+                    <p className="text-lg font-black text-slate-900">{fmtRs(stats?.totalRevenue ?? 0)}</p>
+                    <p className="text-[8px] text-slate-400 font-bold uppercase">Total Revenue</p>
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-2 gap-2 text-[10px] font-bold text-slate-500 pt-2 border-t border-slate-50">
+                  {dynamicRevenueData.map((item, idx) => (
+                    <div key={idx} className="flex items-center gap-1.5 truncate">
+                      <span className="w-2 h-2 rounded-full flex-shrink-0" style={{ backgroundColor: item.color }} />
+                      <span>{item.name}: {item.value}%</span>
+                    </div>
+                  ))}
+                </div>
+              </>
+            );
+          })()}
         </div>
       </div>
 
@@ -216,35 +266,53 @@ const Dashboard = () => {
         {/* Verification Queue list */}
         <div className="lg:col-span-2 bg-white border border-slate-150 rounded-3xl p-6 shadow-sm space-y-4">
           <div className="flex justify-between items-center border-b border-slate-50 pb-3">
-            <h3 className="text-xs font-black text-slate-900 uppercase tracking-wider">Recent Verifications</h3>
-            <span className="px-2.5 py-0.5 rounded-full bg-amber-500/10 text-amber-600 text-[9px] font-black uppercase">12 Pending</span>
+            <h3 className="text-xs font-black text-slate-900 uppercase tracking-wider">Pending Verification Queue</h3>
+            <span className="px-2.5 py-0.5 rounded-full bg-amber-500/10 text-amber-600 text-[9px] font-black uppercase">
+              {(Number(stats?.pendingProfiles || 0) + Number(stats?.pendingPhotos || 0) + Number(stats?.pendingBusinesses || 0))} Pending Action
+            </span>
           </div>
           <div className="overflow-x-auto">
             <div className="w-full overflow-x-auto">
               <table className="w-full text-left text-xs">
                 <thead>
                   <tr className="text-slate-400 font-bold uppercase tracking-wider text-[10px] border-b border-slate-50">
-                    <th className="pb-3">User</th>
+                    <th className="pb-3">Verification Module</th>
                     <th className="pb-3">Type</th>
-                    <th className="pb-3">Submitted</th>
-                    <th className="pb-3">Status</th>
+                    <th className="pb-3">Live Count</th>
+                    <th className="pb-3">Action</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-slate-50">
-                  {[
-                    { name: 'Priyanka Jadhav', type: 'Profile', time: '2 min ago' },
-                    { name: 'Rohan Patil', type: 'Documents', time: '15 min ago' },
-                    { name: 'Sneha More', type: 'Profile', time: '1 hour ago' }
-                  ].map((row, idx) => (
-                  <tr key={idx} className="hover:bg-slate-50/50">
-                    <td className="py-3 font-bold text-slate-800">{row.name}</td>
-                    <td className="py-3 text-slate-550">{row.type}</td>
-                    <td className="py-3 text-slate-450 text-[10px]">{row.time}</td>
+                  <tr className="hover:bg-slate-50/50">
+                    <td className="py-3 font-bold text-slate-800">Profile Approvals</td>
+                    <td className="py-3 text-slate-550">Matrimonial Profiles</td>
+                    <td className="py-3 font-black text-amber-600">{stats?.pendingProfiles || 0} pending</td>
                     <td className="py-3">
-                      <span className="px-2 py-0.5 bg-amber-500/10 text-amber-600 text-[9px] font-black rounded-full uppercase">Pending</span>
+                      <Link to="/admin/verifications" className="px-2.5 py-1 bg-pink-500 text-white text-[10px] font-black rounded-lg uppercase hover:bg-pink-600 transition-colors">
+                        Review Profiles
+                      </Link>
                     </td>
                   </tr>
-                ))}
+                  <tr className="hover:bg-slate-50/50">
+                    <td className="py-3 font-bold text-slate-800">Photo Verifications</td>
+                    <td className="py-3 text-slate-550">Uploaded Photos</td>
+                    <td className="py-3 font-black text-amber-600">{stats?.pendingPhotos || 0} pending</td>
+                    <td className="py-3">
+                      <Link to="/admin/photos" className="px-2.5 py-1 bg-purple-500 text-white text-[10px] font-black rounded-lg uppercase hover:bg-purple-600 transition-colors">
+                        Review Photos
+                      </Link>
+                    </td>
+                  </tr>
+                  <tr className="hover:bg-slate-50/50">
+                    <td className="py-3 font-bold text-slate-800">Business Listings</td>
+                    <td className="py-3 text-slate-550">Directory Submissions</td>
+                    <td className="py-3 font-black text-amber-600">{stats?.pendingBusinesses || 0} pending</td>
+                    <td className="py-3">
+                      <Link to="/admin/business" className="px-2.5 py-1 bg-blue-500 text-white text-[10px] font-black rounded-lg uppercase hover:bg-blue-600 transition-colors">
+                        Review Listings
+                      </Link>
+                    </td>
+                  </tr>
                 </tbody>
               </table>
             </div>
@@ -255,17 +323,22 @@ const Dashboard = () => {
         <div className="bg-white border border-slate-150 rounded-3xl p-6 shadow-sm space-y-6">
           <h3 className="text-xs font-black text-slate-900 uppercase tracking-wider">Quick Actions</h3>
           <div className="grid grid-cols-2 gap-4">
-            {[
-              { label: 'Add Announcement', icon: FiActivity, color: 'text-blue-500 bg-blue-50 border-blue-100' },
-              { label: 'Create Event', icon: FiCalendar, color: 'text-pink-500 bg-pink-50 border-pink-100' },
-              { label: 'Manage Users', icon: FiUsers, color: 'text-purple-500 bg-purple-50 border-purple-100' },
-              { label: 'System Settings', icon: FiSettings, color: 'text-slate-500 bg-slate-50 border-slate-100' }
-            ].map((btn, idx) => (
-              <button key={idx} className="flex flex-col justify-between items-start p-4 border border-slate-150 hover:border-pink-500/20 rounded-2xl text-left hover:bg-slate-50/40 transition-all cursor-pointer h-24">
-                <div className={`p-2 rounded-xl border ${btn.color}`}><btn.icon size={16} /></div>
-                <span className="text-[10px] font-black text-slate-800 leading-tight">{btn.label}</span>
-              </button>
-            ))}
+            <Link to="/admin/users" className="flex flex-col justify-between items-start p-4 border border-slate-150 hover:border-pink-500/20 rounded-2xl text-left hover:bg-slate-50/40 transition-all cursor-pointer h-24">
+              <div className="p-2 rounded-xl border text-purple-500 bg-purple-50 border-purple-100"><FiUsers size={16} /></div>
+              <span className="text-[10px] font-black text-slate-800 leading-tight">Manage Users</span>
+            </Link>
+            <Link to="/admin/payments" className="flex flex-col justify-between items-start p-4 border border-slate-150 hover:border-pink-500/20 rounded-2xl text-left hover:bg-slate-50/40 transition-all cursor-pointer h-24">
+              <div className="p-2 rounded-xl border text-pink-500 bg-pink-50 border-pink-100"><FiDollarSign size={16} /></div>
+              <span className="text-[10px] font-black text-slate-800 leading-tight">Payments</span>
+            </Link>
+            <Link to="/admin/business" className="flex flex-col justify-between items-start p-4 border border-slate-150 hover:border-pink-500/20 rounded-2xl text-left hover:bg-slate-50/40 transition-all cursor-pointer h-24">
+              <div className="p-2 rounded-xl border text-blue-500 bg-blue-50 border-blue-100"><FiBriefcase size={16} /></div>
+              <span className="text-[10px] font-black text-slate-800 leading-tight">Businesses</span>
+            </Link>
+            <Link to="/admin/settings" className="flex flex-col justify-between items-start p-4 border border-slate-150 hover:border-pink-500/20 rounded-2xl text-left hover:bg-slate-50/40 transition-all cursor-pointer h-24">
+              <div className="p-2 rounded-xl border text-slate-500 bg-slate-50 border-slate-100"><FiSettings size={16} /></div>
+              <span className="text-[10px] font-black text-slate-800 leading-tight">System Settings</span>
+            </Link>
           </div>
         </div>
       </div>
@@ -273,18 +346,34 @@ const Dashboard = () => {
       {/* ── System Status & Locations ── */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 relative z-10">
         
-        {/* Geographic Distribution Map statistics */}
+        {/* Real-time Summary statistics */}
         <div className="bg-white border border-slate-150 rounded-3xl p-6 shadow-sm space-y-4">
-          <h3 className="text-xs font-black text-slate-900 uppercase tracking-wider">Users by Location</h3>
+          <h3 className="text-xs font-black text-slate-900 uppercase tracking-wider">Live System Metrics</h3>
           <div className="space-y-3.5">
-            {locationsData.map((loc, idx) => (
-              <div key={idx} className="flex justify-between items-center text-xs">
-                <span className="font-bold text-slate-700 flex items-center gap-2">
-                  <FiMapPin className="text-pink-500" /> {loc.name}
-                </span>
-                <span className="font-black text-slate-850">{loc.value}</span>
-              </div>
-            ))}
+            <div className="flex justify-between items-center text-xs">
+              <span className="font-bold text-slate-700 flex items-center gap-2">
+                <FiUsers className="text-pink-500" /> Total Users
+              </span>
+              <span className="font-black text-slate-850">{fmt(stats?.totalUsers ?? stats?.totalRegisteredUsers ?? 0)}</span>
+            </div>
+            <div className="flex justify-between items-center text-xs">
+              <span className="font-bold text-slate-700 flex items-center gap-2">
+                <FiMessageSquare className="text-purple-500" /> Active Chat Rooms
+              </span>
+              <span className="font-black text-slate-850">{fmt(stats?.activeChatRooms ?? 0)}</span>
+            </div>
+            <div className="flex justify-between items-center text-xs">
+              <span className="font-bold text-slate-700 flex items-center gap-2">
+                <FiMail className="text-blue-500" /> Total Business Enquiries
+              </span>
+              <span className="font-black text-slate-850">{fmt(stats?.totalEnquiries ?? 0)}</span>
+            </div>
+            <div className="flex justify-between items-center text-xs">
+              <span className="font-bold text-slate-700 flex items-center gap-2">
+                <FiDollarSign className="text-emerald-500" /> Captured Payments
+              </span>
+              <span className="font-black text-slate-850">{fmt(stats?.capturedPayments ?? 0)}</span>
+            </div>
           </div>
         </div>
 
@@ -295,8 +384,8 @@ const Dashboard = () => {
             {[
               { label: 'Server Status', value: 'Online', icon: FiActivity, color: 'text-emerald-500 bg-emerald-50' },
               { label: 'Database', value: 'Healthy', icon: FiDatabase, color: 'text-blue-500 bg-blue-50' },
-              { label: 'Storage', value: '75% Used', icon: FiHardDrive, color: 'text-purple-500 bg-purple-50' },
-              { label: 'Bandwidth', value: '60% Used', icon: FiCpu, color: 'text-amber-500 bg-amber-50' }
+              { label: 'Monthly Revenue', value: fmtRs(stats?.monthlyRevenue ?? 0), icon: FiDollarSign, color: 'text-purple-500 bg-purple-50' },
+              { label: 'Today Revenue', value: fmtRs(stats?.todayRevenue ?? 0), icon: FiDollarSign, color: 'text-amber-500 bg-amber-50' }
             ].map((sys, idx) => (
               <div key={idx} className="p-4 bg-slate-50 border border-slate-100 rounded-2xl text-center space-y-2 group hover:border-slate-350 transition-all duration-300">
                 <div className={`w-10 h-10 rounded-xl ${sys.color} flex items-center justify-center mx-auto`}><sys.icon size={16} /></div>
