@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate, Link } from 'react-router-dom';
-import { FaPhone, FaLock, FaUsers, FaSpinner, FaCheckCircle, FaEye, FaEyeSlash } from 'react-icons/fa';
+import { FaPhone, FaLock, FaUsers, FaSpinner, FaCheckCircle, FaEye, FaEyeSlash, FaUser, FaEnvelope } from 'react-icons/fa';
 import api, { getErrorMessage } from '../services/api';
 
 const Register = () => {
@@ -21,6 +21,8 @@ const Register = () => {
     setApiError('');
     try {
       const payload = {
+        name: data.name,
+        email: data.email,
         phone: data.phone,
         password: data.password,
         community: data.community,
@@ -95,6 +97,46 @@ const Register = () => {
             </div>
           )}
           <div className="space-y-4">
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
+              <div className="relative">
+                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                  <FaUser className="text-gray-400" />
+                </div>
+                <input
+                  type="text"
+                  {...register("name", { 
+                    required: "Full name is required"
+                  })}
+                  className="pl-10 appearance-none block w-full px-3 py-3 border border-gray-300 rounded-lg placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] sm:text-sm bg-gray-50 transition-all"
+                  placeholder="e.g. Ramesh Shimpi"
+                />
+              </div>
+              {errors.name && <p className="text-red-500 text-xs mt-1">{errors.name.message}</p>}
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
+              <div className="relative">
+                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                  <FaEnvelope className="text-gray-400" />
+                </div>
+                <input
+                  type="email"
+                  {...register("email", { 
+                    required: "Email address is required",
+                    pattern: {
+                      value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+                      message: "Enter a valid email address"
+                    }
+                  })}
+                  className="pl-10 appearance-none block w-full px-3 py-3 border border-gray-300 rounded-lg placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] sm:text-sm bg-gray-50 transition-all"
+                  placeholder="ramesh@example.com"
+                />
+              </div>
+              {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email.message}</p>}
+            </div>
+
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">Mobile Number</label>
               <div className="relative">
