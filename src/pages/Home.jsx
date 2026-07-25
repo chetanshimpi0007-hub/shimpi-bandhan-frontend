@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { FaHeart, FaSearch, FaShieldAlt, FaUserCheck, FaStar, FaQuoteLeft } from 'react-icons/fa';
 import { Helmet } from 'react-helmet-async';
 import api, { getBackendUrl } from '../services/api';
+import CircularSuccessStories3D from '../components/CircularSuccessStories3D';
 
 // Professional, slow fade animations
 const fadeUp = {
@@ -197,33 +198,8 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Success Stories & Testimonials with Image */}
-      <section className="py-24 border-t border-slate-100 bg-[#FAF9F6] relative">
-        <div className="max-w-6xl mx-auto px-6">
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="text-center mb-16 space-y-3">
-            <h2 className="text-3xl font-black text-slate-900">Success Stories</h2>
-            <p className="text-slate-500 max-w-2xl mx-auto text-sm font-semibold">Read inspiring stories from couples who found their perfect match on Shimpi Bandhan.</p>
-          </motion.div>
-          
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger} className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {localTestimonials.map((story, idx) => (
-              <motion.div key={story.id || idx} variants={fadeUp} className="bg-white rounded-[32px] border border-slate-200/80 p-8 flex flex-col md:flex-row gap-6 hover:border-pink-500/20 transition-all duration-300 shadow-sm">
-                <div className="w-full md:w-40 h-64 md:h-40 rounded-2xl overflow-hidden flex-shrink-0 relative">
-                  <img src={story.photoUrl} alt={`${story.brideName} & ${story.groomName}`} className="w-full h-full object-cover object-top md:object-center" />
-                </div>
-                <div className="space-y-4 flex-1">
-                  <FaQuoteLeft className="text-pink-500 text-2xl opacity-60" />
-                  <p className="text-slate-600 text-xs italic leading-relaxed font-semibold">"{story.story}"</p>
-                  <div>
-                    <h3 className="text-sm font-black text-slate-800">{story.brideName} & {story.groomName}</h3>
-                    <p className="text-slate-400 text-[10px] font-bold mt-0.5">Married on {new Date(story.weddingDate).toLocaleDateString()}</p>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
+      {/* Premium 3D Circular Infinite Carousel for Success Stories */}
+      <CircularSuccessStories3D />
 
       {/* Premium Membership Banner */}
       <section className="py-24 bg-gradient-to-tr from-pink-50 to-purple-50 text-center relative border-t border-slate-100">
