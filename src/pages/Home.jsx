@@ -14,19 +14,23 @@ import WeddingGalleryMasonry from '../components/WeddingGalleryMasonry';
 import JourneyTimeline from '../components/JourneyTimeline';
 import MelavaEventExperience from '../components/MelavaEventExperience';
 import CommunitySocialFeed from '../components/CommunitySocialFeed';
+import ReferralEarningsSystem from '../components/ReferralEarningsSystem';
+import SmartDocumentVerification from '../components/SmartDocumentVerification';
+import SuperAdminAnalyticsWidget from '../components/SuperAdminAnalyticsWidget';
 import TestimonialsStackCards from '../components/TestimonialsStackCards';
 import PremiumStatsCounters from '../components/PremiumStatsCounters';
 import ParallaxCTASection from '../components/ParallaxCTASection';
+import SocialSharingBar from '../components/SocialSharingBar';
 import NotificationDrawer from '../components/NotificationDrawer';
 
 const Home = () => {
   return (
     <div className="w-full bg-[#FCFBF9] overflow-hidden font-sans text-slate-800 min-h-screen relative">
       <Helmet>
-        <title>Shimpi Bandhan - World Class AI Matrimonial Platform</title>
+        <title>Shimpi Bandhan - Enterprise SaaS Matrimonial Platform</title>
         <meta 
           name="description" 
-          content="Aher Shimpi & Namdev Shimpi Matrimonial Platform with AI match compatibility, 3D cover flow, business directory, wedding gallery, member map & social feed." 
+          content="Enterprise SaaS Matrimonial Platform for Aher Shimpi & Namdev Shimpi communities. AI match compatibility, document verification, referral wallet & business directory." 
         />
       </Helmet>
 
@@ -57,31 +61,43 @@ const Home = () => {
       {/* 9. BUSINESS DIRECTORY – 3D COVER FLOW */}
       <BusinessDirectory3DCoverFlow />
 
-      {/* 10. INTERACTIVE MEMBER MAP BY CITY */}
+      {/* 10. REFERRAL & CASHBACK EARNINGS WALLET */}
+      <ReferralEarningsSystem />
+
+      {/* 11. SMART ID & DOCUMENT VERIFICATION */}
+      <SmartDocumentVerification />
+
+      {/* 12. INTERACTIVE MEMBER MAP BY CITY */}
       <InteractiveMemberMap />
 
-      {/* 11. WEDDING GALLERY – MASONRY + LIGHTBOX */}
+      {/* 13. WEDDING GALLERY – MASONRY + LIGHTBOX */}
       <WeddingGalleryMasonry />
 
-      {/* 12. JOURNEY SECTION – ANIMATED 9-STEP TIMELINE */}
+      {/* 14. JOURNEY SECTION – ANIMATED 9-STEP TIMELINE */}
       <JourneyTimeline />
 
-      {/* 13. COMMUNITY MELAVA EVENTS SHOWCASE */}
+      {/* 15. COMMUNITY MELAVA EVENTS SHOWCASE */}
       <MelavaEventExperience />
 
-      {/* 14. COMMUNITY SOCIAL FEED & ANNOUNCEMENTS */}
+      {/* 16. COMMUNITY SOCIAL FEED & ANNOUNCEMENTS */}
       <CommunitySocialFeed />
 
-      {/* 15. TESTIMONIALS – STACKED CARDS */}
+      {/* 17. SUPER ADMIN ANALYTICS & REVENUE METRICS */}
+      <SuperAdminAnalyticsWidget />
+
+      {/* 18. TESTIMONIALS – STACKED CARDS */}
       <TestimonialsStackCards />
 
-      {/* 16. STATISTICS – PREMIUM COUNTERS */}
+      {/* 19. STATISTICS – PREMIUM COUNTERS */}
       <PremiumStatsCounters />
 
-      {/* 17. CALL TO ACTION – MULTI-LAYER PARALLAX */}
+      {/* 20. CALL TO ACTION – MULTI-LAYER PARALLAX */}
       <ParallaxCTASection />
 
-      {/* 18. GLASS NOTIFICATION DRAWER */}
+      {/* 21. SOCIAL SHARING BAR */}
+      <SocialSharingBar />
+
+      {/* 22. GLASS NOTIFICATION DRAWER */}
       <NotificationDrawer />
     </div>
   );
