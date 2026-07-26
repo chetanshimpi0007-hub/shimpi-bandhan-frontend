@@ -7,6 +7,7 @@ import DashboardLayout from './layouts/DashboardLayout';
 import PWAHandler from './components/PWAHandler';
 import GlobalPreloader from './components/GlobalPreloader';
 import CursorGlow from './components/CursorGlow';
+import MobileBottomNav from './components/MobileBottomNav';
 import './styles/VisionOSStyles.css';
 
 const Loading = () => (
@@ -105,6 +106,7 @@ function App() {
         </Routes>
       </Suspense>
       <PWAHandler />
+      <MobileBottomNav />
     </Router>
     </HelmetProvider>
   );

@@ -6,31 +6,34 @@ import PremiumMemberSearchBar from '../components/PremiumMemberSearchBar';
 import PremiumMembers3DCoverFlow from '../components/PremiumMembers3DCoverFlow';
 import AIMatchCompatibility from '../components/AIMatchCompatibility';
 import AIProfileAssistant from '../components/AIProfileAssistant';
+import VoiceVideoIntroPlayer from '../components/VoiceVideoIntroPlayer';
 import CircularSuccessStories3D from '../components/CircularSuccessStories3D';
 import DigitalWeddingInvitation from '../components/DigitalWeddingInvitation';
 import BusinessDirectory3DCoverFlow from '../components/BusinessDirectory3DCoverFlow';
+import WeddingPlannerWidget from '../components/WeddingPlannerWidget';
+import ReferralEarningsSystem from '../components/ReferralEarningsSystem';
+import SmartDocumentVerification from '../components/SmartDocumentVerification';
 import InteractiveMemberMap from '../components/InteractiveMemberMap';
 import WeddingGalleryMasonry from '../components/WeddingGalleryMasonry';
 import JourneyTimeline from '../components/JourneyTimeline';
 import MelavaEventExperience from '../components/MelavaEventExperience';
 import CommunitySocialFeed from '../components/CommunitySocialFeed';
-import ReferralEarningsSystem from '../components/ReferralEarningsSystem';
-import SmartDocumentVerification from '../components/SmartDocumentVerification';
 import SuperAdminAnalyticsWidget from '../components/SuperAdminAnalyticsWidget';
 import TestimonialsStackCards from '../components/TestimonialsStackCards';
 import PremiumStatsCounters from '../components/PremiumStatsCounters';
 import ParallaxCTASection from '../components/ParallaxCTASection';
 import SocialSharingBar from '../components/SocialSharingBar';
 import NotificationDrawer from '../components/NotificationDrawer';
+import AICommunityChatbot from '../components/AICommunityChatbot';
 
 const Home = () => {
   return (
     <div className="w-full bg-[#FCFBF9] overflow-hidden font-sans text-slate-800 min-h-screen relative">
       <Helmet>
-        <title>Shimpi Bandhan - Enterprise SaaS Matrimonial Platform</title>
+        <title>Shimpi Bandhan - Digital Community Ecosystem</title>
         <meta 
           name="description" 
-          content="Enterprise SaaS Matrimonial Platform for Aher Shimpi & Namdev Shimpi communities. AI match compatibility, document verification, referral wallet & business directory." 
+          content="Enterprise Matrimonial Platform for Aher Shimpi & Namdev Shimpi communities. AI match compatibility, document verification, wedding planner, AI chatbot & community ecosystem." 
         />
       </Helmet>
 
@@ -61,44 +64,50 @@ const Home = () => {
       {/* 9. BUSINESS DIRECTORY – 3D COVER FLOW */}
       <BusinessDirectory3DCoverFlow />
 
-      {/* 10. REFERRAL & CASHBACK EARNINGS WALLET */}
+      {/* 10. WEDDING PLANNER SUITE */}
+      <WeddingPlannerWidget />
+
+      {/* 11. REFERRAL & CASHBACK EARNINGS WALLET */}
       <ReferralEarningsSystem />
 
-      {/* 11. SMART ID & DOCUMENT VERIFICATION */}
+      {/* 12. SMART ID & DOCUMENT VERIFICATION */}
       <SmartDocumentVerification />
 
-      {/* 12. INTERACTIVE MEMBER MAP BY CITY */}
+      {/* 13. INTERACTIVE MEMBER MAP BY CITY */}
       <InteractiveMemberMap />
 
-      {/* 13. WEDDING GALLERY – MASONRY + LIGHTBOX */}
+      {/* 14. WEDDING GALLERY – MASONRY + LIGHTBOX */}
       <WeddingGalleryMasonry />
 
-      {/* 14. JOURNEY SECTION – ANIMATED 9-STEP TIMELINE */}
+      {/* 15. JOURNEY SECTION – ANIMATED 9-STEP TIMELINE */}
       <JourneyTimeline />
 
-      {/* 15. COMMUNITY MELAVA EVENTS SHOWCASE */}
+      {/* 16. COMMUNITY MELAVA EVENTS SHOWCASE */}
       <MelavaEventExperience />
 
-      {/* 16. COMMUNITY SOCIAL FEED & ANNOUNCEMENTS */}
+      {/* 17. COMMUNITY SOCIAL FEED & ANNOUNCEMENTS */}
       <CommunitySocialFeed />
 
-      {/* 17. SUPER ADMIN ANALYTICS & REVENUE METRICS */}
+      {/* 18. SUPER ADMIN ANALYTICS & REVENUE METRICS */}
       <SuperAdminAnalyticsWidget />
 
-      {/* 18. TESTIMONIALS – STACKED CARDS */}
+      {/* 19. TESTIMONIALS – STACKED CARDS */}
       <TestimonialsStackCards />
 
-      {/* 19. STATISTICS – PREMIUM COUNTERS */}
+      {/* 20. STATISTICS – PREMIUM COUNTERS */}
       <PremiumStatsCounters />
 
-      {/* 20. CALL TO ACTION – MULTI-LAYER PARALLAX */}
+      {/* 21. CALL TO ACTION – MULTI-LAYER PARALLAX */}
       <ParallaxCTASection />
 
-      {/* 21. SOCIAL SHARING BAR */}
+      {/* 22. SOCIAL SHARING BAR */}
       <SocialSharingBar />
 
-      {/* 22. GLASS NOTIFICATION DRAWER */}
+      {/* 23. GLASS NOTIFICATION DRAWER */}
       <NotificationDrawer />
+
+      {/* 24. AI 24X7 COMMUNITY CHATBOT */}
+      <AICommunityChatbot />
     </div>
   );
 };
