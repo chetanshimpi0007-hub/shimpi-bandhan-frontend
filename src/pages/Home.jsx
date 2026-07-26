@@ -13,16 +13,13 @@ import CircularSuccessStories3D from '../components/CircularSuccessStories3D';
 import CoupleMemoryTimeline from '../components/CoupleMemoryTimeline';
 import DigitalWeddingInvitation from '../components/DigitalWeddingInvitation';
 import BusinessDirectory3DCoverFlow from '../components/BusinessDirectory3DCoverFlow';
-import WeddingPlannerWidget from '../components/WeddingPlannerWidget';
 import ReferralEarningsSystem from '../components/ReferralEarningsSystem';
-import SmartDocumentVerification from '../components/SmartDocumentVerification';
 import InteractiveMemberMap from '../components/InteractiveMemberMap';
 import DistrictCoordinatorPortal from '../components/DistrictCoordinatorPortal';
 import WeddingGalleryMasonry from '../components/WeddingGalleryMasonry';
 import JourneyTimeline from '../components/JourneyTimeline';
 import MelavaEventExperience from '../components/MelavaEventExperience';
 import CommunitySocialFeed from '../components/CommunitySocialFeed';
-import InteractiveCommunityDashboard from '../components/InteractiveCommunityDashboard';
 import SuperAdminAnalyticsWidget from '../components/SuperAdminAnalyticsWidget';
 import TestimonialsStackCards from '../components/TestimonialsStackCards';
 import PremiumStatsCounters from '../components/PremiumStatsCounters';
@@ -38,10 +35,10 @@ const Home = () => {
   return (
     <div className="w-full bg-[#FCFBF9] overflow-hidden font-sans text-slate-800 min-h-screen relative">
       <Helmet>
-        <title>Shimpi Bandhan - Ultra Luxury Matrimonial Experience</title>
+        <title>Shimpi Bandhan - Matrimonial Platform</title>
         <meta 
           name="description" 
-          content="Ultra Luxury Matrimonial Platform for Aher Shimpi & Namdev Shimpi communities. Vision Pro profile viewer, cinematic match reveals, AI compatibility score & enterprise SaaS." 
+          content="Matrimonial Platform for Aher Shimpi & Namdev Shimpi communities." 
         />
       </Helmet>
 
@@ -84,55 +81,46 @@ const Home = () => {
       {/* 13. BUSINESS DIRECTORY – 3D COVER FLOW */}
       <BusinessDirectory3DCoverFlow />
 
-      {/* 14. WEDDING PLANNER SUITE */}
-      <WeddingPlannerWidget />
-
-      {/* 15. REFERRAL & CASHBACK EARNINGS WALLET */}
+      {/* 14. REFERRAL & CASHBACK EARNINGS WALLET */}
       <ReferralEarningsSystem />
 
-      {/* 16. SMART ID & DOCUMENT VERIFICATION */}
-      <SmartDocumentVerification />
-
-      {/* 17. INTERACTIVE MEMBER MAP BY CITY */}
+      {/* 15. INTERACTIVE MEMBER MAP BY CITY */}
       <InteractiveMemberMap />
 
-      {/* 18. DISTRICT & REGIONAL COORDINATOR PORTAL */}
+      {/* 16. DISTRICT & REGIONAL COORDINATOR PORTAL */}
       <DistrictCoordinatorPortal />
 
-      {/* 19. WEDDING GALLERY – MASONRY + LIGHTBOX */}
+      {/* 17. WEDDING GALLERY – MASONRY + LIGHTBOX */}
       <WeddingGalleryMasonry />
 
-      {/* 20. JOURNEY SECTION – ANIMATED 9-STEP TIMELINE */}
+      {/* 18. JOURNEY SECTION – ANIMATED 9-STEP TIMELINE */}
       <JourneyTimeline />
 
-      {/* 21. COMMUNITY MELAVA EVENTS SHOWCASE */}
+      {/* 19. COMMUNITY MELAVA EVENTS SHOWCASE */}
       <MelavaEventExperience />
 
-      {/* 22. COMMUNITY SOCIAL FEED & ANNOUNCEMENTS */}
+      {/* 20. COMMUNITY SOCIAL FEED & ANNOUNCEMENTS */}
       <CommunitySocialFeed />
 
-      {/* 23. INTERACTIVE COMMUNITY DASHBOARD */}
-      <InteractiveCommunityDashboard />
-
-      {/* 24. SUPER ADMIN ANALYTICS & REVENUE METRICS */}
+      {/* 21. SUPER ADMIN ANALYTICS & REVENUE METRICS */}
       <SuperAdminAnalyticsWidget />
 
-      {/* 25. TESTIMONIALS – STACKED CARDS */}
+      {/* 22. TESTIMONIALS – STACKED CARDS */}
       <TestimonialsStackCards />
 
-      {/* 26. STATISTICS – PREMIUM COUNTERS */}
+      {/* 23. STATISTICS – PREMIUM COUNTERS */}
       <PremiumStatsCounters />
 
-      {/* 27. CALL TO ACTION – MULTI-LAYER PARALLAX */}
+      {/* 24. CALL TO ACTION – MULTI-LAYER PARALLAX */}
       <ParallaxCTASection />
 
-      {/* 28. SOCIAL SHARING BAR */}
+      {/* 25. SOCIAL SHARING BAR */}
       <SocialSharingBar />
 
-      {/* 29. GLASS NOTIFICATION DRAWER */}
+      {/* 26. GLASS NOTIFICATION DRAWER */}
       <NotificationDrawer />
 
-      {/* 30. AI 24X7 COMMUNITY CHATBOT */}
+      {/* 27. AI 24X7 COMMUNITY CHATBOT */}
       <AICommunityChatbot />
 
       {/* VISION PRO PROFILE VIEWER MODAL */}
