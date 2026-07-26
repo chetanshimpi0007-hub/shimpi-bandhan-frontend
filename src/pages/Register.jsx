@@ -53,7 +53,9 @@ const Register = () => {
       }
 
       await api.post('/auth/register', payload);
-      
+      if (data.name) {
+        localStorage.setItem('registered_name', data.name);
+      }
       setSuccess(true);
     } catch (error) {
       if (error.response?.data && typeof error.response.data === 'object' && !error.response.data.message && !error.response.data.error) {

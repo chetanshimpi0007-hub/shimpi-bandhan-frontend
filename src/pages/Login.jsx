@@ -7,7 +7,12 @@ import api, { getErrorMessage } from '../services/api';
 import { loginSuccess } from '../redux/authSlice';
 
 const Login = () => {
-  const { register, handleSubmit, formState: { errors } } = useForm();
+  const { register, handleSubmit, formState: { errors } } = useForm({
+    defaultValues: {
+      phone: '',
+      password: ''
+    }
+  });
   const [loading, setLoading] = useState(false);
   const [apiError, setApiError] = useState('');
   const [showPassword, setShowPassword] = useState(false);
@@ -25,8 +30,14 @@ const Login = () => {
       });
       
       const token = response.data?.token;
-      const user = response.data?.user || {};
-      
+      let user = response.data?.user || {};
+
+      // If user object lacks name/fullName, fall back to registered name stored during registration
+      const registeredName = localStorage.getItem('registered_name');
+      if (registeredName && !user.name && !user.fullName) {
+        user = { ...user, name: registeredName, fullName: registeredName };
+      }
+
       if (!token) {
         setApiError('Login failed: Token missing from server response.');
         return;
@@ -61,7 +72,8 @@ const Login = () => {
             Login to your Shimpi Bandhan account
           </p>
         </div>
-        <form className="mt-8 space-y-6" onSubmit={handleSubmit(onSubmit)}>
+
+        <form className="mt-8 space-y-6" onSubmit={handleSubmit(onSubmit)} autoComplete="off">
           {apiError && (
             <div className="bg-red-50 text-red-500 p-3 rounded-lg text-sm text-center">
               {apiError}
@@ -69,13 +81,17 @@ const Login = () => {
           )}
           <div className="space-y-4">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Mobile Number</label>
+              <label htmlFor="login_phone" className="block text-sm font-medium text-gray-700 mb-1">Mobile Number</label>
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                   <FaPhone className="text-gray-400" />
                 </div>
                 <input
-                  type="text"
+                  type="tel"
+                  id="login_phone"
+                  name="login_phone"
+                  inputMode="numeric"
+                  autoComplete="off"
                   {...register("phone", { 
                     required: "Mobile number is required",
                     pattern: {
@@ -91,13 +107,16 @@ const Login = () => {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Password</label>
+              <label htmlFor="login_password" className="block text-sm font-medium text-gray-700 mb-1">Password</label>
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                   <FaLock className="text-gray-400" />
                 </div>
                 <input
                   type={showPassword ? "text" : "password"}
+                  id="login_password"
+                  name="login_password"
+                  autoComplete="new-password"
                   {...register("password", { required: "Password is required" })}
                   className="pl-10 pr-10 appearance-none block w-full px-3 py-3 border border-gray-300 rounded-lg placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] sm:text-sm bg-gray-50 transition-all"
                   placeholder="••••••••"
@@ -149,9 +168,9 @@ const Login = () => {
           <div className="mt-6">
             <Link
               to="/register"
-              className="w-full flex justify-center py-3 px-4 border-2 border-[var(--color-secondary)] text-sm font-bold rounded-lg text-[var(--color-primary)] bg-white hover:bg-gray-50 transition-colors"
+              className="w-full flex justify-center py-3 px-4 border border-gray-300 rounded-lg text-sm font-bold text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--color-primary)] transition-all"
             >
-              Create an account
+              Create New Account
             </Link>
           </div>
         </div>

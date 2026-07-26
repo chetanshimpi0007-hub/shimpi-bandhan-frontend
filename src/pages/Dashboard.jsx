@@ -13,7 +13,7 @@ const Dashboard = () => {
   const location = useLocation();
   const user = useSelector(state => state.auth?.user);
   const [myProfile, setMyProfile] = useState(null);
-  const displayName = myProfile?.fullName || myProfile?.name || user?.name || user?.fullName || (user?.email ? user.email.split('@')[0] : '') || 'Member';
+  const displayName = myProfile?.fullName || myProfile?.name || user?.name || user?.fullName || localStorage.getItem('registered_name') || (user?.email ? user.email.split('@')[0] : '') || 'User';
   const [suggestedMatches, setSuggestedMatches] = useState([]);
   const [visitorCount, setVisitorCount] = useState(0);
   const [loading, setLoading] = useState(true);
