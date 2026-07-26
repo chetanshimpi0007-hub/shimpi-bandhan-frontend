@@ -5,7 +5,6 @@ import { useSelector } from 'react-redux';
 import PublicLayout from './layouts/PublicLayout';
 import DashboardLayout from './layouts/DashboardLayout';
 import PWAHandler from './components/PWAHandler';
-import GlobalPreloader from './components/GlobalPreloader';
 import CursorGlow from './components/CursorGlow';
 import MobileBottomNav from './components/MobileBottomNav';
 import './styles/VisionOSStyles.css';
@@ -53,7 +52,6 @@ const ProtectedRoute = ({ children }) => {
 function App() {
   return (
     <HelmetProvider>
-      <GlobalPreloader />
       <CursorGlow />
       <Router>
       <Suspense fallback={<Loading />}>
