@@ -82,28 +82,28 @@ const FeaturedPremiumMembersShowcase = () => {
   };
 
   return (
-    <section className="w-full bg-gradient-to-b from-[#FFFFFF] via-[#FDF2F8]/60 to-[#F8FAFC] py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden select-none border-t border-pink-100">
+    <div className="w-full bg-[#FAF9F6] py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden select-none border-t border-slate-200/80">
       
-      {/* Background Soft Pink Glow Blobs */}
-      <div className="absolute top-1/4 left-10 w-72 h-72 bg-pink-300/20 rounded-full blur-3xl pointer-events-none animate-pulse" />
-      <div className="absolute bottom-10 right-10 w-96 h-96 bg-rose-200/20 rounded-full blur-3xl pointer-events-none animate-pulse" />
+      {/* Background Soft Glow Blobs */}
+      <div className="absolute top-1/3 left-10 w-72 h-72 bg-amber-400/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-10 right-10 w-96 h-96 bg-pink-400/10 rounded-full blur-3xl pointer-events-none" />
 
-      <div className="max-w-6xl mx-auto space-y-16 relative z-10">
+      <div className="max-w-6xl mx-auto space-y-14 relative z-10">
         
         {/* Section Header */}
         <div className="text-center space-y-3 max-w-2xl mx-auto">
-          <span className="px-4 py-1.5 bg-pink-500/10 border border-pink-500/20 text-[#800020] rounded-full text-xs font-bold uppercase tracking-wider inline-flex items-center gap-1.5 shadow-sm">
+          <span className="px-4 py-1.5 bg-amber-500/10 border border-amber-500/30 text-amber-700 rounded-full text-xs font-bold uppercase tracking-wider inline-flex items-center gap-1.5 shadow-sm">
             <FaCrown className="text-amber-500" /> Featured Premium VIP Members
           </span>
-          <h2 className="text-3xl sm:text-5xl font-serif font-black text-[#1E293B] tracking-tight">
-            Handpicked <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#800020] via-pink-600 to-rose-500">Verified Profiles</span>
+          <h2 className="text-3xl sm:text-5xl font-serif font-black text-slate-900 tracking-tight">
+            Handpicked Verified Profiles
           </h2>
-          <p className="text-[#64748B] text-sm sm:text-base font-semibold leading-relaxed">
+          <p className="text-slate-600 text-sm font-semibold leading-relaxed">
             Exclusive verified profiles from Aher Shimpi & Namdev Shimpi families with highest AI compatibility scores.
           </p>
         </div>
 
-        {/* Light Glass Grid Showcase */}
+        {/* Apple-Style Glass Grid Showcase */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {FEATURED_PROFILES.map((profile, index) => (
             <motion.div
@@ -112,16 +112,16 @@ const FeaturedPremiumMembersShowcase = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              whileHover={{ y: -6, scale: 1.01 }}
-              className="bg-white/90 backdrop-blur-md border border-slate-200/80 rounded-[28px] p-6 sm:p-7 shadow-md hover:border-pink-500/30 hover:shadow-2xl transition-all duration-300 flex flex-col sm:flex-row gap-6 relative overflow-hidden group"
+              whileHover={{ y: -6 }}
+              className="bg-white/95 backdrop-blur-2xl border border-amber-500/20 rounded-[32px] p-6 sm:p-7 shadow-[0_20px_50px_rgba(0,0,0,0.06)] hover:border-pink-500/40 hover:shadow-[0_25px_60px_rgba(128,0,32,0.12)] transition-all duration-300 flex flex-col sm:flex-row gap-6 relative overflow-hidden group"
             >
               {/* VIP Gold Accent Ribbon Top-Right */}
-              <div className="absolute top-0 right-0 bg-gradient-to-l from-amber-500 via-amber-400 to-amber-300 text-slate-950 font-black text-[10px] uppercase tracking-wider px-4 py-1 rounded-bl-2xl shadow-sm flex items-center gap-1">
-                <FaCrown className="text-xs text-slate-900" /> VIP Member
+              <div className="absolute top-0 right-0 bg-gradient-to-l from-amber-500 to-amber-400 text-slate-950 font-black text-[10px] uppercase tracking-wider px-4 py-1 rounded-bl-2xl shadow-sm flex items-center gap-1">
+                <FaCrown className="text-xs" /> VIP Profile
               </div>
 
               {/* Profile Photo */}
-              <div className="w-full sm:w-44 h-64 sm:h-52 rounded-2xl overflow-hidden flex-shrink-0 relative border-2 border-pink-500/20 shadow-md">
+              <div className="w-full sm:w-44 h-64 sm:h-52 rounded-2xl overflow-hidden flex-shrink-0 relative border-2 border-amber-500/20 shadow-md">
                 <img
                   src={profile.photoUrl}
                   alt={profile.name}
@@ -137,7 +137,7 @@ const FeaturedPremiumMembersShowcase = () => {
               <div className="flex-1 space-y-3">
                 <div className="space-y-1">
                   <div className="flex items-center gap-2">
-                    <h3 className="text-xl font-serif font-black text-[#1E293B]">{profile.name}</h3>
+                    <h3 className="text-xl font-serif font-black text-slate-900">{profile.name}</h3>
                     {profile.isVerified && (
                       <span className="text-sky-500" title="Verified Badge">
                         <FaCheckCircle className="text-base" />
@@ -150,7 +150,7 @@ const FeaturedPremiumMembersShowcase = () => {
                 </div>
 
                 {/* Info Pills */}
-                <div className="space-y-1.5 text-xs text-[#64748B] font-semibold">
+                <div className="space-y-1.5 text-xs text-slate-600 font-semibold">
                   <div className="flex items-center gap-2">
                     <FaMapMarkerAlt className="text-rose-500 flex-shrink-0" />
                     <span>{profile.city}, Maharashtra</span>
@@ -187,7 +187,7 @@ const FeaturedPremiumMembersShowcase = () => {
                     className={`flex-1 py-2.5 px-4 rounded-xl text-xs font-black transition-all flex items-center justify-center gap-1.5 cursor-pointer ${
                       interestSent[profile.id]
                         ? 'bg-emerald-600 text-white shadow-md'
-                        : 'bg-gradient-to-r from-[#800020] via-pink-600 to-rose-600 text-white shadow-md hover:brightness-110'
+                        : 'bg-gradient-to-r from-[#800020] to-pink-600 text-white shadow-md hover:brightness-110'
                     }`}
                   >
                     <FaHeart className="text-xs" />
@@ -196,7 +196,7 @@ const FeaturedPremiumMembersShowcase = () => {
 
                   <Link
                     to={`/profile/${profile.id}`}
-                    className="py-2.5 px-4 bg-white hover:bg-slate-50 text-slate-800 rounded-xl text-xs font-extrabold transition-all border border-slate-300 shadow-sm"
+                    className="py-2.5 px-4 bg-slate-100 hover:bg-slate-200 text-slate-800 rounded-xl text-xs font-extrabold transition-all border border-slate-300/80"
                   >
                     View Full
                   </Link>
@@ -208,7 +208,7 @@ const FeaturedPremiumMembersShowcase = () => {
         </div>
 
       </div>
-    </section>
+    </div>
   );
 };
 
