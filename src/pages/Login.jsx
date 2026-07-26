@@ -33,9 +33,11 @@ const Login = () => {
       let user = response.data?.user || {};
 
       // If user object lacks name/fullName, fall back to registered name stored during registration
-      const registeredName = localStorage.getItem('registered_name');
-      if (registeredName && !user.name && !user.fullName) {
-        user = { ...user, name: registeredName, fullName: registeredName };
+      const registeredName = localStorage.getItem('registered_name') || localStorage.getItem('user_name');
+      const resolvedName = user.fullName || user.name || registeredName;
+      if (resolvedName) {
+        user = { ...user, name: resolvedName, fullName: resolvedName };
+        localStorage.setItem('user_name', resolvedName);
       }
 
       if (!token) {

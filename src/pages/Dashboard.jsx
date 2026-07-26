@@ -13,7 +13,18 @@ const Dashboard = () => {
   const location = useLocation();
   const user = useSelector(state => state.auth?.user);
   const [myProfile, setMyProfile] = useState(null);
-  const displayName = myProfile?.fullName || myProfile?.name || user?.name || user?.fullName || localStorage.getItem('registered_name') || (user?.email ? user.email.split('@')[0] : '') || 'User';
+  const displayName = 
+    myProfile?.fullName || 
+    myProfile?.name || 
+    myProfile?.candidateName || 
+    myProfile?.user?.fullName || 
+    myProfile?.user?.name || 
+    user?.fullName || 
+    user?.name || 
+    localStorage.getItem('user_name') || 
+    localStorage.getItem('registered_name') || 
+    (user?.email ? user.email.split('@')[0] : '') || 
+    (user?.phone ? `Member (${user.phone})` : 'Valued Member');
   const [suggestedMatches, setSuggestedMatches] = useState([]);
   const [visitorCount, setVisitorCount] = useState(0);
   const [loading, setLoading] = useState(true);
@@ -35,6 +46,10 @@ const Dashboard = () => {
         const profileRes = await api.get('/profiles/me');
         if (profileRes && profileRes.data) {
           setMyProfile(profileRes.data);
+          const foundName = profileRes.data.fullName || profileRes.data.name || profileRes.data.candidateName || profileRes.data.user?.fullName || profileRes.data.user?.name;
+          if (foundName) {
+            localStorage.setItem('user_name', foundName);
+          }
         }
         
         const matchesRes = await api.get('/profiles/search?size=4');
