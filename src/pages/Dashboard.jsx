@@ -13,6 +13,7 @@ const Dashboard = () => {
   const location = useLocation();
   const user = useSelector(state => state.auth?.user);
   const [myProfile, setMyProfile] = useState(null);
+  const displayName = myProfile?.fullName || myProfile?.name || user?.name || user?.fullName || (user?.email ? user.email.split('@')[0] : '') || 'Member';
   const [suggestedMatches, setSuggestedMatches] = useState([]);
   const [visitorCount, setVisitorCount] = useState(0);
   const [loading, setLoading] = useState(true);
@@ -186,51 +187,39 @@ const Dashboard = () => {
             ))}
           </nav>
 
-          {/* Premium banner widget */}
-          <div className="bg-gradient-to-tr from-pink-500 to-purple-600 rounded-3xl p-5 text-white space-y-4 relative overflow-hidden shadow-lg shadow-pink-500/10">
-            <div className="absolute top-[-20%] right-[-10%] w-24 h-24 bg-white/10 rounded-full blur-xl pointer-events-none" />
-            <FaCrown className="text-amber-300 text-2xl fill-amber-300" />
-            <div className="space-y-1">
-              <h3 className="font-black text-sm">Upgrade to Premium</h3>
-              <p className="text-[10px] text-pink-100 font-bold leading-relaxed">Unlock unlimited chats, advanced filters & more.</p>
-            </div>
-            <Link 
-              to="/premium"
-              className="w-full block text-center bg-white text-pink-600 py-3 rounded-xl text-xs font-black shadow-sm cursor-pointer hover:bg-pink-50 transition-colors"
-            >
-              Upgrade Now
-            </Link>
-          </div>
         </div>
 
-        {/* User profile footer */}
-        <div className="flex items-center gap-3 p-3 bg-slate-50 border border-slate-100 rounded-2xl">
-          <div className="w-9 h-9 rounded-xl bg-pink-500/10 text-pink-500 flex items-center justify-center font-black">
-            {myProfile?.fullName?.charAt(0) || 'P'}
-          </div>
-          <div>
-            <p className="text-xs font-black text-slate-850 truncate">{myProfile?.fullName || 'User'}</p>
-            <p className="text-[9px] text-slate-400 font-bold">
-              {myProfile?.isPremiumMember ? 'Premium Member' : 'Free Account'}
-            </p>
+        <div className="p-4 border-t border-slate-800">
+          <div className="flex items-center gap-3 p-3 bg-slate-950/60 rounded-2xl border border-slate-800">
+            <div className="w-9 h-9 rounded-xl bg-pink-500/20 text-pink-400 flex items-center justify-center font-black">
+              {displayName.charAt(0).toUpperCase()}
+            </div>
+            <div className="overflow-hidden">
+              <p className="text-xs font-black text-white truncate">{displayName}</p>
+              <p className="text-[10px] text-slate-400 font-bold truncate">{user?.email || 'Verified Member'}</p>
+            </div>
           </div>
         </div>
       </aside>
 
-      {/* ── Main Content Deck ── */}
-      <main className="flex-1 p-6 md:p-8 space-y-8 overflow-y-auto">
+      {/* Main Content Area */}
+      <div className="flex-1 flex flex-col min-w-0 overflow-y-auto">
         
-        {/* Floating Top Navbar */}
-        <header className="flex justify-between items-center bg-white border border-slate-100 p-4 rounded-3xl shadow-sm">
-          <div className="relative w-64 hidden sm:block">
-            <FaSearch className="absolute left-3.5 top-1/2 transform -translate-y-1/2 text-slate-400 size-3.5" />
-            <input 
-              type="text" 
-              placeholder="Search profiles, members..." 
-              className="w-full pl-10 pr-4 py-2 bg-slate-50 border border-slate-150 rounded-xl text-xs focus:outline-none focus:ring-2 focus:ring-pink-500/20" 
-            />
+        {/* Header Bar */}
+        <header className="bg-white border-b border-slate-200 px-6 py-4 flex items-center justify-between sticky top-0 z-20">
+          <div className="flex items-center gap-3">
+            <h1 className="font-serif font-black text-slate-900 text-xl">User Dashboard</h1>
           </div>
-          <div className="flex items-center gap-4 ml-auto">
+
+          <div className="flex items-center gap-4">
+            <div className="relative hidden sm:block">
+              <FaSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xs" />
+              <input 
+                type="text" 
+                placeholder="Search matches, IDs..." 
+                className="w-full pl-10 pr-4 py-2 bg-slate-50 border border-slate-150 rounded-xl text-xs focus:outline-none focus:ring-2 focus:ring-pink-500/20" 
+              />
+            </div>
             <button 
               onClick={() => navigate('/visitors')}
               className="w-10 h-10 bg-slate-50 hover:bg-slate-100 rounded-xl flex items-center justify-center text-slate-500 relative cursor-pointer border border-slate-150"
@@ -239,13 +228,13 @@ const Dashboard = () => {
               <span className="absolute top-2 right-2.5 w-2 h-2 bg-pink-500 rounded-full" />
             </button>
             <div className="w-10 h-10 rounded-xl bg-pink-500/10 text-pink-500 flex items-center justify-center font-black border border-pink-500/20">
-              {myProfile?.fullName?.charAt(0) || 'P'}
+              {displayName.charAt(0).toUpperCase()}
             </div>
           </div>
         </header>
 
         {/* Welcome Back Card Banner */}
-        <div className="bg-gradient-to-r from-slate-900 to-indigo-950 text-white rounded-[32px] p-8 md:p-10 flex flex-col lg:flex-row justify-between items-start lg:items-center gap-8 shadow-xl relative overflow-hidden">
+        <div className="bg-gradient-to-r from-slate-900 to-indigo-950 text-white rounded-[32px] p-8 md:p-10 flex flex-col lg:flex-row justify-between items-start lg:items-center gap-8 shadow-xl relative overflow-hidden m-6">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-pink-500/10 via-transparent to-transparent pointer-events-none" />
           <div className="space-y-4 relative z-10">
             <div className="flex items-center gap-2">
@@ -254,7 +243,7 @@ const Dashboard = () => {
               </span>
             </div>
             <h1 className="text-3xl md:text-4xl font-black tracking-tight leading-none">
-              Welcome back, <span className="bg-clip-text text-transparent bg-gradient-to-r from-pink-400 via-purple-400 to-amber-300">{myProfile?.fullName || 'Priyanka'}!</span>
+              Welcome back, <span className="bg-clip-text text-transparent bg-gradient-to-r from-pink-400 via-purple-400 to-amber-300">{displayName}!</span>
             </h1>
             <p className="text-slate-350 text-xs font-semibold max-w-lg leading-relaxed">
               Find your perfect match today. We detected 4 highly compatible candidate updates for you.
@@ -556,7 +545,7 @@ const Dashboard = () => {
           </button>
         </div>
 
-      </main>
+      </div>
     </div>
   );
 };

@@ -108,7 +108,7 @@ const DashboardLayout = () => {
                 onClick={() => navigate('/profile')}
                 className="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-[var(--color-primary)] font-bold border-2 border-blue-200 cursor-pointer hover:border-[var(--color-secondary)] transition-colors"
               >
-                {String(currentUser?.fullName || 'U').charAt(0)}
+                {String(currentUser?.fullName || currentUser?.name || 'U').charAt(0).toUpperCase()}
               </div>
             )}
           </div>
