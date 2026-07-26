@@ -6,7 +6,8 @@ import PremiumMemberSearchBar from '../components/PremiumMemberSearchBar';
 import PremiumMembers3DCoverFlow from '../components/PremiumMembers3DCoverFlow';
 import AIMatchCompatibility from '../components/AIMatchCompatibility';
 import AIProfileAssistant from '../components/AIProfileAssistant';
-import VoiceVideoIntroPlayer from '../components/VoiceVideoIntroPlayer';
+import AdvancedMatchIntelligence from '../components/AdvancedMatchIntelligence';
+import AIRelationshipCoach from '../components/AIRelationshipCoach';
 import CircularSuccessStories3D from '../components/CircularSuccessStories3D';
 import DigitalWeddingInvitation from '../components/DigitalWeddingInvitation';
 import BusinessDirectory3DCoverFlow from '../components/BusinessDirectory3DCoverFlow';
@@ -14,6 +15,7 @@ import WeddingPlannerWidget from '../components/WeddingPlannerWidget';
 import ReferralEarningsSystem from '../components/ReferralEarningsSystem';
 import SmartDocumentVerification from '../components/SmartDocumentVerification';
 import InteractiveMemberMap from '../components/InteractiveMemberMap';
+import DistrictCoordinatorPortal from '../components/DistrictCoordinatorPortal';
 import WeddingGalleryMasonry from '../components/WeddingGalleryMasonry';
 import JourneyTimeline from '../components/JourneyTimeline';
 import MelavaEventExperience from '../components/MelavaEventExperience';
@@ -30,10 +32,10 @@ const Home = () => {
   return (
     <div className="w-full bg-[#FCFBF9] overflow-hidden font-sans text-slate-800 min-h-screen relative">
       <Helmet>
-        <title>Shimpi Bandhan - Digital Community Ecosystem</title>
+        <title>Shimpi Bandhan - Global Enterprise Community Platform</title>
         <meta 
           name="description" 
-          content="Enterprise Matrimonial Platform for Aher Shimpi & Namdev Shimpi communities. AI match compatibility, document verification, wedding planner, AI chatbot & community ecosystem." 
+          content="Global Enterprise Matrimonial Platform for Aher Shimpi & Namdev Shimpi communities. AI match compatibility, document verification, relationship coaching, coordinator portal & community ecosystem." 
         />
       </Helmet>
 
@@ -52,61 +54,70 @@ const Home = () => {
       {/* 5. AI MATCH COMPATIBILITY SCORE & EXPLANATION */}
       <AIMatchCompatibility />
 
-      {/* 6. AI PROFILE STRENGTH ASSISTANT */}
+      {/* 6. ADVANCED MATCH INTELLIGENCE */}
+      <AdvancedMatchIntelligence />
+
+      {/* 7. AI RELATIONSHIP & FAMILY COACH */}
+      <AIRelationshipCoach />
+
+      {/* 8. AI PROFILE STRENGTH ASSISTANT */}
       <AIProfileAssistant />
 
-      {/* 7. SUCCESS STORIES – 3D CIRCULAR CAROUSEL */}
+      {/* 9. SUCCESS STORIES – 3D CIRCULAR CAROUSEL */}
       <CircularSuccessStories3D />
 
-      {/* 8. DIGITAL WEDDING INVITATION SHOWCASE */}
+      {/* 10. DIGITAL WEDDING INVITATION SHOWCASE */}
       <DigitalWeddingInvitation />
 
-      {/* 9. BUSINESS DIRECTORY – 3D COVER FLOW */}
+      {/* 11. BUSINESS DIRECTORY – 3D COVER FLOW */}
       <BusinessDirectory3DCoverFlow />
 
-      {/* 10. WEDDING PLANNER SUITE */}
+      {/* 12. WEDDING PLANNER SUITE */}
       <WeddingPlannerWidget />
 
-      {/* 11. REFERRAL & CASHBACK EARNINGS WALLET */}
+      {/* 13. REFERRAL & CASHBACK EARNINGS WALLET */}
       <ReferralEarningsSystem />
 
-      {/* 12. SMART ID & DOCUMENT VERIFICATION */}
+      {/* 14. SMART ID & DOCUMENT VERIFICATION */}
       <SmartDocumentVerification />
 
-      {/* 13. INTERACTIVE MEMBER MAP BY CITY */}
+      {/* 15. INTERACTIVE MEMBER MAP BY CITY */}
       <InteractiveMemberMap />
 
-      {/* 14. WEDDING GALLERY – MASONRY + LIGHTBOX */}
+      {/* 16. DISTRICT & REGIONAL COORDINATOR PORTAL */}
+      <DistrictCoordinatorPortal />
+
+      {/* 17. WEDDING GALLERY – MASONRY + LIGHTBOX */}
       <WeddingGalleryMasonry />
 
-      {/* 15. JOURNEY SECTION – ANIMATED 9-STEP TIMELINE */}
+      {/* 18. JOURNEY SECTION – ANIMATED 9-STEP TIMELINE */}
       <JourneyTimeline />
 
-      {/* 16. COMMUNITY MELAVA EVENTS SHOWCASE */}
+      {/* 19. COMMUNITY MELAVA EVENTS SHOWCASE */}
       <MelavaEventExperience />
 
-      {/* 17. COMMUNITY SOCIAL FEED & ANNOUNCEMENTS */}
+      {/* 20. COMMUNITY SOCIAL FEED & ANNOUNCEMENTS */}
       <CommunitySocialFeed />
 
-      {/* 18. SUPER ADMIN ANALYTICS & REVENUE METRICS */}
+      {/* 21. SUPER ADMIN ANALYTICS & REVENUE METRICS */}
       <SuperAdminAnalyticsWidget />
 
-      {/* 19. TESTIMONIALS – STACKED CARDS */}
+      {/* 22. TESTIMONIALS – STACKED CARDS */}
       <TestimonialsStackCards />
 
-      {/* 20. STATISTICS – PREMIUM COUNTERS */}
+      {/* 23. STATISTICS – PREMIUM COUNTERS */}
       <PremiumStatsCounters />
 
-      {/* 21. CALL TO ACTION – MULTI-LAYER PARALLAX */}
+      {/* 24. CALL TO ACTION – MULTI-LAYER PARALLAX */}
       <ParallaxCTASection />
 
-      {/* 22. SOCIAL SHARING BAR */}
+      {/* 25. SOCIAL SHARING BAR */}
       <SocialSharingBar />
 
-      {/* 23. GLASS NOTIFICATION DRAWER */}
+      {/* 26. GLASS NOTIFICATION DRAWER */}
       <NotificationDrawer />
 
-      {/* 24. AI 24X7 COMMUNITY CHATBOT */}
+      {/* 27. AI 24X7 COMMUNITY CHATBOT */}
       <AICommunityChatbot />
     </div>
   );
