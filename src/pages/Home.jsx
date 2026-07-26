@@ -5,12 +5,15 @@ import AINaturalLanguageSearch from '../components/AINaturalLanguageSearch';
 import PremiumMemberSearchBar from '../components/PremiumMemberSearchBar';
 import PremiumMembers3DCoverFlow from '../components/PremiumMembers3DCoverFlow';
 import AIMatchCompatibility from '../components/AIMatchCompatibility';
+import AIProfileAssistant from '../components/AIProfileAssistant';
 import CircularSuccessStories3D from '../components/CircularSuccessStories3D';
 import DigitalWeddingInvitation from '../components/DigitalWeddingInvitation';
 import BusinessDirectory3DCoverFlow from '../components/BusinessDirectory3DCoverFlow';
+import InteractiveMemberMap from '../components/InteractiveMemberMap';
 import WeddingGalleryMasonry from '../components/WeddingGalleryMasonry';
 import JourneyTimeline from '../components/JourneyTimeline';
 import MelavaEventExperience from '../components/MelavaEventExperience';
+import CommunitySocialFeed from '../components/CommunitySocialFeed';
 import TestimonialsStackCards from '../components/TestimonialsStackCards';
 import PremiumStatsCounters from '../components/PremiumStatsCounters';
 import ParallaxCTASection from '../components/ParallaxCTASection';
@@ -20,10 +23,10 @@ const Home = () => {
   return (
     <div className="w-full bg-[#FCFBF9] overflow-hidden font-sans text-slate-800 min-h-screen relative">
       <Helmet>
-        <title>Shimpi Bandhan - Ultra Premium Matrimonial Platform</title>
+        <title>Shimpi Bandhan - World Class AI Matrimonial Platform</title>
         <meta 
           name="description" 
-          content="Aher Shimpi & Namdev Shimpi Matrimonial Platform with AI match compatibility, 3D cover flow, business directory, wedding gallery and digital invitations." 
+          content="Aher Shimpi & Namdev Shimpi Matrimonial Platform with AI match compatibility, 3D cover flow, business directory, wedding gallery, member map & social feed." 
         />
       </Helmet>
 
@@ -39,37 +42,46 @@ const Home = () => {
       {/* 4. PREMIUM MEMBERS – APPLE-STYLE 3D COVER FLOW */}
       <PremiumMembers3DCoverFlow />
 
-      {/* 5. AI MATCH COMPATIBILITY SCORE */}
+      {/* 5. AI MATCH COMPATIBILITY SCORE & EXPLANATION */}
       <AIMatchCompatibility />
 
-      {/* 6. SUCCESS STORIES – 3D CIRCULAR CAROUSEL */}
+      {/* 6. AI PROFILE STRENGTH ASSISTANT */}
+      <AIProfileAssistant />
+
+      {/* 7. SUCCESS STORIES – 3D CIRCULAR CAROUSEL */}
       <CircularSuccessStories3D />
 
-      {/* 7. DIGITAL WEDDING INVITATION SHOWCASE */}
+      {/* 8. DIGITAL WEDDING INVITATION SHOWCASE */}
       <DigitalWeddingInvitation />
 
-      {/* 8. BUSINESS DIRECTORY – 3D COVER FLOW */}
+      {/* 9. BUSINESS DIRECTORY – 3D COVER FLOW */}
       <BusinessDirectory3DCoverFlow />
 
-      {/* 9. WEDDING GALLERY – MASONRY + LIGHTBOX */}
+      {/* 10. INTERACTIVE MEMBER MAP BY CITY */}
+      <InteractiveMemberMap />
+
+      {/* 11. WEDDING GALLERY – MASONRY + LIGHTBOX */}
       <WeddingGalleryMasonry />
 
-      {/* 10. JOURNEY SECTION – ANIMATED 9-STEP TIMELINE */}
+      {/* 12. JOURNEY SECTION – ANIMATED 9-STEP TIMELINE */}
       <JourneyTimeline />
 
-      {/* 11. COMMUNITY MELAVA EVENTS SHOWCASE */}
+      {/* 13. COMMUNITY MELAVA EVENTS SHOWCASE */}
       <MelavaEventExperience />
 
-      {/* 12. TESTIMONIALS – STACKED CARDS */}
+      {/* 14. COMMUNITY SOCIAL FEED & ANNOUNCEMENTS */}
+      <CommunitySocialFeed />
+
+      {/* 15. TESTIMONIALS – STACKED CARDS */}
       <TestimonialsStackCards />
 
-      {/* 13. STATISTICS – PREMIUM COUNTERS */}
+      {/* 16. STATISTICS – PREMIUM COUNTERS */}
       <PremiumStatsCounters />
 
-      {/* 14. CALL TO ACTION – MULTI-LAYER PARALLAX */}
+      {/* 17. CALL TO ACTION – MULTI-LAYER PARALLAX */}
       <ParallaxCTASection />
 
-      {/* 15. GLASS NOTIFICATION DRAWER */}
+      {/* 18. GLASS NOTIFICATION DRAWER */}
       <NotificationDrawer />
     </div>
   );
