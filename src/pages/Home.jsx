@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { FaHeart, FaSearch, FaShieldAlt, FaUserCheck, FaStar, FaQuoteLeft } from 'react-icons/fa';
 import { Helmet } from 'react-helmet-async';
 import api, { getBackendUrl } from '../services/api';
+import CircularSuccessStories3D from '../components/CircularSuccessStories3D';
 
 // Professional, slow fade animations
 const fadeUp = {
@@ -40,25 +41,6 @@ const Home = () => {
     e.preventDefault();
     navigate('/search');
   };
-
-  const localTestimonials = [
-    {
-      id: 1,
-      brideName: 'Sonal Sankpal',
-      groomName: 'Shubham Sankpal',
-      weddingDate: '2026-02-14',
-      story: 'We met on ShimpiBandhan in November and got married in February. The chat features and verified badges made us feel completely secure.',
-      photoUrl: '/sonal-shubham-new.jpg'
-    },
-    {
-      id: 2,
-      brideName: 'Priya Shimpi',
-      groomName: 'Ramesh Shimpi',
-      weddingDate: '2026-05-18',
-      story: 'The compatibility scoring on this platform is amazingly accurate. It matched us based on our exact sub-caste and lifestyle choices.',
-      photoUrl: '/priya-ramesh.jpg'
-    }
-  ];
 
   return (
     <div className="w-full bg-[#FAF9F6] overflow-hidden font-sans text-slate-800 min-h-screen relative select-none">
@@ -240,46 +222,8 @@ const Home = () => {
         </svg>
       </div>
 
-      {/* 4. Success Stories – Romantic Blush Pink, Floating Hearts & Bokeh Lights */}
-      <section className="py-24 relative bg-gradient-to-tr from-[#FFF0F4] via-[#FFF6F9] to-[#FFECF1] overflow-hidden">
-        
-        {/* Animated Bokeh Circles */}
-        <div className="absolute top-1/4 left-8 w-60 h-60 bg-pink-400/15 rounded-full blur-3xl pointer-events-none animate-pulse" />
-        <div className="absolute bottom-12 right-12 w-72 h-72 bg-rose-400/15 rounded-full blur-3xl pointer-events-none animate-pulse" />
-
-        {/* Floating Heart Watermark Icons SVG */}
-        <div className="absolute top-12 left-1/3 opacity-15 text-pink-400 pointer-events-none">
-          <FaHeart className="text-6xl animate-bounce" />
-        </div>
-        <div className="absolute bottom-16 right-1/4 opacity-15 text-rose-500 pointer-events-none">
-          <FaHeart className="text-7xl animate-pulse" />
-        </div>
-
-        <div className="max-w-6xl mx-auto px-6 relative z-10">
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="text-center mb-16 space-y-3">
-            <h2 className="text-3xl font-black text-slate-900">Success Stories</h2>
-            <p className="text-slate-600 max-w-2xl mx-auto text-sm font-semibold">Read inspiring stories from couples who found their perfect match on Shimpi Bandhan.</p>
-          </motion.div>
-          
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger} className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {localTestimonials.map((story, idx) => (
-              <motion.div key={story.id || idx} variants={fadeUp} className="bg-white/95 rounded-[32px] border border-pink-500/25 p-8 flex flex-col md:flex-row gap-6 hover:border-pink-500/50 hover:shadow-2xl transition-all duration-300 shadow-lg">
-                <div className="w-full md:w-40 h-64 md:h-40 rounded-2xl overflow-hidden flex-shrink-0 relative border-2 border-pink-500/20 shadow-md">
-                  <img src={story.photoUrl} alt={`${story.brideName} & ${story.groomName}`} className="w-full h-full object-cover object-top md:object-center" />
-                </div>
-                <div className="space-y-4 flex-1">
-                  <FaQuoteLeft className="text-pink-500 text-2xl opacity-70" />
-                  <p className="text-slate-600 text-xs italic leading-relaxed font-semibold">"{story.story}"</p>
-                  <div>
-                    <h3 className="text-sm font-black text-slate-800">{story.brideName} & {story.groomName}</h3>
-                    <p className="text-slate-400 text-[10px] font-bold mt-0.5">Married on {new Date(story.weddingDate).toLocaleDateString()}</p>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
+      {/* 4. PREMIUM 360° CIRCULAR SUCCESS STORIES SHOWCASE */}
+      <CircularSuccessStories3D />
 
       {/* Layered Ribbon Divider 3 */}
       <div className="w-full overflow-hidden leading-none z-10 relative text-[#FFFDF0]">
