@@ -5,6 +5,8 @@ import { FaHeart, FaSearch, FaShieldAlt, FaUserCheck, FaStar, FaQuoteLeft } from
 import { Helmet } from 'react-helmet-async';
 import api, { getBackendUrl } from '../services/api';
 import CircularSuccessStories3D from '../components/CircularSuccessStories3D';
+import SmartSearchHero from '../components/SmartSearchHero';
+import FeaturedPremiumMembersShowcase from '../components/FeaturedPremiumMembersShowcase';
 
 // Professional, slow fade animations
 const fadeUp = {
@@ -36,11 +38,6 @@ const Home = () => {
       .then(res => setStats(res.data))
       .catch(console.error);
   }, []);
-
-  const handleQuickSearch = (e) => {
-    e.preventDefault();
-    navigate('/search');
-  };
 
   return (
     <div className="w-full bg-[#FAF9F6] overflow-hidden font-sans text-slate-800 min-h-screen relative select-none">
@@ -98,53 +95,11 @@ const Home = () => {
         </div>
       </section>
 
-      {/* 2. Premium Search Card with Aurora Light Blob & Mesh Glow */}
-      <section className="relative z-30 px-4 sm:px-6 my-10 md:my-14 mb-20 max-w-6xl mx-auto">
-        <div className="absolute -inset-6 bg-gradient-to-r from-pink-500/20 via-amber-400/25 to-purple-600/20 rounded-[42px] blur-3xl opacity-80 pointer-events-none animate-pulse" />
-        
-        <motion.div 
-          initial={{ opacity: 0, y: 30 }} 
-          animate={{ opacity: 1, y: 0 }} 
-          transition={{ duration: 0.8, delay: 0.3 }}
-          className="relative bg-white/95 backdrop-blur-2xl border border-amber-500/30 rounded-[28px] shadow-[0_25px_60px_rgba(128,0,32,0.12)] p-5 sm:p-6 lg:p-8 h-auto"
-        >
-          <form onSubmit={handleQuickSearch} className="flex flex-col gap-6 md:grid md:grid-cols-5 md:gap-5 lg:gap-6 items-start md:items-end w-full">
-            <div className="w-full">
-              <label className="block text-[11px] font-bold text-gray-500 uppercase tracking-wider mb-2">Looking For</label>
-              <select className="w-full bg-white/80 border border-gray-300 rounded-xl text-gray-800 py-3.5 px-4 focus:ring-2 focus:ring-[#800020] focus:bg-white outline-none transition-all text-sm font-semibold shadow-sm">
-                <option>Bride</option>
-                <option>Groom</option>
-              </select>
-            </div>
-            <div className="w-full">
-              <label className="block text-[11px] font-bold text-gray-500 uppercase tracking-wider mb-2">Age</label>
-              <select className="w-full bg-white/80 border border-gray-300 rounded-xl text-gray-800 py-3.5 px-4 focus:ring-2 focus:ring-[#800020] focus:bg-white outline-none transition-all text-sm font-semibold shadow-sm">
-                <option>21 to 25</option>
-                <option>26 to 30</option>
-                <option>31 to 35</option>
-                <option>36 and above</option>
-              </select>
-            </div>
-            <div className="w-full">
-              <label className="block text-[11px] font-bold text-gray-500 uppercase tracking-wider mb-2">Community</label>
-              <select className="w-full bg-white/80 border border-gray-300 rounded-xl text-gray-800 py-3.5 px-4 focus:ring-2 focus:ring-[#800020] focus:bg-white outline-none transition-all text-sm font-semibold shadow-sm">
-                <option>Aher Shimpi</option>
-                <option>Namdev Shimpi</option>
-              </select>
-            </div>
-            <div className="w-full">
-              <label className="block text-[11px] font-bold text-gray-500 uppercase tracking-wider mb-2">Location</label>
-              <input type="text" placeholder="e.g. Pune, Mumbai" className="w-full bg-white/80 border border-gray-300 rounded-xl text-gray-800 py-3.5 px-4 focus:ring-2 focus:ring-[#800020] focus:bg-white outline-none transition-all text-sm font-semibold shadow-sm" />
-            </div>
-            <div className="w-full pt-2 md:pt-0">
-              <button type="submit" className="w-full bg-gradient-to-r from-[#800020] to-[#b3002d] text-white rounded-xl py-3.5 px-6 font-bold shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all text-sm cursor-pointer border border-[#800020]/20 flex items-center justify-center gap-2">
-                <FaSearch className="w-4 h-4" />
-                Search Matches
-              </button>
-            </div>
-          </form>
-        </motion.div>
-      </section>
+      {/* 2. SMART SEARCH HERO SECTION */}
+      <SmartSearchHero />
+
+      {/* 3. FEATURED PREMIUM MEMBERS SHOWCASE SECTION */}
+      <FeaturedPremiumMembersShowcase />
 
       {/* Layered Ribbon Wave Divider 1 */}
       <div className="w-full overflow-hidden leading-none z-10 relative text-[#FFFDF2]">
@@ -153,7 +108,7 @@ const Home = () => {
         </svg>
       </div>
 
-      {/* 3. Why Choose Us – Rich Ivory, Champagne Gold & Faded Mandala Watermark */}
+      {/* 4. Why Choose Us – Rich Ivory, Champagne Gold & Faded Mandala Watermark */}
       <section className="py-24 relative overflow-hidden bg-gradient-to-br from-[#FFFDF2] via-[#FFFBF0] to-[#FAF6EA]">
         
         {/* Subtle Gold Grid Pattern */}
@@ -222,7 +177,7 @@ const Home = () => {
         </svg>
       </div>
 
-      {/* 4. PREMIUM 360° CIRCULAR SUCCESS STORIES SHOWCASE */}
+      {/* 5. PREMIUM 360° CIRCULAR SUCCESS STORIES SHOWCASE */}
       <CircularSuccessStories3D />
 
       {/* Layered Ribbon Divider 3 */}
@@ -232,7 +187,7 @@ const Home = () => {
         </svg>
       </div>
 
-      {/* 5. Premium Membership Banner – VIP Champagne Gold & Royal Glass Shimmer */}
+      {/* 6. Premium Membership Banner – VIP Champagne Gold & Royal Glass Shimmer */}
       <section className="py-24 bg-gradient-to-br from-[#FFFDF0] via-[#FFF8EB] to-[#FFF0F5] text-center relative border-t-2 border-amber-500/30 overflow-hidden shadow-inner">
         
         {/* VIP Gold Shimmer Glowing Aura */}
