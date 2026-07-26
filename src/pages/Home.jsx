@@ -10,14 +10,10 @@ import AIRelationshipCoach from '../components/AIRelationshipCoach';
 import CinematicProfileReveal from '../components/CinematicProfileReveal';
 import CircularSuccessStories3D from '../components/CircularSuccessStories3D';
 import CoupleMemoryTimeline from '../components/CoupleMemoryTimeline';
-import DigitalWeddingInvitation from '../components/DigitalWeddingInvitation';
 import BusinessDirectory3DCoverFlow from '../components/BusinessDirectory3DCoverFlow';
 import InteractiveMemberMap from '../components/InteractiveMemberMap';
-import WeddingGalleryMasonry from '../components/WeddingGalleryMasonry';
 import JourneyTimeline from '../components/JourneyTimeline';
 import MelavaEventExperience from '../components/MelavaEventExperience';
-import CommunitySocialFeed from '../components/CommunitySocialFeed';
-import TestimonialsStackCards from '../components/TestimonialsStackCards';
 import PremiumStatsCounters from '../components/PremiumStatsCounters';
 import ParallaxCTASection from '../components/ParallaxCTASection';
 import SocialSharingBar from '../components/SocialSharingBar';
@@ -68,43 +64,31 @@ const Home = () => {
       {/* 10. COUPLE MEMORY TIMELINE */}
       <CoupleMemoryTimeline />
 
-      {/* 11. DIGITAL WEDDING INVITATION SHOWCASE */}
-      <DigitalWeddingInvitation />
-
-      {/* 12. BUSINESS DIRECTORY – 3D COVER FLOW */}
+      {/* 11. BUSINESS DIRECTORY – 3D COVER FLOW */}
       <BusinessDirectory3DCoverFlow />
 
-      {/* 13. INTERACTIVE MEMBER MAP BY CITY */}
+      {/* 12. INTERACTIVE MEMBER MAP BY CITY */}
       <InteractiveMemberMap />
 
-      {/* 14. WEDDING GALLERY – MASONRY + LIGHTBOX */}
-      <WeddingGalleryMasonry />
-
-      {/* 15. JOURNEY SECTION – ANIMATED 9-STEP TIMELINE */}
+      {/* 13. JOURNEY SECTION – ANIMATED 9-STEP TIMELINE */}
       <JourneyTimeline />
 
-      {/* 16. COMMUNITY MELAVA EVENTS SHOWCASE */}
+      {/* 14. COMMUNITY MELAVA EVENTS SHOWCASE */}
       <MelavaEventExperience />
 
-      {/* 17. COMMUNITY SOCIAL FEED & ANNOUNCEMENTS */}
-      <CommunitySocialFeed />
-
-      {/* 18. TESTIMONIALS – STACKED CARDS */}
-      <TestimonialsStackCards />
-
-      {/* 19. STATISTICS – PREMIUM COUNTERS */}
+      {/* 15. STATISTICS – PREMIUM COUNTERS */}
       <PremiumStatsCounters />
 
-      {/* 20. CALL TO ACTION – MULTI-LAYER PARALLAX */}
+      {/* 16. CALL TO ACTION – MULTI-LAYER PARALLAX */}
       <ParallaxCTASection />
 
-      {/* 21. SOCIAL SHARING BAR */}
+      {/* 17. SOCIAL SHARING BAR */}
       <SocialSharingBar />
 
-      {/* 22. GLASS NOTIFICATION DRAWER */}
+      {/* 18. GLASS NOTIFICATION DRAWER */}
       <NotificationDrawer />
 
-      {/* 23. AI 24X7 COMMUNITY CHATBOT */}
+      {/* 19. AI 24X7 COMMUNITY CHATBOT */}
       <AICommunityChatbot />
 
       {/* VISION PRO PROFILE VIEWER MODAL */}
