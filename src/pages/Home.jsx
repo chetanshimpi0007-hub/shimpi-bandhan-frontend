@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import FloatingPhotoCloudHero from '../components/FloatingPhotoCloudHero';
 import AINaturalLanguageSearch from '../components/AINaturalLanguageSearch';
@@ -8,7 +8,9 @@ import AIMatchCompatibility from '../components/AIMatchCompatibility';
 import AIProfileAssistant from '../components/AIProfileAssistant';
 import AdvancedMatchIntelligence from '../components/AdvancedMatchIntelligence';
 import AIRelationshipCoach from '../components/AIRelationshipCoach';
+import CinematicProfileReveal from '../components/CinematicProfileReveal';
 import CircularSuccessStories3D from '../components/CircularSuccessStories3D';
+import CoupleMemoryTimeline from '../components/CoupleMemoryTimeline';
 import DigitalWeddingInvitation from '../components/DigitalWeddingInvitation';
 import BusinessDirectory3DCoverFlow from '../components/BusinessDirectory3DCoverFlow';
 import WeddingPlannerWidget from '../components/WeddingPlannerWidget';
@@ -20,6 +22,7 @@ import WeddingGalleryMasonry from '../components/WeddingGalleryMasonry';
 import JourneyTimeline from '../components/JourneyTimeline';
 import MelavaEventExperience from '../components/MelavaEventExperience';
 import CommunitySocialFeed from '../components/CommunitySocialFeed';
+import InteractiveCommunityDashboard from '../components/InteractiveCommunityDashboard';
 import SuperAdminAnalyticsWidget from '../components/SuperAdminAnalyticsWidget';
 import TestimonialsStackCards from '../components/TestimonialsStackCards';
 import PremiumStatsCounters from '../components/PremiumStatsCounters';
@@ -27,15 +30,18 @@ import ParallaxCTASection from '../components/ParallaxCTASection';
 import SocialSharingBar from '../components/SocialSharingBar';
 import NotificationDrawer from '../components/NotificationDrawer';
 import AICommunityChatbot from '../components/AICommunityChatbot';
+import VisionProProfileViewer from '../components/VisionProProfileViewer';
 
 const Home = () => {
+  const [selectedProfile, setSelectedProfile] = useState(null);
+
   return (
     <div className="w-full bg-[#FCFBF9] overflow-hidden font-sans text-slate-800 min-h-screen relative">
       <Helmet>
-        <title>Shimpi Bandhan - Global Enterprise Community Platform</title>
+        <title>Shimpi Bandhan - Ultra Luxury Matrimonial Experience</title>
         <meta 
           name="description" 
-          content="Global Enterprise Matrimonial Platform for Aher Shimpi & Namdev Shimpi communities. AI match compatibility, document verification, relationship coaching, coordinator portal & community ecosystem." 
+          content="Ultra Luxury Matrimonial Platform for Aher Shimpi & Namdev Shimpi communities. Vision Pro profile viewer, cinematic match reveals, AI compatibility score & enterprise SaaS." 
         />
       </Helmet>
 
@@ -51,74 +57,88 @@ const Home = () => {
       {/* 4. PREMIUM MEMBERS – APPLE-STYLE 3D COVER FLOW */}
       <PremiumMembers3DCoverFlow />
 
-      {/* 5. AI MATCH COMPATIBILITY SCORE & EXPLANATION */}
+      {/* 5. CINEMATIC PROFILE REVEAL EXPERIENCE */}
+      <CinematicProfileReveal />
+
+      {/* 6. AI MATCH COMPATIBILITY SCORE & EXPLANATION */}
       <AIMatchCompatibility />
 
-      {/* 6. ADVANCED MATCH INTELLIGENCE */}
+      {/* 7. ADVANCED MATCH INTELLIGENCE */}
       <AdvancedMatchIntelligence />
 
-      {/* 7. AI RELATIONSHIP & FAMILY COACH */}
+      {/* 8. AI RELATIONSHIP & FAMILY COACH */}
       <AIRelationshipCoach />
 
-      {/* 8. AI PROFILE STRENGTH ASSISTANT */}
+      {/* 9. AI PROFILE STRENGTH ASSISTANT */}
       <AIProfileAssistant />
 
-      {/* 9. SUCCESS STORIES – 3D CIRCULAR CAROUSEL */}
+      {/* 10. SUCCESS STORIES – 3D CIRCULAR CAROUSEL */}
       <CircularSuccessStories3D />
 
-      {/* 10. DIGITAL WEDDING INVITATION SHOWCASE */}
+      {/* 11. COUPLE MEMORY TIMELINE */}
+      <CoupleMemoryTimeline />
+
+      {/* 12. DIGITAL WEDDING INVITATION SHOWCASE */}
       <DigitalWeddingInvitation />
 
-      {/* 11. BUSINESS DIRECTORY – 3D COVER FLOW */}
+      {/* 13. BUSINESS DIRECTORY – 3D COVER FLOW */}
       <BusinessDirectory3DCoverFlow />
 
-      {/* 12. WEDDING PLANNER SUITE */}
+      {/* 14. WEDDING PLANNER SUITE */}
       <WeddingPlannerWidget />
 
-      {/* 13. REFERRAL & CASHBACK EARNINGS WALLET */}
+      {/* 15. REFERRAL & CASHBACK EARNINGS WALLET */}
       <ReferralEarningsSystem />
 
-      {/* 14. SMART ID & DOCUMENT VERIFICATION */}
+      {/* 16. SMART ID & DOCUMENT VERIFICATION */}
       <SmartDocumentVerification />
 
-      {/* 15. INTERACTIVE MEMBER MAP BY CITY */}
+      {/* 17. INTERACTIVE MEMBER MAP BY CITY */}
       <InteractiveMemberMap />
 
-      {/* 16. DISTRICT & REGIONAL COORDINATOR PORTAL */}
+      {/* 18. DISTRICT & REGIONAL COORDINATOR PORTAL */}
       <DistrictCoordinatorPortal />
 
-      {/* 17. WEDDING GALLERY – MASONRY + LIGHTBOX */}
+      {/* 19. WEDDING GALLERY – MASONRY + LIGHTBOX */}
       <WeddingGalleryMasonry />
 
-      {/* 18. JOURNEY SECTION – ANIMATED 9-STEP TIMELINE */}
+      {/* 20. JOURNEY SECTION – ANIMATED 9-STEP TIMELINE */}
       <JourneyTimeline />
 
-      {/* 19. COMMUNITY MELAVA EVENTS SHOWCASE */}
+      {/* 21. COMMUNITY MELAVA EVENTS SHOWCASE */}
       <MelavaEventExperience />
 
-      {/* 20. COMMUNITY SOCIAL FEED & ANNOUNCEMENTS */}
+      {/* 22. COMMUNITY SOCIAL FEED & ANNOUNCEMENTS */}
       <CommunitySocialFeed />
 
-      {/* 21. SUPER ADMIN ANALYTICS & REVENUE METRICS */}
+      {/* 23. INTERACTIVE COMMUNITY DASHBOARD */}
+      <InteractiveCommunityDashboard />
+
+      {/* 24. SUPER ADMIN ANALYTICS & REVENUE METRICS */}
       <SuperAdminAnalyticsWidget />
 
-      {/* 22. TESTIMONIALS – STACKED CARDS */}
+      {/* 25. TESTIMONIALS – STACKED CARDS */}
       <TestimonialsStackCards />
 
-      {/* 23. STATISTICS – PREMIUM COUNTERS */}
+      {/* 26. STATISTICS – PREMIUM COUNTERS */}
       <PremiumStatsCounters />
 
-      {/* 24. CALL TO ACTION – MULTI-LAYER PARALLAX */}
+      {/* 27. CALL TO ACTION – MULTI-LAYER PARALLAX */}
       <ParallaxCTASection />
 
-      {/* 25. SOCIAL SHARING BAR */}
+      {/* 28. SOCIAL SHARING BAR */}
       <SocialSharingBar />
 
-      {/* 26. GLASS NOTIFICATION DRAWER */}
+      {/* 29. GLASS NOTIFICATION DRAWER */}
       <NotificationDrawer />
 
-      {/* 27. AI 24X7 COMMUNITY CHATBOT */}
+      {/* 30. AI 24X7 COMMUNITY CHATBOT */}
       <AICommunityChatbot />
+
+      {/* VISION PRO PROFILE VIEWER MODAL */}
+      {selectedProfile && (
+        <VisionProProfileViewer profile={selectedProfile} onClose={() => setSelectedProfile(null)} />
+      )}
     </div>
   );
 };
