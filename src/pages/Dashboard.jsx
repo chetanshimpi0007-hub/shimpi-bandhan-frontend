@@ -242,7 +242,7 @@ const Dashboard = () => {
               <span className="absolute top-2 right-2.5 w-2 h-2 bg-pink-500 rounded-full" />
             </button>
             <div className="w-10 h-10 rounded-xl bg-pink-500/10 text-pink-500 flex items-center justify-center font-black border border-pink-500/20">
-              {displayName.charAt(0).toUpperCase()}
+              {displayName ? displayName.charAt(0).toUpperCase() : 'U'}
             </div>
           </div>
         </header>
@@ -257,7 +257,7 @@ const Dashboard = () => {
               </span>
             </div>
             <h1 className="text-3xl md:text-4xl font-black tracking-tight leading-none">
-              Welcome back, <span className="bg-clip-text text-transparent bg-gradient-to-r from-pink-400 via-purple-400 to-amber-300">{displayName}!</span>
+              Welcome back{displayName ? `, ` : ''}<span className="bg-clip-text text-transparent bg-gradient-to-r from-pink-400 via-purple-400 to-amber-300">{displayName}</span>!
             </h1>
             <p className="text-slate-350 text-xs font-semibold max-w-lg leading-relaxed">
               Find your perfect match today. We detected 4 highly compatible candidate updates for you.
