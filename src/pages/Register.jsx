@@ -6,7 +6,19 @@ import api, { getErrorMessage } from '../services/api';
 
 const Register = () => {
   const { register, handleSubmit, watch, formState: { errors } } = useForm({
-    defaultValues: { accountType: 'SELF' }
+    defaultValues: {
+      name: '',
+      email: '',
+      phone: '',
+      password: '',
+      accountType: 'SELF',
+      community: '',
+      relationship: '',
+      familyName: '',
+      familyMobile: '',
+      familyEmail: '',
+      familyWhatsapp: ''
+    }
   });
   const accountType = watch('accountType');
   const [loading, setLoading] = useState(false);
@@ -90,21 +102,27 @@ const Register = () => {
             Join the exclusive Shimpi Bandhan community
           </p>
         </div>
-        <form className="mt-8 space-y-6" onSubmit={handleSubmit(onSubmit)}>
+
+        <form className="mt-8 space-y-6" onSubmit={handleSubmit(onSubmit)} autoComplete="off">
           {apiError && (
             <div className="bg-red-50 text-red-500 p-3 rounded-lg text-sm text-center">
               {apiError}
             </div>
           )}
+
           <div className="space-y-4">
+            {/* Full Name */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
+              <label htmlFor="reg_fullname" className="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                   <FaUser className="text-gray-400" />
                 </div>
                 <input
                   type="text"
+                  id="reg_fullname"
+                  name="reg_fullname"
+                  autoComplete="name"
                   {...register("name", { 
                     required: "Full name is required"
                   })}
@@ -115,14 +133,18 @@ const Register = () => {
               {errors.name && <p className="text-red-500 text-xs mt-1">{errors.name.message}</p>}
             </div>
 
+            {/* Email Address */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
+              <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                   <FaEnvelope className="text-gray-400" />
                 </div>
                 <input
                   type="email"
+                  id="email"
+                  name="email"
+                  autoComplete="off"
                   {...register("email", { 
                     required: "Email address is required",
                     pattern: {
@@ -137,14 +159,19 @@ const Register = () => {
               {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email.message}</p>}
             </div>
 
+            {/* Mobile Number */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Mobile Number</label>
+              <label htmlFor="mobile" className="block text-sm font-medium text-gray-700 mb-1">Mobile Number</label>
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                   <FaPhone className="text-gray-400" />
                 </div>
                 <input
-                  type="text"
+                  type="tel"
+                  id="mobile"
+                  name="mobile"
+                  inputMode="numeric"
+                  autoComplete="tel"
                   {...register("phone", { 
                     required: "Mobile number is required",
                     pattern: {
@@ -159,13 +186,16 @@ const Register = () => {
               {errors.phone && <p className="text-red-500 text-xs mt-1">{errors.phone.message}</p>}
             </div>
 
+            {/* Account Type */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Account Type</label>
+              <label htmlFor="accountType" className="block text-sm font-medium text-gray-700 mb-1">Account Type</label>
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                   <FaUsers className="text-gray-400" />
                 </div>
                 <select
+                  id="accountType"
+                  name="accountType"
                   {...register("accountType", { required: "Please select account type" })}
                   className="pl-10 appearance-none block w-full px-3 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] sm:text-sm bg-gray-50 transition-all text-gray-700"
                 >
@@ -179,8 +209,10 @@ const Register = () => {
             {accountType === 'FAMILY' && (
               <div className="space-y-4 border-l-2 border-[var(--color-primary)] pl-4 ml-1">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Relationship with Candidate</label>
+                  <label htmlFor="family_rel" className="block text-sm font-medium text-gray-700 mb-1">Relationship with Candidate</label>
                   <select
+                    id="family_rel"
+                    name="family_rel"
                     {...register("relationship", { required: "Relationship is required for family accounts" })}
                     className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] sm:text-sm bg-gray-50 text-gray-700"
                   >
@@ -196,20 +228,29 @@ const Register = () => {
                   </select>
                   {errors.relationship && <p className="text-red-500 text-xs mt-1">{errors.relationship.message}</p>}
                 </div>
+
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Family Member Name</label>
+                  <label htmlFor="familyName" className="block text-sm font-medium text-gray-700 mb-1">Family Member Name</label>
                   <input
                     type="text"
+                    id="familyName"
+                    name="familyName"
+                    autoComplete="off"
                     {...register("familyName", { required: "Name is required" })}
                     className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-lg placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] sm:text-sm bg-gray-50"
                     placeholder="Full Name"
                   />
                   {errors.familyName && <p className="text-red-500 text-xs mt-1">{errors.familyName.message}</p>}
                 </div>
+
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Family Mobile</label>
+                  <label htmlFor="familyMobile" className="block text-sm font-medium text-gray-700 mb-1">Family Mobile</label>
                   <input
-                    type="text"
+                    type="tel"
+                    id="familyMobile"
+                    name="familyMobile"
+                    inputMode="numeric"
+                    autoComplete="off"
                     {...register("familyMobile", { 
                       required: "Mobile is required",
                       pattern: { value: /^[0-9]{10}$/, message: "Valid 10-digit number required" }
@@ -219,19 +260,28 @@ const Register = () => {
                   />
                   {errors.familyMobile && <p className="text-red-500 text-xs mt-1">{errors.familyMobile.message}</p>}
                 </div>
+
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Family Email (Optional)</label>
+                  <label htmlFor="familyEmail" className="block text-sm font-medium text-gray-700 mb-1">Family Email (Optional)</label>
                   <input
                     type="email"
+                    id="familyEmail"
+                    name="familyEmail"
+                    autoComplete="off"
                     {...register("familyEmail")}
                     className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-lg placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] sm:text-sm bg-gray-50"
                     placeholder="email@example.com"
                   />
                 </div>
+
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Family WhatsApp (Optional)</label>
+                  <label htmlFor="familyWhatsapp" className="block text-sm font-medium text-gray-700 mb-1">Family WhatsApp (Optional)</label>
                   <input
-                    type="text"
+                    type="tel"
+                    id="familyWhatsapp"
+                    name="familyWhatsapp"
+                    inputMode="numeric"
+                    autoComplete="off"
                     {...register("familyWhatsapp")}
                     className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-lg placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] sm:text-sm bg-gray-50"
                     placeholder="WhatsApp Number"
@@ -240,13 +290,16 @@ const Register = () => {
               </div>
             )}
 
+            {/* Community */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Community</label>
+              <label htmlFor="community" className="block text-sm font-medium text-gray-700 mb-1">Community</label>
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                   <FaUsers className="text-gray-400" />
                 </div>
                 <select
+                  id="community"
+                  name="community"
                   {...register("community", { required: "Please select your community" })}
                   className="pl-10 appearance-none block w-full px-3 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] sm:text-sm bg-gray-50 transition-all text-gray-700"
                 >
@@ -258,14 +311,18 @@ const Register = () => {
               {errors.community && <p className="text-red-500 text-xs mt-1">{errors.community.message}</p>}
             </div>
 
+            {/* Password */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Password</label>
+              <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-1">Password</label>
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                   <FaLock className="text-gray-400" />
                 </div>
                 <input
                   type={showPassword ? "text" : "password"}
+                  id="password"
+                  name="new-password"
+                  autoComplete="new-password"
                   {...register("password", { 
                     required: "Password is required",
                     minLength: {
