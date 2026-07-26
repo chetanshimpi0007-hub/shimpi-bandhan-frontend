@@ -5,8 +5,6 @@ import { FaHeart, FaSearch, FaShieldAlt, FaUserCheck, FaStar, FaQuoteLeft } from
 import { Helmet } from 'react-helmet-async';
 import api, { getBackendUrl } from '../services/api';
 import CircularSuccessStories3D from '../components/CircularSuccessStories3D';
-import SmartSearchHero from '../components/SmartSearchHero';
-import FeaturedPremiumMembersShowcase from '../components/FeaturedPremiumMembersShowcase';
 
 // Professional, slow fade animations
 const fadeUp = {
@@ -38,6 +36,11 @@ const Home = () => {
       .then(res => setStats(res.data))
       .catch(console.error);
   }, []);
+
+  const handleQuickSearch = (e) => {
+    e.preventDefault();
+    navigate('/search');
+  };
 
   return (
     <div className="w-full bg-[#FAF9F6] overflow-hidden font-sans text-slate-800 min-h-screen relative select-none">
@@ -95,12 +98,6 @@ const Home = () => {
         </div>
       </section>
 
-      {/* 2. SMART SEARCH HERO SECTION */}
-      <SmartSearchHero />
-
-      {/* 3. LIGHT THEME FEATURED PREMIUM MEMBERS SHOWCASE */}
-      <FeaturedPremiumMembersShowcase />
-
       {/* Layered Ribbon Wave Divider 1 */}
       <div className="w-full overflow-hidden leading-none z-10 relative text-[#FFFDF2]">
         <svg viewBox="0 0 1200 120" preserveAspectRatio="none" className="relative block w-full h-14 fill-current">
@@ -108,7 +105,7 @@ const Home = () => {
         </svg>
       </div>
 
-      {/* 4. Why Choose Us – Rich Ivory, Champagne Gold & Faded Mandala Watermark */}
+      {/* 2. Why Choose Us – Rich Ivory, Champagne Gold & Faded Mandala Watermark */}
       <section className="py-24 relative overflow-hidden bg-gradient-to-br from-[#FFFDF2] via-[#FFFBF0] to-[#FAF6EA]">
         
         {/* Subtle Gold Grid Pattern */}
@@ -177,7 +174,7 @@ const Home = () => {
         </svg>
       </div>
 
-      {/* 5. PREMIUM 360° CIRCULAR SUCCESS STORIES SHOWCASE */}
+      {/* 3. PREMIUM 360° CIRCULAR SUCCESS STORIES SHOWCASE */}
       <CircularSuccessStories3D />
 
       {/* Layered Ribbon Divider 3 */}
@@ -187,7 +184,7 @@ const Home = () => {
         </svg>
       </div>
 
-      {/* 6. Premium Membership Banner – VIP Champagne Gold & Royal Glass Shimmer */}
+      {/* 4. Premium Membership Banner – VIP Champagne Gold & Royal Glass Shimmer */}
       <section className="py-24 bg-gradient-to-br from-[#FFFDF0] via-[#FFF8EB] to-[#FFF0F5] text-center relative border-t-2 border-amber-500/30 overflow-hidden shadow-inner">
         
         {/* VIP Gold Shimmer Glowing Aura */}
