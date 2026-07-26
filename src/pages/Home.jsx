@@ -69,8 +69,8 @@ const Home = () => {
 
       {/* Global Background Ambient Mesh */}
       <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
-        <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-gradient-to-tr from-[#800020]/5 via-amber-400/5 to-pink-500/5 rounded-full blur-[140px]" />
-        <div className="absolute bottom-1/3 right-1/4 w-[700px] h-[700px] bg-gradient-to-br from-rose-400/5 via-amber-300/5 to-purple-400/5 rounded-full blur-[160px]" />
+        <div className="absolute top-0 left-1/4 w-[650px] h-[650px] bg-gradient-to-tr from-[#800020]/10 via-amber-400/10 to-pink-500/10 rounded-full blur-[140px] animate-pulse" />
+        <div className="absolute bottom-1/3 right-1/4 w-[750px] h-[750px] bg-gradient-to-br from-rose-400/10 via-amber-300/10 to-purple-400/10 rounded-full blur-[160px] animate-pulse" />
       </div>
 
       {/* 1. Full-Width Background Hero Section */}
@@ -84,7 +84,7 @@ const Home = () => {
         />
         
         {/* Soft Dark Overlay for Text Legibility */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent z-10"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/55 to-transparent z-10"></div>
 
         {/* Hero Content */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-20 py-16 sm:py-20 lg:py-28">
@@ -116,27 +116,27 @@ const Home = () => {
         </div>
       </section>
 
-      {/* 2. Premium Search Card with Aurora Light Blob Background */}
+      {/* 2. Premium Search Card with Aurora Light Blob & Mesh Glow */}
       <section className="relative z-30 px-4 sm:px-6 my-10 md:my-14 mb-20 max-w-6xl mx-auto">
-        <div className="absolute -inset-4 bg-gradient-to-r from-pink-500/10 via-amber-400/10 to-purple-500/10 rounded-[36px] blur-2xl opacity-60 pointer-events-none" />
+        <div className="absolute -inset-6 bg-gradient-to-r from-pink-500/20 via-amber-400/25 to-purple-600/20 rounded-[42px] blur-3xl opacity-80 pointer-events-none animate-pulse" />
         
         <motion.div 
           initial={{ opacity: 0, y: 30 }} 
           animate={{ opacity: 1, y: 0 }} 
           transition={{ duration: 0.8, delay: 0.3 }}
-          className="relative bg-white/95 backdrop-blur-xl border border-amber-500/20 rounded-[24px] shadow-[0_20px_50px_rgba(0,0,0,0.08)] p-5 sm:p-6 lg:p-8 h-auto"
+          className="relative bg-white/95 backdrop-blur-2xl border border-amber-500/30 rounded-[28px] shadow-[0_25px_60px_rgba(128,0,32,0.12)] p-5 sm:p-6 lg:p-8 h-auto"
         >
           <form onSubmit={handleQuickSearch} className="flex flex-col gap-6 md:grid md:grid-cols-5 md:gap-5 lg:gap-6 items-start md:items-end w-full">
             <div className="w-full">
               <label className="block text-[11px] font-bold text-gray-500 uppercase tracking-wider mb-2">Looking For</label>
-              <select className="w-full bg-white/70 border border-gray-300 rounded-xl text-gray-800 py-3.5 px-4 focus:ring-2 focus:ring-[#800020] focus:bg-white outline-none transition-all text-sm font-semibold shadow-sm">
+              <select className="w-full bg-white/80 border border-gray-300 rounded-xl text-gray-800 py-3.5 px-4 focus:ring-2 focus:ring-[#800020] focus:bg-white outline-none transition-all text-sm font-semibold shadow-sm">
                 <option>Bride</option>
                 <option>Groom</option>
               </select>
             </div>
             <div className="w-full">
               <label className="block text-[11px] font-bold text-gray-500 uppercase tracking-wider mb-2">Age</label>
-              <select className="w-full bg-white/70 border border-gray-300 rounded-xl text-gray-800 py-3.5 px-4 focus:ring-2 focus:ring-[#800020] focus:bg-white outline-none transition-all text-sm font-semibold shadow-sm">
+              <select className="w-full bg-white/80 border border-gray-300 rounded-xl text-gray-800 py-3.5 px-4 focus:ring-2 focus:ring-[#800020] focus:bg-white outline-none transition-all text-sm font-semibold shadow-sm">
                 <option>21 to 25</option>
                 <option>26 to 30</option>
                 <option>31 to 35</option>
@@ -145,14 +145,14 @@ const Home = () => {
             </div>
             <div className="w-full">
               <label className="block text-[11px] font-bold text-gray-500 uppercase tracking-wider mb-2">Community</label>
-              <select className="w-full bg-white/70 border border-gray-300 rounded-xl text-gray-800 py-3.5 px-4 focus:ring-2 focus:ring-[#800020] focus:bg-white outline-none transition-all text-sm font-semibold shadow-sm">
+              <select className="w-full bg-white/80 border border-gray-300 rounded-xl text-gray-800 py-3.5 px-4 focus:ring-2 focus:ring-[#800020] focus:bg-white outline-none transition-all text-sm font-semibold shadow-sm">
                 <option>Aher Shimpi</option>
                 <option>Namdev Shimpi</option>
               </select>
             </div>
             <div className="w-full">
               <label className="block text-[11px] font-bold text-gray-500 uppercase tracking-wider mb-2">Location</label>
-              <input type="text" placeholder="e.g. Pune, Mumbai" className="w-full bg-white/70 border border-gray-300 rounded-xl text-gray-800 py-3.5 px-4 focus:ring-2 focus:ring-[#800020] focus:bg-white outline-none transition-all text-sm font-semibold shadow-sm" />
+              <input type="text" placeholder="e.g. Pune, Mumbai" className="w-full bg-white/80 border border-gray-300 rounded-xl text-gray-800 py-3.5 px-4 focus:ring-2 focus:ring-[#800020] focus:bg-white outline-none transition-all text-sm font-semibold shadow-sm" />
             </div>
             <div className="w-full pt-2 md:pt-0">
               <button type="submit" className="w-full bg-gradient-to-r from-[#800020] to-[#b3002d] text-white rounded-xl py-3.5 px-6 font-bold shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all text-sm cursor-pointer border border-[#800020]/20 flex items-center justify-center gap-2">
@@ -164,38 +164,50 @@ const Home = () => {
         </motion.div>
       </section>
 
-      {/* Elegant Curved Divider */}
-      <div className="w-full overflow-hidden leading-none z-10 relative text-[#FFF9FA]">
-        <svg viewBox="0 0 1200 120" preserveAspectRatio="none" className="relative block w-full h-12 fill-current">
+      {/* Layered Ribbon Wave Divider 1 */}
+      <div className="w-full overflow-hidden leading-none z-10 relative text-[#FFFDF2]">
+        <svg viewBox="0 0 1200 120" preserveAspectRatio="none" className="relative block w-full h-14 fill-current">
           <path d="M0,0 C150,90 350,-40 500,50 C650,140 900,10 1200,40 L1200,120 L0,120 Z"></path>
         </svg>
       </div>
 
-      {/* 3. Why Choose Us – Ivory & Floral Pattern Layer */}
-      <section className="py-24 relative overflow-hidden bg-gradient-to-b from-[#FFF9FA] via-[#FFFDF5] to-[#FAF9F6]">
+      {/* 3. Why Choose Us – Rich Ivory, Champagne Gold & Faded Mandala Watermark */}
+      <section className="py-24 relative overflow-hidden bg-gradient-to-br from-[#FFFDF2] via-[#FFFBF0] to-[#FAF6EA]">
         
-        {/* Subtle Decorative Mesh Pattern */}
+        {/* Subtle Gold Grid Pattern */}
         <div 
-          className="absolute inset-0 z-0 opacity-4"
-          style={{ backgroundImage: 'linear-gradient(rgba(128,0,32,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(128,0,32,0.06) 1px, transparent 1px)', backgroundSize: '36px 36px' }}
+          className="absolute inset-0 z-0 opacity-8"
+          style={{ backgroundImage: 'linear-gradient(rgba(212,175,55,0.12) 1px, transparent 1px), linear-gradient(90deg, rgba(212,175,55,0.12) 1px, transparent 1px)', backgroundSize: '40px 40px' }}
         ></div>
 
-        {/* Soft Floral & Mandala Watermark SVG Overlay */}
-        <div className="absolute top-10 right-10 z-0 opacity-5 pointer-events-none text-[#800020]">
-          <svg width="300" height="300" viewBox="0 0 100 100" fill="currentColor">
-            <circle cx="50" cy="50" r="40" stroke="currentColor" strokeWidth="1" fill="none" />
-            <circle cx="50" cy="50" r="30" stroke="currentColor" strokeWidth="0.5" fill="none" />
-            <path d="M50 10 L50 90 M10 50 L90 50 M22 22 L78 78 M22 78 L78 22" stroke="currentColor" strokeWidth="0.5" />
+        {/* Large Faded Mandala SVG Watermark - 12% Opacity (Highly Noticeable) */}
+        <div className="absolute -top-10 right-0 z-0 opacity-12 pointer-events-none text-[#800020]">
+          <svg width="450" height="450" viewBox="0 0 100 100" fill="currentColor">
+            <circle cx="50" cy="50" r="45" stroke="currentColor" strokeWidth="1.2" fill="none" />
+            <circle cx="50" cy="50" r="35" stroke="currentColor" strokeWidth="0.8" fill="none" />
+            <circle cx="50" cy="50" r="25" stroke="currentColor" strokeWidth="0.5" fill="none" />
+            <path d="M50 5 L50 95 M5 50 L95 50 M18 18 L82 82 M18 82 L82 18" stroke="currentColor" strokeWidth="0.8" />
+            <path d="M50 20 Q65 35 50 50 Q35 35 50 20 Z" fill="currentColor" opacity="0.3" />
+            <path d="M50 50 Q65 65 50 80 Q35 65 50 50 Z" fill="currentColor" opacity="0.3" />
           </svg>
         </div>
 
-        {/* Background Image - Soft Overlay */}
-        <div className="absolute inset-0 z-0 opacity-15 pointer-events-none">
+        {/* Left Floral Watermark */}
+        <div className="absolute bottom-0 left-0 z-0 opacity-10 pointer-events-none text-amber-600">
+          <svg width="400" height="400" viewBox="0 0 100 100" fill="currentColor">
+            <circle cx="50" cy="50" r="40" stroke="currentColor" strokeWidth="1" fill="none" />
+            <path d="M50 10 C30 30 30 70 50 90 C70 70 70 30 50 10 Z" fill="none" stroke="currentColor" strokeWidth="1" />
+            <path d="M10 50 C30 30 70 30 90 50 C70 70 30 70 10 50 Z" fill="none" stroke="currentColor" strokeWidth="1" />
+          </svg>
+        </div>
+
+        {/* Background Image Overlay */}
+        <div className="absolute inset-0 z-0 opacity-20 pointer-events-none">
           <img src="/hero-wedding.jpg" alt="Why Choose Us" className="w-full h-full object-cover" />
         </div>
         
-        {/* Soft overlay */}
-        <div className="absolute inset-0 z-0 bg-[#FAF9F6]/80 pointer-events-none"></div>
+        {/* Soft Gold Overlay */}
+        <div className="absolute inset-0 z-0 bg-[#FFFDF2]/75 pointer-events-none"></div>
 
         <div className="max-w-6xl mx-auto px-6 relative z-10">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} variants={fadeUp} className="text-center mb-16 space-y-3">
@@ -209,7 +221,7 @@ const Home = () => {
               { icon: <FaHeart />, title: "Exclusive Community", desc: "Dedicated specifically to the Aher and Namdev Shimpi communities, preserving our rich heritage." },
               { icon: <FaUserCheck />, title: "Privacy Guaranteed", desc: "Your contact details and photos remain strictly confidential and visible only to premium members." }
             ].map((feature, idx) => (
-              <motion.div key={idx} variants={fadeUp} className="bg-white/90 backdrop-blur-md border border-amber-500/10 rounded-3xl p-8 hover:border-pink-500/30 hover:shadow-xl transition-all duration-300 shadow-sm">
+              <motion.div key={idx} variants={fadeUp} className="bg-white/95 backdrop-blur-md border border-amber-500/20 rounded-3xl p-8 hover:border-pink-500/40 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 shadow-md">
                 <div className="w-14 h-14 bg-pink-500/10 border border-pink-500/20 text-pink-500 rounded-2xl flex items-center justify-center text-xl mb-6">
                   {feature.icon}
                 </div>
@@ -221,18 +233,27 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Elegant Wave Divider */}
-      <div className="w-full overflow-hidden leading-none z-10 relative text-[#FFF5F7]">
-        <svg viewBox="0 0 1200 120" preserveAspectRatio="none" className="relative block w-full h-10 fill-current">
+      {/* Organic Curved Wave Divider 2 */}
+      <div className="w-full overflow-hidden leading-none z-10 relative text-[#FFF0F4]">
+        <svg viewBox="0 0 1200 120" preserveAspectRatio="none" className="relative block w-full h-12 fill-current">
           <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"></path>
         </svg>
       </div>
 
-      {/* 4. Success Stories – Soft Blush Pink & Bokeh Glow Layer */}
-      <section className="py-24 relative bg-gradient-to-b from-[#FFF5F7] via-[#FFF8FA] to-[#FAF9F6]">
-        {/* Soft Bokeh Circles & Light Sparks */}
-        <div className="absolute top-1/3 left-10 w-48 h-48 bg-pink-300/10 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute bottom-10 right-10 w-64 h-64 bg-amber-200/10 rounded-full blur-3xl pointer-events-none" />
+      {/* 4. Success Stories – Romantic Blush Pink, Floating Hearts & Bokeh Lights */}
+      <section className="py-24 relative bg-gradient-to-tr from-[#FFF0F4] via-[#FFF6F9] to-[#FFECF1] overflow-hidden">
+        
+        {/* Animated Bokeh Circles */}
+        <div className="absolute top-1/4 left-8 w-60 h-60 bg-pink-400/15 rounded-full blur-3xl pointer-events-none animate-pulse" />
+        <div className="absolute bottom-12 right-12 w-72 h-72 bg-rose-400/15 rounded-full blur-3xl pointer-events-none animate-pulse" />
+
+        {/* Floating Heart Watermark Icons SVG */}
+        <div className="absolute top-12 left-1/3 opacity-15 text-pink-400 pointer-events-none">
+          <FaHeart className="text-6xl animate-bounce" />
+        </div>
+        <div className="absolute bottom-16 right-1/4 opacity-15 text-rose-500 pointer-events-none">
+          <FaHeart className="text-7xl animate-pulse" />
+        </div>
 
         <div className="max-w-6xl mx-auto px-6 relative z-10">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="text-center mb-16 space-y-3">
@@ -242,12 +263,12 @@ const Home = () => {
           
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger} className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {localTestimonials.map((story, idx) => (
-              <motion.div key={story.id || idx} variants={fadeUp} className="bg-white/95 rounded-[32px] border border-pink-500/15 p-8 flex flex-col md:flex-row gap-6 hover:border-pink-500/30 transition-all duration-300 shadow-md">
-                <div className="w-full md:w-40 h-64 md:h-40 rounded-2xl overflow-hidden flex-shrink-0 relative">
+              <motion.div key={story.id || idx} variants={fadeUp} className="bg-white/95 rounded-[32px] border border-pink-500/25 p-8 flex flex-col md:flex-row gap-6 hover:border-pink-500/50 hover:shadow-2xl transition-all duration-300 shadow-lg">
+                <div className="w-full md:w-40 h-64 md:h-40 rounded-2xl overflow-hidden flex-shrink-0 relative border-2 border-pink-500/20 shadow-md">
                   <img src={story.photoUrl} alt={`${story.brideName} & ${story.groomName}`} className="w-full h-full object-cover object-top md:object-center" />
                 </div>
                 <div className="space-y-4 flex-1">
-                  <FaQuoteLeft className="text-pink-500 text-2xl opacity-60" />
+                  <FaQuoteLeft className="text-pink-500 text-2xl opacity-70" />
                   <p className="text-slate-600 text-xs italic leading-relaxed font-semibold">"{story.story}"</p>
                   <div>
                     <h3 className="text-sm font-black text-slate-800">{story.brideName} & {story.groomName}</h3>
@@ -260,18 +281,36 @@ const Home = () => {
         </div>
       </section>
 
-      {/* 5. Premium Membership Banner – Champagne Gold & Glass Shimmer */}
-      <section className="py-24 bg-gradient-to-tr from-[#FFFDF0] via-[#FFF8F9] to-[#FDF8FE] text-center relative border-t border-amber-500/20 overflow-hidden">
-        {/* VIP Gold Shimmer Glow */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-gradient-to-r from-amber-300/10 via-pink-400/10 to-purple-400/10 rounded-full blur-[100px] pointer-events-none" />
+      {/* Layered Ribbon Divider 3 */}
+      <div className="w-full overflow-hidden leading-none z-10 relative text-[#FFFDF0]">
+        <svg viewBox="0 0 1200 120" preserveAspectRatio="none" className="relative block w-full h-14 fill-current">
+          <path d="M0,0 C150,90 350,-40 500,50 C650,140 900,10 1200,40 L1200,120 L0,120 Z"></path>
+        </svg>
+      </div>
+
+      {/* 5. Premium Membership Banner – VIP Champagne Gold & Royal Glass Shimmer */}
+      <section className="py-24 bg-gradient-to-br from-[#FFFDF0] via-[#FFF8EB] to-[#FFF0F5] text-center relative border-t-2 border-amber-500/30 overflow-hidden shadow-inner">
+        
+        {/* VIP Gold Shimmer Glowing Aura */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-r from-amber-300/20 via-pink-400/20 to-purple-400/20 rounded-full blur-[110px] pointer-events-none animate-pulse" />
+
+        {/* Floating Star & Diamond Watermarks */}
+        <div className="absolute top-8 left-16 opacity-20 text-amber-500 pointer-events-none">
+          <FaStar className="text-5xl animate-bounce" />
+        </div>
+        <div className="absolute bottom-10 right-16 opacity-20 text-amber-500 pointer-events-none">
+          <FaStar className="text-6xl animate-pulse" />
+        </div>
 
         <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="max-w-3xl mx-auto px-6 relative z-10 space-y-6">
-          <FaStar className="text-4xl text-amber-500 mx-auto mb-2 fill-amber-500 animate-pulse" />
+          <div className="w-16 h-16 rounded-full bg-amber-400/20 border border-amber-500/40 text-amber-500 flex items-center justify-center mx-auto shadow-lg">
+            <FaStar className="text-3xl fill-amber-500 animate-pulse" />
+          </div>
           <h2 className="text-3xl md:text-5xl font-black text-slate-900 tracking-tight">Become a Premium Member</h2>
           <p className="text-base text-slate-600 max-w-xl mx-auto font-medium leading-relaxed">
             Upgrade your membership to access contact details, initiate unlimited chats, and get priority support from our relationship managers.
           </p>
-          <Link to="/premium" className="inline-block bg-gradient-to-r from-pink-600 via-rose-600 to-purple-600 text-white px-10 py-4 rounded-2xl font-black text-sm hover:opacity-95 transition-all shadow-xl shadow-pink-600/25 border border-white/30">
+          <Link to="/premium" className="inline-block bg-gradient-to-r from-[#800020] via-pink-600 to-rose-600 text-white px-10 py-4 rounded-2xl font-black text-sm hover:brightness-110 transition-all shadow-xl shadow-[#800020]/30 border border-white/40 cursor-pointer">
             View Membership Plans
           </Link>
         </motion.div>
