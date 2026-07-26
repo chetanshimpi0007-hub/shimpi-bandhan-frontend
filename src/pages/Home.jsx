@@ -23,6 +23,12 @@ const Home = () => {
   const [stats, setStats] = useState(null);
   const navigate = useNavigate();
 
+  // Search state
+  const [lookingFor, setLookingFor] = useState('Bride');
+  const [ageRange, setAgeRange] = useState('21 to 25');
+  const [community, setCommunity] = useState('Aher Shimpi');
+  const [location, setLocation] = useState('');
+
   useEffect(() => {
     api.get('/success-stories')
       .then(res => setSuccessStories(res.data))
@@ -39,7 +45,7 @@ const Home = () => {
 
   const handleQuickSearch = (e) => {
     e.preventDefault();
-    navigate('/search');
+    navigate(`/search?lookingFor=${encodeURIComponent(lookingFor)}&age=${encodeURIComponent(ageRange)}&community=${encodeURIComponent(community)}&location=${encodeURIComponent(location)}`);
   };
 
   return (
@@ -98,6 +104,84 @@ const Home = () => {
         </div>
       </section>
 
+      {/* 2. Premium Search Matches Section */}
+      <section className="relative z-30 px-4 sm:px-6 my-10 md:my-14 mb-20 max-w-6xl mx-auto">
+        <div className="absolute -inset-4 bg-gradient-to-r from-pink-500/15 via-amber-400/20 to-purple-500/15 rounded-[36px] blur-2xl opacity-70 pointer-events-none" />
+        
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }} 
+          animate={{ opacity: 1, y: 0 }} 
+          transition={{ duration: 0.8, delay: 0.3 }}
+          className="relative bg-white/95 backdrop-blur-xl border border-amber-500/30 rounded-[24px] shadow-[0_20px_50px_rgba(128,0,32,0.1)] p-5 sm:p-6 lg:p-8 h-auto"
+        >
+          <div className="mb-4">
+            <h3 className="text-lg font-serif font-black text-slate-900 flex items-center gap-2">
+              <FaSearch className="text-[#800020]" /> Quick Search Matches
+            </h3>
+            <p className="text-xs text-slate-500 font-semibold">Filter verified profiles by community, age, and location</p>
+          </div>
+
+          <form onSubmit={handleQuickSearch} className="flex flex-col gap-6 md:grid md:grid-cols-5 md:gap-5 lg:gap-6 items-start md:items-end w-full">
+            <div className="w-full">
+              <label className="block text-[11px] font-bold text-gray-500 uppercase tracking-wider mb-2">Looking For</label>
+              <select
+                value={lookingFor}
+                onChange={(e) => setLookingFor(e.target.value)}
+                className="w-full bg-white/80 border border-gray-300 rounded-xl text-gray-800 py-3.5 px-4 focus:ring-2 focus:ring-[#800020] focus:bg-white outline-none transition-all text-sm font-semibold shadow-sm cursor-pointer"
+              >
+                <option>Bride</option>
+                <option>Groom</option>
+              </select>
+            </div>
+
+            <div className="w-full">
+              <label className="block text-[11px] font-bold text-gray-500 uppercase tracking-wider mb-2">Age</label>
+              <select
+                value={ageRange}
+                onChange={(e) => setAgeRange(e.target.value)}
+                className="w-full bg-white/80 border border-gray-300 rounded-xl text-gray-800 py-3.5 px-4 focus:ring-2 focus:ring-[#800020] focus:bg-white outline-none transition-all text-sm font-semibold shadow-sm cursor-pointer"
+              >
+                <option>21 to 25</option>
+                <option>26 to 30</option>
+                <option>31 to 35</option>
+                <option>36 and above</option>
+              </select>
+            </div>
+
+            <div className="w-full">
+              <label className="block text-[11px] font-bold text-gray-500 uppercase tracking-wider mb-2">Community</label>
+              <select
+                value={community}
+                onChange={(e) => setCommunity(e.target.value)}
+                className="w-full bg-white/80 border border-gray-300 rounded-xl text-gray-800 py-3.5 px-4 focus:ring-2 focus:ring-[#800020] focus:bg-white outline-none transition-all text-sm font-semibold shadow-sm cursor-pointer"
+              >
+                <option>Aher Shimpi</option>
+                <option>Namdev Shimpi</option>
+                <option>All Shimpi Communities</option>
+              </select>
+            </div>
+
+            <div className="w-full">
+              <label className="block text-[11px] font-bold text-gray-500 uppercase tracking-wider mb-2">Location</label>
+              <input 
+                type="text" 
+                value={location}
+                onChange={(e) => setLocation(e.target.value)}
+                placeholder="e.g. Pune, Mumbai" 
+                className="w-full bg-white/80 border border-gray-300 rounded-xl text-gray-800 py-3.5 px-4 focus:ring-2 focus:ring-[#800020] focus:bg-white outline-none transition-all text-sm font-semibold shadow-sm" 
+              />
+            </div>
+
+            <div className="w-full pt-2 md:pt-0">
+              <button type="submit" className="w-full bg-gradient-to-r from-[#800020] to-[#b3002d] text-white rounded-xl py-3.5 px-6 font-bold shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all text-sm cursor-pointer border border-[#800020]/20 flex items-center justify-center gap-2">
+                <FaSearch className="w-4 h-4" />
+                Search Matches
+              </button>
+            </div>
+          </form>
+        </motion.div>
+      </section>
+
       {/* Layered Ribbon Wave Divider 1 */}
       <div className="w-full overflow-hidden leading-none z-10 relative text-[#FFFDF2]">
         <svg viewBox="0 0 1200 120" preserveAspectRatio="none" className="relative block w-full h-14 fill-current">
@@ -105,7 +189,7 @@ const Home = () => {
         </svg>
       </div>
 
-      {/* 2. Why Choose Us – Rich Ivory, Champagne Gold & Faded Mandala Watermark */}
+      {/* 3. Why Choose Us – Rich Ivory, Champagne Gold & Faded Mandala Watermark */}
       <section className="py-24 relative overflow-hidden bg-gradient-to-br from-[#FFFDF2] via-[#FFFBF0] to-[#FAF6EA]">
         
         {/* Subtle Gold Grid Pattern */}
@@ -174,7 +258,7 @@ const Home = () => {
         </svg>
       </div>
 
-      {/* 3. PREMIUM 360° CIRCULAR SUCCESS STORIES SHOWCASE */}
+      {/* 4. PREMIUM 360° CIRCULAR SUCCESS STORIES SHOWCASE */}
       <CircularSuccessStories3D />
 
       {/* Layered Ribbon Divider 3 */}
@@ -184,7 +268,7 @@ const Home = () => {
         </svg>
       </div>
 
-      {/* 4. Premium Membership Banner – VIP Champagne Gold & Royal Glass Shimmer */}
+      {/* 5. Premium Membership Banner – VIP Champagne Gold & Royal Glass Shimmer */}
       <section className="py-24 bg-gradient-to-br from-[#FFFDF0] via-[#FFF8EB] to-[#FFF0F5] text-center relative border-t-2 border-amber-500/30 overflow-hidden shadow-inner">
         
         {/* VIP Gold Shimmer Glowing Aura */}
