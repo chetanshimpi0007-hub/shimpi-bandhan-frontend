@@ -5,6 +5,9 @@ import { useSelector } from 'react-redux';
 import PublicLayout from './layouts/PublicLayout';
 import DashboardLayout from './layouts/DashboardLayout';
 import PWAHandler from './components/PWAHandler';
+import GlobalPreloader from './components/GlobalPreloader';
+import CursorGlow from './components/CursorGlow';
+import './styles/VisionOSStyles.css';
 
 const Loading = () => (
   <div className="flex h-screen items-center justify-center bg-gray-50">
@@ -53,6 +56,8 @@ const ProtectedRoute = ({ children }) => {
 function App() {
   return (
     <HelmetProvider>
+      <GlobalPreloader />
+      <CursorGlow />
       <Router>
       <Suspense fallback={<Loading />}>
         <Routes>

@@ -1,0 +1,83 @@
+/* Apple VisionOS Glass & Awwwards Micro-Interactions */
+
+.visionos-glass {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.06);
+}
+
+.visionos-glass-dark {
+  background: rgba(15, 23, 42, 0.85);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
+}
+
+/* Shine Sweep Hover Effect */
+.shine-sweep {
+  position: relative;
+  overflow: hidden;
+}
+
+.shine-sweep::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -60%;
+  width: 50%;
+  height: 200%;
+  background: linear-gradient(
+    60deg,
+    transparent,
+    rgba(255, 255, 255, 0.35),
+    transparent
+  );
+  transform: rotate(25deg);
+  transition: all 0.75s ease-in-out;
+}
+
+.shine-sweep:hover::after {
+  left: 140%;
+}
+
+/* Gold Glow Border Animation */
+@keyframes goldGlowPulse {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(245, 200, 66, 0.3), inset 0 0 10px rgba(245, 200, 66, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 35px rgba(245, 200, 66, 0.6), inset 0 0 20px rgba(245, 200, 66, 0.4);
+  }
+}
+
+.gold-glow-border {
+  animation: goldGlowPulse 3s infinite ease-in-out;
+}
+
+/* Animated Aurora Background Gradient */
+@keyframes auroraMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.aurora-bg {
+  background: linear-gradient(
+    -45deg,
+    #fffdf9,
+    #faf6f0,
+    #fff5f7,
+    #fcfbf9
+  );
+  background-size: 400% 400%;
+  animation: auroraMove 15s ease infinite;
+}
