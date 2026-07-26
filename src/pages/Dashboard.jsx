@@ -23,8 +23,7 @@ const Dashboard = () => {
     user?.name || 
     localStorage.getItem('user_name') || 
     localStorage.getItem('registered_name') || 
-    (user?.email ? user.email.split('@')[0] : '') || 
-    (user?.phone ? `Member (${user.phone})` : 'Valued Member');
+    '';
   const [suggestedMatches, setSuggestedMatches] = useState([]);
   const [visitorCount, setVisitorCount] = useState(0);
   const [loading, setLoading] = useState(true);
