@@ -6,7 +6,6 @@ import { Helmet } from 'react-helmet-async';
 import api, { getBackendUrl } from '../services/api';
 import CircularSuccessStories3D from '../components/CircularSuccessStories3D';
 import SmartSearchHero from '../components/SmartSearchHero';
-import FeaturedPremiumMembersShowcase from '../components/FeaturedPremiumMembersShowcase';
 
 // Professional, slow fade animations
 const fadeUp = {
@@ -97,9 +96,6 @@ const Home = () => {
 
       {/* 2. SMART SEARCH HERO SECTION */}
       <SmartSearchHero />
-
-      {/* 3. FEATURED PREMIUM MEMBERS SHOWCASE SECTION */}
-      <FeaturedPremiumMembersShowcase />
 
       {/* Layered Ribbon Wave Divider 1 */}
       <div className="w-full overflow-hidden leading-none z-10 relative text-[#FFFDF2]">
